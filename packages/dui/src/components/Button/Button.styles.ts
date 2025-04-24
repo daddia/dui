@@ -1,4 +1,4 @@
-import { tv } from 'tailwindcss-variants';
+import { tv } from 'tailwind-variants';
 
 export const buttonVariants = tv({
   base: [

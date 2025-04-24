@@ -1,4 +1,4 @@
-import type { VariantProps } from 'tailwindcss-variants';
+import type { VariantProps } from 'tailwind-variants';
 import { buttonVariants } from './Button.styles';
 
 export interface ButtonProps
