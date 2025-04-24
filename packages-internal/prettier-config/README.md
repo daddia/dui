@@ -16,7 +16,7 @@ npm install --save-dev @tpw/prettier-config
 
 ## Usage
 
-Temple & Webster's shared prettier config comes bundled in `@tpw/prettier-config`. 
+Temple & Webster's shared prettier config comes bundled in `@tpw/prettier-config`.
 
 To enable these rules, add a `prettier` property to your project's `package.json`. See the [prettier configuration docs](https://prettier.io/docs/configuration) for more details.
 
@@ -50,12 +50,13 @@ This package provides the following Prettier configuration:
 ## Ignored Files
 
 The package includes a `.prettierignore` file with common patterns for files that should be ignored by Prettier, including:
+
 - Dependencies (`node_modules`, etc.)
 - Build outputs (`dist`, `build`, etc.)
 - Cache directories
 - Debug logs
 - IDE files
-- Package manager files 
+- Package manager files
 
 ## Migration
 

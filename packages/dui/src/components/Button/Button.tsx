@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { buttonVariants } from './Button.styles';
-import type { ButtonProps } from './Button.types';
-import { cn } from '../../utils/cn';
+import {buttonVariants} from './Button.styles';
+import type {ButtonProps} from './Button.types';
+import {cn} from '../../utils/cn';
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -17,17 +17,13 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       disabled,
       ...props
     },
-    ref
+    ref,
   ) => {
     const isDisabled = disabled || isLoading;
 
     return (
       <button
-        className={cn(
-          buttonVariants({ variant, size }),
-          fullWidth ? 'w-full' : '',
-          className
-        )}
+        className={cn(buttonVariants({variant, size}), fullWidth ? 'w-full' : '', className)}
         disabled={isDisabled}
         ref={ref}
         {...props}
@@ -40,7 +36,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {rightIcon && <span className="ml-2">{rightIcon}</span>}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = 'Button';

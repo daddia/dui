@@ -27,81 +27,94 @@ src/
 ## 2. File Breakdown
 
 ### 2.1 `Component.styles.ts`
-- Define your Tailwind CSS variants using [tailwind-variants (CVA)](https://github.com/adrianhall/tailwind-variants).  
-- Centralises CSS logic for sizes, intents, and other variants.  
+
+- Define your Tailwind CSS variants using [tailwind-variants (CVA)](https://github.com/adrianhall/tailwind-variants).
+- Centralises CSS logic for sizes, intents, and other variants.
 - Enables tree‑shaking of unused style permutations.
 
 ### 2.2 `Component.types.ts`
+
 ```ts
-import type { VariantProps } from 'tailwind-variants';
-import { componentVariants } from './Component.styles';
+import type {VariantProps} from 'tailwind-variants';
+import {componentVariants} from './Component.styles';
 
 export interface ComponentProps
   extends React.HTMLAttributes<HTMLElement>,
-          VariantProps<typeof componentVariants> {}
+    VariantProps<typeof componentVariants> {}
 ```
-- Houses all prop and variant interfaces.  
+
+- Houses all prop and variant interfaces.
 - Simplifies type imports when extending or composing components.
 
 ### 2.3 `Component.tsx`
+
 ```tsx
 import * as React from 'react';
 import * as RadixComponent from '@radix-ui/react-component';
-import { componentVariants } from './Component.styles';
-import type { ComponentProps } from './Component.types';
+import {componentVariants} from './Component.styles';
+import type {ComponentProps} from './Component.types';
 
 export const Component = React.forwardRef<HTMLElement, ComponentProps>(
-  ({ className, ...props }, ref) => (
-    <RadixComponent.Root
-      {...props}
-      ref={ref}
-      className={componentVariants({ className })}
-    />
-  )
+  ({className, ...props}, ref) => (
+    <RadixComponent.Root {...props} ref={ref} className={componentVariants({className})} />
+  ),
 );
 Component.displayName = 'Component';
 ```
-- Wraps the corresponding Radix primitive.  
+
+- Wraps the corresponding Radix primitive.
 - Applies CVA styles and forwards native attributes.
 
 ### 2.4 `Component.stories.tsx`
+
 ```tsx
-import type { Meta, StoryObj } from '@storybook/react';
-import { Component } from './Component';
+import type {Meta, StoryObj} from '@storybook/react';
+import {Component} from './Component';
 
 const meta: Meta<typeof Component> = {
   title: 'Components/Component',
   component: Component,
-  argTypes: { /* variant controls */ },
+  argTypes: {
+    /* variant controls */
+  },
 };
 export default meta;
 
 type Story = StoryObj<typeof Component>;
 
-export const Default: Story = { args: { /* default props */ } };
+export const Default: Story = {
+  args: {
+    /* default props */
+  },
+};
 ```
-- Provides interactive examples for Storybook.  
+
+- Provides interactive examples for Storybook.
 - Facilitates visual testing and documentation.
 
 ### 2.5 `Component.test.tsx`
+
 ```tsx
-import { render, screen } from '@testing-library/react';
-import { Component } from './Component';
+import {render, screen} from '@testing-library/react';
+import {Component} from './Component';
 
 test('renders default state', () => {
   render(<Component>Content</Component>);
   expect(screen.getByText('Content')).toBeInTheDocument();
 });
 ```
-- Contains unit and integration tests.  
+
+- Contains unit and integration tests.
 - Ensures regressions are caught early in CI.
 
 ### 2.6 `index.ts`
+
 ```ts
-export { Component } from './Component';
-export type { ComponentProps } from './Component.types';
+export {Component} from './Component';
+export type {ComponentProps} from './Component.types';
 ```
-- Defines the public API for the component.  
+
+- Defines the public API for the component.
 - Consumers import from `@your-lib/components/Component`.
 
 ---
@@ -132,4 +145,3 @@ Replicate this pattern for every component, adjusting the Radix primitive import
 ---
 
 Thank you for contributing! Consistently following these guidelines will keep our library maintainable, performant, and developer‑friendly.
-

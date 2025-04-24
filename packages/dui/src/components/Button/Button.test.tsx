@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Button } from './Button';
+import {Button} from './Button';
 
 describe('Button', () => {
   test('renders children correctly', () => {
     render(<Button>Click me</Button>);
-    expect(screen.getByRole('button', { name: /click me/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', {name: /click me/i})).toBeInTheDocument();
   });
 
   test('applies variant classes correctly', () => {
-    const { rerender } = render(<Button variant="primary">Primary</Button>);
+    const {rerender} = render(<Button variant="primary">Primary</Button>);
     expect(screen.getByRole('button')).toHaveClass('bg-blue-600');
 
     rerender(<Button variant="secondary">Secondary</Button>);
@@ -27,7 +27,7 @@ describe('Button', () => {
   });
 
   test('applies size classes correctly', () => {
-    const { rerender } = render(<Button size="sm">Small</Button>);
+    const {rerender} = render(<Button size="sm">Small</Button>);
     expect(screen.getByRole('button')).toHaveClass('h-8');
 
     rerender(<Button size="md">Medium</Button>);
@@ -74,7 +74,11 @@ describe('Button', () => {
 
   test('does not call onClick when disabled', async () => {
     const handleClick = jest.fn();
-    render(<Button disabled onClick={handleClick}>Click me</Button>);
+    render(
+      <Button disabled onClick={handleClick}>
+        Click me
+      </Button>,
+    );
 
     await userEvent.click(screen.getByRole('button'));
     expect(handleClick).not.toHaveBeenCalled();
