@@ -1,5 +1,11 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Questions?
-    url: https://github.com/templeandwebster/webster-internal/discussions
-    about: Please ask questions in our GitHub Discussions
+  - name: Report a Bug
+    url: https://github.com/daddia/dui/issues/new?assignees=&labels=template%3A+bug&projects=&template=1.bug_report.yml
+    about: Create a bug report for the dui team
+  - name: Ask for help
+    url: https://github.com/daddia/dui/discussions/new?category=help
+    about: Need to ask a question? Get help from the community.
+  - name: Submit an idea
+    url: https://github.com/daddia/dui/discussions/new?category=ideas
+    about: Make feature requests and suggest improvements.
