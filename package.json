@@ -1,0 +1,36 @@
+{
+  "name": "dui-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "author": "daddia",
+  "packageManager": "pnpm@10.9.0",
+  "engines": {
+    "node": "^20.0.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "packages-internal/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "format": "prettier --cache --write --list-different --ignore-path .gitignore --ignore-path .prettierignore .",
+    "check-types": "turbo run check-types",
+    "clean": "turbo run clean",
+    "reset": "turbo run clean && turbo run reset"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/prettier-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "eslint": "^9.24.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "turbo": "^2.5.0",
+    "typescript": "5.8.2",
+    "typescript-eslint": "^8.29.0"
+  }
+}
