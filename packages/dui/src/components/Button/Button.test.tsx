@@ -24,6 +24,12 @@ describe('Button', () => {
 
     rerender(<Button variant="destructive">Destructive</Button>);
     expect(screen.getByRole('button')).toHaveClass('bg-red-600');
+
+    rerender(<Button variant="solid">Solid</Button>);
+    expect(screen.getByRole('button')).toHaveClass('border-transparent');
+
+    rerender(<Button plain>Plain</Button>);
+    expect(screen.getByRole('button')).toHaveClass('bg-transparent');
   });
 
   test('applies size classes correctly', () => {
@@ -35,6 +41,17 @@ describe('Button', () => {
 
     rerender(<Button size="lg">Large</Button>);
     expect(screen.getByRole('button')).toHaveClass('h-12');
+  });
+
+  test('applies color classes correctly', () => {
+    const {rerender} = render(<Button color="blue" variant="solid">Blue</Button>);
+    expect(screen.getByRole('button')).toHaveClass('bg-blue-600');
+
+    rerender(<Button color="red" variant="solid">Red</Button>);
+    expect(screen.getByRole('button')).toHaveClass('bg-red-600');
+
+    rerender(<Button color="green" variant="solid">Green</Button>);
+    expect(screen.getByRole('button')).toHaveClass('bg-green-600');
   });
 
   test('renders loading state correctly', () => {
@@ -82,5 +99,24 @@ describe('Button', () => {
 
     await userEvent.click(screen.getByRole('button'));
     expect(handleClick).not.toHaveBeenCalled();
+  });
+
+  test('renders as a link when href is provided', () => {
+    render(<Button href="https://example.com">Link Button</Button>);
+    const linkElement = screen.getByRole('link', { name: /link button/i });
+    expect(linkElement).toBeInTheDocument();
+    expect(linkElement).toHaveAttribute('href', 'https://example.com');
+  });
+
+  test('link button can be disabled', () => {
+    render(<Button href="https://example.com" disabled>Disabled Link</Button>);
+    const linkElement = screen.getByRole('link', { name: /disabled link/i });
+    expect(linkElement).toHaveClass('pointer-events-none');
+    expect(linkElement).toHaveClass('opacity-50');
+  });
+
+  test('renders TouchTarget for improved touch accessibility', () => {
+    render(<Button>With Touch Target</Button>);
+    expect(screen.getByRole('button').querySelector('[aria-hidden="true"]')).toBeInTheDocument();
   });
 });

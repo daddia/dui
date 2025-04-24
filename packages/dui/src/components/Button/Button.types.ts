@@ -23,4 +23,34 @@ export interface ButtonProps
    * If true, the button will be rendered in a loading state
    */
   isLoading?: boolean;
+
+  /**
+   * Button href for rendering as a link
+   */
+  href?: string;
+
+  /**
+   * Plain variant (no background or border)
+   */
+  plain?: boolean;
+
+  /**
+   * Color variant
+   */
+  color?: VariantProps<typeof buttonVariants>['color'];
+
+  /**
+   * Change the default rendered element for the one passed as a child,
+   * merging their props and behavior.
+   * @default false
+   */
+  asChild?: boolean;
 }
+
+export type ButtonLinkProps = Omit<
+  React.AnchorHTMLAttributes<HTMLAnchorElement>,
+  keyof ButtonProps
+> &
+  ButtonProps & {
+    href: string;
+  };
