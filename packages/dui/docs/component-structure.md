@@ -1,6 +1,6 @@
 # Component Structure Guidelines
 
-This document outlines the standard folder and file structure for each component in our Radix UI + Tailwind CSS library. 
+This document outlines the standard folder and file structure for each component in our Radix UI + Tailwind CSS library.
 
 Follow these guidelines to ensure consistency, maintainability, and optimal performance.
 
@@ -37,6 +37,7 @@ src/
 - Define a comprehensive set of color variants for consistent theming.
 
 Example:
+
 ```ts
 export const buttonVariants = tv({
   base: [
@@ -148,7 +149,22 @@ const TouchTarget = ({children}) => {
 };
 
 export const Component = React.forwardRef<HTMLElement, ComponentProps>(
-  ({className, variant, size, color, leftIcon, rightIcon, fullWidth, isLoading, children, disabled, ...props}, ref) => {
+  (
+    {
+      className,
+      variant,
+      size,
+      color,
+      leftIcon,
+      rightIcon,
+      fullWidth,
+      isLoading,
+      children,
+      disabled,
+      ...props
+    },
+    ref,
+  ) => {
     const isDisabled = disabled || isLoading;
 
     return (
@@ -203,7 +219,7 @@ const meta: Meta<typeof Component> = {
     },
     color: {
       control: 'select',
-      options: ['default', 'blue', 'red', 'green', /* ... */],
+      options: ['default', 'blue', 'red', 'green' /* ... */],
     },
     isLoading: {
       control: 'boolean',
@@ -286,28 +302,33 @@ export type {ComponentProps} from './Component.types';
 ## 3. Key Features to Implement
 
 1. **Accessibility**
+
    - Touch targets for mobile devices
    - Proper ARIA attributes
    - Keyboard navigation support
    - Focus management
 
 2. **Loading States**
+
    - Loading spinners
    - Disabled state during loading
    - Visual feedback
 
 3. **Icon Support**
+
    - Left and right icon placement
    - Icon spacing and alignment
    - Icon-only variants
 
 4. **Color System**
+
    - Comprehensive color palette
    - Consistent color naming
    - Dark mode support
    - Compound variants for color combinations
 
 5. **Responsive Design**
+
    - Mobile-first approach
    - Touch-friendly sizing
    - Responsive typography
@@ -322,17 +343,20 @@ export type {ComponentProps} from './Component.types';
 ## 4. Best Practices
 
 1. **Component Organization**
+
    - Break down complex components into smaller sub-components
    - Use compound components for better composition
    - Keep related logic together
 
 2. **Styling**
+
    - Use Tailwind's utility classes consistently
    - Implement variants using CVA
    - Support dark mode and custom themes
    - Use CSS variables for dynamic values
 
 3. **Testing**
+
    - Test all variants and states
    - Verify accessibility features
    - Test user interactions
