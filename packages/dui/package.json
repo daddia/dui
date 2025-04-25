@@ -12,15 +12,15 @@
   "types": "dist/types/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js",
-      "types": "./dist/types/index.d.ts"
+      "require": "./dist/cjs/index.js"
     },
     "./css/*": "./css/*",
     "./components/*": {
+      "types": "./dist/types/components/*.d.ts",
       "import": "./dist/esm/components/*.js",
-      "require": "./dist/cjs/components/*.js",
-      "types": "./dist/types/components/*.d.ts"
+      "require": "./dist/cjs/components/*.js"
     }
   },
   "files": [
