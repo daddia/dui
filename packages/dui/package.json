@@ -30,7 +30,7 @@
   "scripts": {
     "build": "rimraf dist && pnpm build:components && pnpm build:tailwind",
     "build:components": "rollup -c",
-    "build:tailwind": "tailwindcss -i css/styles.css -o ./dist/css/index.css --minify",
+    "build:tailwind": "tailwindcss -i src/styles/default.css -o ./css/index.css --minify",
     "watch": "rollup -c -w",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
@@ -43,6 +43,7 @@
     "@repo/typescript-config": "workspace:*",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^16.0.1",
+    "@tailwindcss/cli": "^4.1.4",
     "@tailwindcss/postcss": "^4.1.4",
     "@turbo/gen": "^2.5.0",
     "@types/node": "^22.14.0",
