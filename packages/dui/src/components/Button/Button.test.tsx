@@ -27,7 +27,7 @@ describe('Button', () => {
     expect(screen.getByRole('button')).toHaveClass('bg-red-600');
 
     rerender(<Button variant="solid">Solid</Button>);
-    expect(screen.getByRole('button')).toHaveClass('border-transparent');
+    expect(screen.getByRole('button')).toHaveClass('border-zinc-950/90');
 
     rerender(<Button plain>Plain</Button>);
     expect(screen.getByRole('button')).toHaveClass('bg-transparent');

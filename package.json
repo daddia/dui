@@ -21,8 +21,9 @@
     "format": "prettier --cache --write --list-different --ignore-path .gitignore --ignore-path .prettierignore .",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
+    "ci:lint": "turbo run format:check build typecheck lint",
     "clean": "turbo run clean",
-    "reset": "turbo run clean && turbo run reset && rm -rf node_modules .turbo"
+    "reset": "turbo run clean reset && rm -rf node_modules .turbo"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
