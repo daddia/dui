@@ -2,6 +2,7 @@ import * as React from 'react';
 import {buttonVariants} from './Button.styles';
 import type {ButtonLinkProps, ButtonProps} from './Button.types';
 import {cn} from '../../utils/cn';
+import {Text} from '../Text/Text';
 
 /**
  * Expand the hit area to at least 44×44px on touch devices
@@ -24,14 +25,25 @@ const ButtonInner = ({
   rightIcon,
   isLoading,
   children,
-}: Pick<ButtonProps, 'leftIcon' | 'rightIcon' | 'isLoading' | 'children'>) => {
+  size,
+}: Pick<ButtonProps, 'leftIcon' | 'rightIcon' | 'isLoading' | 'children' | 'size'>) => {
+  // Map button size to text size
+  const textSize = {
+    xs: 'xs',
+    sm: 'sm',
+    md: 'base',
+    lg: 'lg',
+  }[size || 'md'] as 'xs' | 'sm' | 'base' | 'lg';
+
   return (
     <>
       {isLoading && (
         <span className="mr-2 inline-block h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
       )}
       {leftIcon && !isLoading && <span className="mr-2">{leftIcon}</span>}
-      {children}
+      <Text size={textSize} weight="medium" className="inline-flex items-center">
+        {children}
+      </Text>
       {rightIcon && <span className="ml-2">{rightIcon}</span>}
     </>
   );
@@ -80,7 +92,7 @@ const ButtonComponent = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         <TouchTarget>
-          <ButtonInner leftIcon={leftIcon} rightIcon={rightIcon} isLoading={isLoading}>
+          <ButtonInner leftIcon={leftIcon} rightIcon={rightIcon} isLoading={isLoading} size={size}>
             {children}
           </ButtonInner>
         </TouchTarget>
@@ -133,7 +145,7 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
       >
         <TouchTarget>
-          <ButtonInner leftIcon={leftIcon} rightIcon={rightIcon} isLoading={isLoading}>
+          <ButtonInner leftIcon={leftIcon} rightIcon={rightIcon} isLoading={isLoading} size={size}>
             {children}
           </ButtonInner>
         </TouchTarget>
