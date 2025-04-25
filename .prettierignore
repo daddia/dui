@@ -38,6 +38,7 @@ pnpm-lock.yaml
 
 # coverage files
 coverage
+coverage.json
 
 # Logs
 *.log
