@@ -1,14 +1,11 @@
 <p align="center">
   <a href="https://turborepo.com">
-    <picture>
-    </picture>
+    <picture></picture>
     <h1 align="center">dUI</h1>
   </a>
 </p>
 
-<p align="center">
-  ![NPM Version](https://img.shields.io/npm/v/%40daddia%2Fdui)
-</p>
+<p align="center">![NPM Version](https://img.shields.io/npm/v/%40daddia%2Fdui)</p>
 
 dui is a high-performance UI kit for React sites, built on Radix UI primitives and Tailwind CSS
 
