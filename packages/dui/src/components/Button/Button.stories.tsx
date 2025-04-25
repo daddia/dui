@@ -155,24 +155,60 @@ export const AsLink: Story = {
 export const ColorVariants: Story = {
   render: () => (
     <div className="flex flex-wrap gap-2">
-      <Button color="blue" variant="solid">Blue</Button>
-      <Button color="red" variant="solid">Red</Button>
-      <Button color="green" variant="solid">Green</Button>
-      <Button color="yellow" variant="solid">Yellow</Button>
-      <Button color="purple" variant="solid">Purple</Button>
-      <Button color="pink" variant="solid">Pink</Button>
-      <Button color="indigo" variant="solid">Indigo</Button>
-      <Button color="orange" variant="solid">Orange</Button>
-      <Button color="cyan" variant="solid">Cyan</Button>
-      <Button color="emerald" variant="solid">Emerald</Button>
-      <Button color="teal" variant="solid">Teal</Button>
-      <Button color="violet" variant="solid">Violet</Button>
-      <Button color="fuchsia" variant="solid">Fuchsia</Button>
-      <Button color="rose" variant="solid">Rose</Button>
-      <Button color="amber" variant="solid">Amber</Button>
-      <Button color="lime" variant="solid">Lime</Button>
-      <Button color="sky" variant="solid">Sky</Button>
-      <Button color="zinc" variant="solid">Zinc</Button>
+      <Button color="blue" variant="solid">
+        Blue
+      </Button>
+      <Button color="red" variant="solid">
+        Red
+      </Button>
+      <Button color="green" variant="solid">
+        Green
+      </Button>
+      <Button color="yellow" variant="solid">
+        Yellow
+      </Button>
+      <Button color="purple" variant="solid">
+        Purple
+      </Button>
+      <Button color="pink" variant="solid">
+        Pink
+      </Button>
+      <Button color="indigo" variant="solid">
+        Indigo
+      </Button>
+      <Button color="orange" variant="solid">
+        Orange
+      </Button>
+      <Button color="cyan" variant="solid">
+        Cyan
+      </Button>
+      <Button color="emerald" variant="solid">
+        Emerald
+      </Button>
+      <Button color="teal" variant="solid">
+        Teal
+      </Button>
+      <Button color="violet" variant="solid">
+        Violet
+      </Button>
+      <Button color="fuchsia" variant="solid">
+        Fuchsia
+      </Button>
+      <Button color="rose" variant="solid">
+        Rose
+      </Button>
+      <Button color="amber" variant="solid">
+        Amber
+      </Button>
+      <Button color="lime" variant="solid">
+        Lime
+      </Button>
+      <Button color="sky" variant="solid">
+        Sky
+      </Button>
+      <Button color="zinc" variant="solid">
+        Zinc
+      </Button>
     </div>
   ),
 };

@@ -34,7 +34,7 @@
     "watch": "rollup -c -w",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
-    "types:check": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "clean": "rimraf dist",
     "reset": "pnpm clean && rm -rf node_modules .turbo"
   },

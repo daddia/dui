@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --max-warnings 0",
-    "check-types": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf .next",
+    "reset": "pnpm clean && rm -rf node_modules .turbo"
   },
   "dependencies": {
     "@daddia/dui": "workspace:*",

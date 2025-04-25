@@ -10,13 +10,14 @@ const TouchTarget = ({children}: {children: React.ReactNode}) => {
   return (
     <>
       <span
-        className="absolute top-1/2 left-1/2 size-[max(100%,2.75rem)] -translate-x-1/2 -translate-y-1/2 [@media(pointer:fine)]:hidden"
+        className="absolute left-1/2 top-1/2 size-[max(100%,2.75rem)] -translate-x-1/2 -translate-y-1/2 [@media(pointer:fine)]:hidden"
         aria-hidden="true"
       />
       {children}
     </>
   );
 };
+TouchTarget.displayName = 'TouchTarget';
 
 const ButtonInner = ({
   leftIcon,
@@ -35,6 +36,7 @@ const ButtonInner = ({
     </>
   );
 };
+ButtonInner.displayName = 'ButtonInner';
 
 const ButtonComponent = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -60,7 +62,7 @@ const ButtonComponent = React.forwardRef<HTMLButtonElement, ButtonProps>(
     // Adjust variant if plain is set
     const buttonVariant = plain ? 'plain' : variant;
 
-    const Comp = asChild ? 'button' : 'button';  // We'll implement Slot functionality directly
+    const Comp = asChild ? 'button' : 'button'; // We'll implement Slot functionality directly
 
     return (
       <Comp
@@ -78,17 +80,15 @@ const ButtonComponent = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         <TouchTarget>
-          <ButtonInner
-            leftIcon={leftIcon}
-            rightIcon={rightIcon}
-            isLoading={isLoading}
-            children={children}
-          />
+          <ButtonInner leftIcon={leftIcon} rightIcon={rightIcon} isLoading={isLoading}>
+            {children}
+          </ButtonInner>
         </TouchTarget>
       </Comp>
     );
   },
 );
+ButtonComponent.displayName = 'ButtonComponent';
 
 const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
   (
@@ -113,7 +113,7 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
     // Adjust variant if plain is set
     const buttonVariant = plain ? 'plain' : variant;
 
-    const Comp = asChild ? 'a' : 'a';  // We'll implement Slot functionality directly
+    const Comp = asChild ? 'a' : 'a'; // We'll implement Slot functionality directly
 
     return (
       <Comp
@@ -130,20 +130,18 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         )}
         href={href}
         ref={ref}
-        {...props as React.AnchorHTMLAttributes<HTMLAnchorElement>}
+        {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
       >
         <TouchTarget>
-          <ButtonInner
-            leftIcon={leftIcon}
-            rightIcon={rightIcon}
-            isLoading={isLoading}
-            children={children}
-          />
+          <ButtonInner leftIcon={leftIcon} rightIcon={rightIcon} isLoading={isLoading}>
+            {children}
+          </ButtonInner>
         </TouchTarget>
       </Comp>
     );
   },
 );
+ButtonLink.displayName = 'ButtonLink';
 
 export const Button = React.forwardRef<
   HTMLButtonElement | HTMLAnchorElement,

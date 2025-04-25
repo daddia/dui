@@ -44,13 +44,25 @@ describe('Button', () => {
   });
 
   test('applies color classes correctly', () => {
-    const {rerender} = render(<Button color="blue" variant="solid">Blue</Button>);
+    const {rerender} = render(
+      <Button color="blue" variant="solid">
+        Blue
+      </Button>,
+    );
     expect(screen.getByRole('button')).toHaveClass('bg-blue-600');
 
-    rerender(<Button color="red" variant="solid">Red</Button>);
+    rerender(
+      <Button color="red" variant="solid">
+        Red
+      </Button>,
+    );
     expect(screen.getByRole('button')).toHaveClass('bg-red-600');
 
-    rerender(<Button color="green" variant="solid">Green</Button>);
+    rerender(
+      <Button color="green" variant="solid">
+        Green
+      </Button>,
+    );
     expect(screen.getByRole('button')).toHaveClass('bg-green-600');
   });
 
@@ -103,14 +115,18 @@ describe('Button', () => {
 
   test('renders as a link when href is provided', () => {
     render(<Button href="https://example.com">Link Button</Button>);
-    const linkElement = screen.getByRole('link', { name: /link button/i });
+    const linkElement = screen.getByRole('link', {name: /link button/i});
     expect(linkElement).toBeInTheDocument();
     expect(linkElement).toHaveAttribute('href', 'https://example.com');
   });
 
   test('link button can be disabled', () => {
-    render(<Button href="https://example.com" disabled>Disabled Link</Button>);
-    const linkElement = screen.getByRole('link', { name: /disabled link/i });
+    render(
+      <Button href="https://example.com" disabled>
+        Disabled Link
+      </Button>,
+    );
+    const linkElement = screen.getByRole('link', {name: /disabled link/i});
     expect(linkElement).toHaveClass('pointer-events-none');
     expect(linkElement).toHaveClass('opacity-50');
   });
