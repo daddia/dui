@@ -19,7 +19,7 @@
     "lint": "turbo run lint",
     "format:check": "prettier --cache --check --ignore-path .gitignore --ignore-path .prettierignore .",
     "format": "prettier --cache --write --list-different --ignore-path .gitignore --ignore-path .prettierignore .",
-    "types:check": "turbo run types:check",
+    "typecheck": "turbo run typecheck",
     "test": "turbo run test",
     "clean": "turbo run clean",
     "reset": "turbo run clean && turbo run reset && rm -rf node_modules .turbo"

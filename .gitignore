@@ -27,6 +27,9 @@ out/
 # Testing
 coverage
 
+# Storybook
+storybook-static
+
 # Turbo
 .turbo
 
