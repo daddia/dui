@@ -13,7 +13,7 @@ const config: StorybookConfig = {
   "stories": [
     "../src/**/*.mdx",
     "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-    "../../packages/dui/src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
+    "../../../packages/dui/src/components/**/*.stories.@(js|jsx|mjs|ts|tsx)"
   ],
   "addons": [{
     "name": getAbsolutePath('@storybook/addon-essentials'),
