@@ -14,7 +14,8 @@
     "packages-internal/*"
   ],
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build --filter=./packages/* --filter=./packages-internal/* ",
+    "build:all": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format:check": "prettier --cache --check --ignore-path .gitignore --ignore-path .prettierignore .",
