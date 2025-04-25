@@ -5,9 +5,16 @@
   </a>
 </p>
 
-<p align="center">![NPM Version](https://img.shields.io/npm/v/%40daddia%2Fdui)</p>
+<p align="center">
+  dui is a high-performance UI kit for React sites, built on Radix UI primitives and Tailwind CSS
+</p>
 
-dui is a high-performance UI kit for React sites, built on Radix UI primitives and Tailwind CSS
+<p align="center">
+    <a href="https://github.com/daddia/dui/releases"><img src="https://img.shields.io/npm/v/%40daddia%2Fdui.svg" alt="Latest Release"></a>
+    <a href="https://github.com/daddia/dui/actions"><img src="https://img.shields.io/github/actions/workflow/status/daddia/dui/lint.yml?branch=next" alt="Build Status"></a>
+    <a href="https://github.com/daddia/dui/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/%40daddia%2Fdui.svg" alt="License"></a>
+    [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
+</p>
 
 ## Getting Started
 

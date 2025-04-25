@@ -13,6 +13,7 @@ export default {
       files: '**/*.md',
       options: {
         parser: 'mdx',
+        proseWrap: 'preserve',
       },
     },
   ],
