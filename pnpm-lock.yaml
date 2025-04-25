@@ -63,6 +63,9 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../packages-internal/typescript-config
+      '@repo/vitest-config':
+        specifier: workspace:*
+        version: link:../../packages-internal/vitest-config
       '@types/node':
         specifier: ^22.14.0
         version: 22.15.0

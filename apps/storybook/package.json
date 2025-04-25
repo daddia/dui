@@ -9,7 +9,7 @@
     "lint": "eslint --max-warnings 0 .",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf .storybook/cache",
-    "reset": "pnpm clean && rm -rf node_modules"
+    "reset": "pnpm clean && rm -rf node_modules .turbo"
   },
   "dependencies": {
     "@daddia/dui": "workspace:*",
