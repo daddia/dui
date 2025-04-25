@@ -91,7 +91,8 @@ export const Truncate: Story = {
   render: () => (
     <div className="w-64">
       <Paragraph truncate>
-        This is a very long paragraph that will be truncated because it exceeds the container width. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        This is a very long paragraph that will be truncated because it exceeds the container width.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </Paragraph>
     </div>
   ),

@@ -1,10 +1,7 @@
 import {tv} from 'tailwind-variants';
 
 export const paragraphVariants = tv({
-  base: [
-    'text-base/6',
-    'text-zinc-950 dark:text-white',
-  ],
+  base: ['text-base/6', 'text-zinc-950 dark:text-white'],
   variants: {
     size: {
       xs: 'text-xs/6 sm:text-xs/6',
