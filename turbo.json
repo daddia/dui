@@ -23,6 +23,14 @@
       "dependsOn": ["^format"],
       "outputs": []
     },
+    "storybook": {
+      "dependsOn": ["^storybook"],
+      "outputs": []
+    },
+    "storybook:build": {
+      "dependsOn": ["^storybook:build"],
+      "outputs": []
+    },
     "typecheck": {
       "dependsOn": ["^typecheck"],
       "outputs": []
