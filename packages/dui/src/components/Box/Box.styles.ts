@@ -1,12 +1,7 @@
 import { tv } from 'tailwind-variants';
 
 export const boxVariants = tv({
-  base: [
-    'relative',
-    'rounded-lg',
-    'bg-white dark:bg-zinc-900',
-    'border border-zinc-200 dark:border-zinc-800',
-  ],
+  base: ['relative', 'rounded-lg', 'bg-background', 'border border-border'],
   variants: {
     padding: {
       none: 'p-0',
@@ -38,12 +33,12 @@ export const boxVariants = tv({
       lg: 'border-4',
     },
     color: {
-      default: 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800',
-      muted: 'bg-zinc-50 dark:bg-zinc-950 border-zinc-200 dark:border-zinc-800',
-      primary: 'bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-800',
+      default: 'bg-background border-border',
+      muted: 'bg-muted border-border',
+      primary: 'bg-primary/10 border-primary/20',
       success: 'bg-green-50 dark:bg-green-950 border-green-200 dark:border-green-800',
       warning: 'bg-yellow-50 dark:bg-yellow-950 border-yellow-200 dark:border-yellow-800',
-      danger: 'bg-red-50 dark:bg-red-950 border-red-200 dark:border-red-800',
+      danger: 'bg-destructive/10 border-destructive/20',
     },
   },
   defaultVariants: {

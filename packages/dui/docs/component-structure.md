@@ -34,7 +34,20 @@ src/
 - Centralises CSS logic for sizes, intents, and other variants.
 - Enables tree‑shaking of unused style permutations.
 - Include compound variants for complex style combinations.
+- **Always use Tailwind CSS theme tokens instead of hardcoded color values** for better theming capabilities and dark mode support.
 - Define a comprehensive set of color variants for consistent theming.
+
+#### Styling Rules:
+
+1. **Use Tailwind Theme Tokens**: Always use semantic tokens like `bg-primary`, `text-foreground`, `border-border` rather than direct color values like `bg-blue-600`, `text-gray-900`.
+2. **Theming Support**: Use token pairs like `bg-primary`/`text-primary-foreground` for proper contrast in all themes.
+3. **Opacity Modifiers**: Utilize opacity modifiers for hover/focus states (e.g., `hover:bg-primary/90`).
+4. **Dark Mode**: The theme tokens automatically handle dark mode, so avoid explicit dark mode classes when using tokens.
+5. **Semantic Design Tokens**: Use tokens that describe purpose, not appearance:
+   - `primary`/`secondary`/`accent`/`muted` for UI hierarchy
+   - `destructive` for error/warning states
+   - `background`/`foreground` for base text/backgrounds
+   - `ring` for focus indicators
 
 Example:
 
@@ -48,12 +61,23 @@ export const buttonVariants = tv({
   ],
   variants: {
     variant: {
-      primary: 'bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-500',
+      primary:
+        'bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-primary/25',
+      secondary:
+        'bg-secondary text-secondary-foreground hover:bg-secondary/90 focus-visible:ring-secondary/25',
+      outline:
+        'border border-input bg-background hover:bg-accent hover:text-accent-foreground focus-visible:ring-accent/25',
+      ghost:
+        'bg-transparent hover:bg-accent hover:text-accent-foreground focus-visible:ring-accent/25',
+      destructive:
+        'bg-destructive text-destructive-foreground hover:bg-destructive/90 focus-visible:ring-destructive/25',
       // ... other variants
     },
     color: {
       default: '',
-      blue: 'text-white bg-blue-600 border-blue-700/90 hover:after:bg-white/10',
+      // Ensure colors also use theme tokens when appropriate
+      blue: 'text-primary-foreground bg-primary border-primary/90 hover:after:bg-white/10',
+      red: 'text-destructive-foreground bg-destructive border-destructive/90 hover:after:bg-white/10',
       // ... other colors
     },
     // ... other variants
@@ -67,7 +91,7 @@ export const buttonVariants = tv({
     {
       variant: 'solid',
       color: 'default',
-      class: 'text-white bg-zinc-900 border-zinc-950/90 hover:after:bg-white/10',
+      class: 'text-background bg-foreground border-foreground/90 hover:after:bg-white/10',
     },
   ],
 });
@@ -267,7 +291,7 @@ describe('Component', () => {
 
   test('applies variant classes correctly', () => {
     const { rerender } = render(<Component variant="primary">Primary</Component>);
-    expect(screen.getByRole('button')).toHaveClass('bg-blue-600');
+    expect(screen.getByRole('button')).toHaveClass('bg-primary');
     // ... test other variants
   });
 
@@ -322,10 +346,10 @@ export type { ComponentProps } from './Component.types';
 
 4. **Color System**
 
-   - Comprehensive color palette
-   - Consistent color naming
-   - Dark mode support
-   - Compound variants for color combinations
+   - Use Tailwind CSS theme tokens for consistent theming
+   - Support dark mode through theme tokens
+   - Define semantic color roles (primary, secondary, etc.)
+   - Implement appropriate color contrast ratios
 
 5. **Responsive Design**
 
@@ -350,9 +374,10 @@ export type { ComponentProps } from './Component.types';
 
 2. **Styling**
 
-   - Use Tailwind's utility classes consistently
+   - Use Tailwind's theme tokens consistently
+   - Avoid hardcoded color values; use semantic tokens
    - Implement variants using CVA
-   - Support dark mode and custom themes
+   - Support dark mode through theme tokens
    - Use CSS variables for dynamic values
 
 3. **Testing**

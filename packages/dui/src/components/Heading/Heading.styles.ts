@@ -1,7 +1,7 @@
 import { tv } from 'tailwind-variants';
 
 export const headingVariants = tv({
-  base: ['font-semibold', 'tracking-tight', 'text-zinc-950 dark:text-white'],
+  base: ['font-semibold', 'tracking-tight', 'text-foreground'],
   variants: {
     size: {
       xs: 'text-lg/8 sm:text-base/8',

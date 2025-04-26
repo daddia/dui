@@ -1,7 +1,7 @@
 import { tv } from 'tailwind-variants';
 
 export const textVariants = tv({
-  base: ['text-base/6', 'text-zinc-900 dark:text-zinc-100'],
+  base: ['text-base/6', 'text-foreground'],
   variants: {
     size: {
       xs: 'text-xs/6 sm:text-xs/6',
@@ -20,12 +20,12 @@ export const textVariants = tv({
       bold: 'font-bold',
     },
     color: {
-      default: 'text-zinc-900 dark:text-zinc-100',
-      muted: 'text-zinc-500 dark:text-zinc-400',
-      primary: 'text-blue-600 dark:text-blue-400',
+      default: 'text-foreground',
+      muted: 'text-muted-foreground',
+      primary: 'text-primary',
       success: 'text-green-600 dark:text-green-400',
       warning: 'text-yellow-600 dark:text-yellow-400',
-      danger: 'text-red-600 dark:text-red-400',
+      danger: 'text-destructive',
     },
     align: {
       left: 'text-left',

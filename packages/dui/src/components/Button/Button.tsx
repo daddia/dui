@@ -29,10 +29,11 @@ const ButtonInner = ({
 }: Pick<ButtonProps, 'leftIcon' | 'rightIcon' | 'isLoading' | 'children' | 'size'>) => {
   // Map button size to text size
   const textSize = {
-    xs: 'xs',
+    default: 'base',
     sm: 'sm',
-    md: 'base',
+    md: 'md',
     lg: 'lg',
+    icon: 'base',
   }[size || 'md'] as 'xs' | 'sm' | 'base' | 'lg';
 
   return (

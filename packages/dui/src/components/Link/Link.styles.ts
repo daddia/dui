@@ -3,9 +3,8 @@ import { tv } from 'tailwind-variants';
 export const linkVariants = tv({
   base: [
     'inline-flex items-center',
-    'text-zinc-950 underline decoration-zinc-950/50 hover:decoration-zinc-950',
-    'dark:text-white dark:decoration-white/50 dark:hover:decoration-white',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2',
+    'text-foreground underline decoration-foreground/50 hover:decoration-foreground',
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
     'transition-colors',
   ],
   variants: {
@@ -22,12 +21,12 @@ export const linkVariants = tv({
       bold: 'font-bold',
     },
     color: {
-      default: 'text-zinc-950 dark:text-white',
-      muted: 'text-zinc-500 dark:text-zinc-400',
-      primary: 'text-blue-600 dark:text-blue-400',
+      default: 'text-foreground',
+      muted: 'text-muted-foreground',
+      primary: 'text-primary',
       success: 'text-green-600 dark:text-green-400',
       warning: 'text-yellow-600 dark:text-yellow-400',
-      danger: 'text-red-600 dark:text-red-400',
+      danger: 'text-destructive',
     },
     underline: {
       true: 'underline',

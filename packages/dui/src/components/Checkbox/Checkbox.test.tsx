@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Checkbox, CheckboxField } from './Checkbox';
+import { CheckboxGroup } from '../CheckboxGroup';
 
 describe('Checkbox', () => {
   test('renders properly with label', () => {
