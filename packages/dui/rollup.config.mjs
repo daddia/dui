@@ -47,7 +47,6 @@ const createRollupConfig = (input, outputFormat, outputDir) => ({
 const jsEntries = {
   index: 'src/index.ts',
   'components/index': 'src/components/index.ts',
-  'components/Button/index': 'src/components/Button/index.ts',
 };
 
 // Type definitions config

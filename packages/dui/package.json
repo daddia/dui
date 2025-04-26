@@ -16,7 +16,7 @@
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
     },
-    "./css/*": "./css/*",
+    "./css/*": "./dist/css/*",
     "./components/*": {
       "types": "./dist/types/components/*.d.ts",
       "import": "./dist/esm/components/*.js",
@@ -24,8 +24,7 @@
     }
   },
   "files": [
-    "dist/*",
-    "css/*"
+    "dist/**/*"
   ],
   "scripts": {
     "build": "rimraf dist && pnpm build:components && pnpm build:tailwind",
