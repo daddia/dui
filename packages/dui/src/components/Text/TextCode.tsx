@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {cn} from '../../utils/cn';
+import { cn } from '../../utils/cn';
 
 export interface TextCodeProps extends React.ComponentPropsWithoutRef<'code'> {
   /**
@@ -9,7 +9,7 @@ export interface TextCodeProps extends React.ComponentPropsWithoutRef<'code'> {
 }
 
 export const TextCode = React.forwardRef<HTMLElement, TextCodeProps>(
-  ({className, children, ...props}, ref) => {
+  ({ className, children, ...props }, ref) => {
     return (
       <code
         ref={ref}

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import type {Meta, StoryObj} from '@storybook/react';
-import {Button} from './Button';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
   title: 'Inputs/Button',

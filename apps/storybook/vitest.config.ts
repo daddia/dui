@@ -1,12 +1,12 @@
-import {defineConfig, mergeConfig} from 'vitest/config';
-import {storybookTest} from '@storybook/experimental-addon-test/vitest-plugin';
+import { defineConfig, mergeConfig, coverageConfigDefaults } from 'vitest/config';
+import { storybookTest } from '@storybook/experimental-addon-test/vitest-plugin';
 import path from 'node:path';
-import {fileURLToPath} from 'node:url';
+import { fileURLToPath } from 'node:url';
 
 const dirname =
   typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 
-import {uiConfig} from '@repo/vitest-config/ui';
+import { uiConfig } from '@repo/vitest-config/ui';
 
 export default mergeConfig(
   uiConfig,
@@ -28,6 +28,17 @@ export default mergeConfig(
         // Make sure to install Playwright
         provider: 'playwright',
         headless: true,
+      },
+      coverage: {
+        // 👇 Add this
+        exclude: [
+          ...coverageConfigDefaults.exclude,
+          '**/.storybook/**',
+          // 👇 This pattern must align with the `stories` property of your `.storybook/main.ts` config
+          '**/*.stories.*',
+          // 👇 This pattern must align with the output directory of `storybook build`
+          '**/storybook-static/**',
+        ],
       },
       setupFiles: ['./.storybook/vitest.setup.ts'],
     },

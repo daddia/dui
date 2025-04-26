@@ -1,5 +1,5 @@
-import {render, screen} from '@testing-library/react';
-import {Box} from './Box';
+import { render, screen } from '@testing-library/react';
+import { Box } from './Box';
 
 describe('Box', () => {
   test('renders children correctly', () => {
@@ -8,7 +8,7 @@ describe('Box', () => {
   });
 
   test('applies padding classes correctly', () => {
-    const {rerender} = render(<Box padding="none">No padding</Box>);
+    const { rerender } = render(<Box padding="none">No padding</Box>);
     expect(screen.getByText('No padding')).toHaveClass('p-0');
 
     rerender(<Box padding="xs">Extra small padding</Box>);
@@ -28,7 +28,7 @@ describe('Box', () => {
   });
 
   test('applies shadow classes correctly', () => {
-    const {rerender} = render(<Box shadow="none">No shadow</Box>);
+    const { rerender } = render(<Box shadow="none">No shadow</Box>);
     expect(screen.getByText('No shadow')).not.toHaveClass('shadow');
 
     rerender(<Box shadow="sm">Small shadow</Box>);
@@ -45,7 +45,7 @@ describe('Box', () => {
   });
 
   test('applies radius classes correctly', () => {
-    const {rerender} = render(<Box radius="none">No radius</Box>);
+    const { rerender } = render(<Box radius="none">No radius</Box>);
     expect(screen.getByText('No radius')).toHaveClass('rounded-none');
 
     rerender(<Box radius="sm">Small radius</Box>);
@@ -65,7 +65,7 @@ describe('Box', () => {
   });
 
   test('applies border classes correctly', () => {
-    const {rerender} = render(<Box border="none">No border</Box>);
+    const { rerender } = render(<Box border="none">No border</Box>);
     expect(screen.getByText('No border')).toHaveClass('border-0');
 
     rerender(<Box border="sm">Small border</Box>);
@@ -79,7 +79,7 @@ describe('Box', () => {
   });
 
   test('applies color classes correctly', () => {
-    const {rerender} = render(<Box color="default">Default color</Box>);
+    const { rerender } = render(<Box color="default">Default color</Box>);
     expect(screen.getByText('Default color')).toHaveClass('bg-white');
 
     rerender(<Box color="muted">Muted color</Box>);
@@ -99,7 +99,7 @@ describe('Box', () => {
   });
 
   test('renders with correct element when as prop is provided', () => {
-    const {rerender} = render(<Box as="section">Section box</Box>);
+    const { rerender } = render(<Box as="section">Section box</Box>);
     expect(screen.getByText('Section box').tagName).toBe('SECTION');
 
     rerender(<Box as="article">Article box</Box>);

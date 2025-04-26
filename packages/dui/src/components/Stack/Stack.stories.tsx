@@ -1,5 +1,5 @@
-import type {Meta, StoryObj} from '@storybook/react';
-import {Stack} from './Stack';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Stack } from './Stack';
 
 const meta: Meta<typeof Stack> = {
   title: 'Layout/Stack',
@@ -27,7 +27,7 @@ const meta: Meta<typeof Stack> = {
 export default meta;
 type Story = StoryObj<typeof Stack>;
 
-const StackItem = ({children}: {children: React.ReactNode}) => (
+const StackItem = ({ children }: { children: React.ReactNode }) => (
   <div className="flex h-20 w-20 items-center justify-center rounded-lg bg-gray-100 p-4">
     {children}
   </div>

@@ -1,17 +1,17 @@
 import * as React from 'react';
-import {describe, test, expect, vi} from 'vitest';
-import {render, screen} from '@testing-library/react';
+import { describe, test, expect, vi } from 'vitest';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import {Button} from './Button';
+import { Button } from './Button';
 
 describe('Button', () => {
   test('renders children correctly', () => {
     render(<Button>Click me</Button>);
-    expect(screen.getByRole('button', {name: /click me/i})).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /click me/i })).toBeInTheDocument();
   });
 
   test('applies variant classes correctly', () => {
-    const {rerender} = render(<Button variant="primary">Primary</Button>);
+    const { rerender } = render(<Button variant="primary">Primary</Button>);
     expect(screen.getByRole('button')).toHaveClass('bg-blue-600');
 
     rerender(<Button variant="secondary">Secondary</Button>);
@@ -34,7 +34,7 @@ describe('Button', () => {
   });
 
   test('applies size classes correctly', () => {
-    const {rerender} = render(<Button size="sm">Small</Button>);
+    const { rerender } = render(<Button size="sm">Small</Button>);
     expect(screen.getByRole('button')).toHaveClass('h-8');
 
     rerender(<Button size="md">Medium</Button>);
@@ -45,7 +45,7 @@ describe('Button', () => {
   });
 
   test('applies color classes correctly', () => {
-    const {rerender} = render(
+    const { rerender } = render(
       <Button color="blue" variant="solid">
         Blue
       </Button>,
@@ -116,7 +116,7 @@ describe('Button', () => {
 
   test('renders as a link when href is provided', () => {
     render(<Button href="https://example.com">Link Button</Button>);
-    const linkElement = screen.getByRole('link', {name: /link button/i});
+    const linkElement = screen.getByRole('link', { name: /link button/i });
     expect(linkElement).toBeInTheDocument();
     expect(linkElement).toHaveAttribute('href', 'https://example.com');
   });
@@ -127,7 +127,7 @@ describe('Button', () => {
         Disabled Link
       </Button>,
     );
-    const linkElement = screen.getByRole('link', {name: /disabled link/i});
+    const linkElement = screen.getByRole('link', { name: /disabled link/i });
     expect(linkElement).toHaveClass('pointer-events-none');
     expect(linkElement).toHaveClass('opacity-50');
   });

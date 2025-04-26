@@ -1,5 +1,5 @@
-import type {VariantProps} from 'tailwind-variants';
-import {boxVariants} from './Box.styles';
+import type { VariantProps } from 'tailwind-variants';
+import { boxVariants } from './Box.styles';
 
 export interface BoxProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'color'>,

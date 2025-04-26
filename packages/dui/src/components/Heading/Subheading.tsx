@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {cn} from '../../utils/cn';
-import type {HeadingProps} from './Heading.types';
+import { cn } from '../../utils/cn';
+import type { HeadingProps } from './Heading.types';
 
 export const Subheading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({className, level = 2, children, ...props}, ref) => {
+  ({ className, level = 2, children, ...props }, ref) => {
     const Element = React.createElement(
       `h${level}`,
       {

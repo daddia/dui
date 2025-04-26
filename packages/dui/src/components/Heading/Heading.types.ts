@@ -1,5 +1,5 @@
-import type {VariantProps} from 'tailwind-variants';
-import {headingVariants} from './Heading.styles';
+import type { VariantProps } from 'tailwind-variants';
+import { headingVariants } from './Heading.styles';
 
 export interface HeadingProps
   extends Omit<React.HTMLAttributes<HTMLHeadingElement>, 'color'>,

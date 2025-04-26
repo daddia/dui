@@ -1,11 +1,11 @@
 import * as React from 'react';
-import {textVariants} from './Text.styles';
-import type {TextProps} from './Text.types';
-import {cn} from '../../utils/cn';
+import { textVariants } from './Text.styles';
+import type { TextProps } from './Text.types';
+import { cn } from '../../utils/cn';
 
 export const Text = React.forwardRef<HTMLParagraphElement, TextProps>(
   (
-    {className, as: Component = 'p', size, weight, color, align, truncate, children, ...props},
+    { className, as: Component = 'p', size, weight, color, align, truncate, children, ...props },
     ref,
   ) => {
     return (

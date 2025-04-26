@@ -1,5 +1,5 @@
-import {render, screen} from '@testing-library/react';
-import {Link} from './Link';
+import { render, screen } from '@testing-library/react';
+import { Link } from './Link';
 
 describe('Link', () => {
   test('renders children correctly', () => {
@@ -13,7 +13,7 @@ describe('Link', () => {
   });
 
   test('applies size classes correctly', () => {
-    const {rerender} = render(
+    const { rerender } = render(
       <Link href="#" size="xs">
         Extra Small
       </Link>,
@@ -43,7 +43,7 @@ describe('Link', () => {
   });
 
   test('applies weight classes correctly', () => {
-    const {rerender} = render(
+    const { rerender } = render(
       <Link href="#" weight="normal">
         Normal
       </Link>,
@@ -73,7 +73,7 @@ describe('Link', () => {
   });
 
   test('applies color classes correctly', () => {
-    const {rerender} = render(
+    const { rerender } = render(
       <Link href="#" color="default">
         Default
       </Link>,

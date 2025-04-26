@@ -1,5 +1,5 @@
-import {render, screen} from '@testing-library/react';
-import {Subheading} from './Subheading';
+import { render, screen } from '@testing-library/react';
+import { Subheading } from './Subheading';
 
 describe('Subheading', () => {
   test('renders children correctly', () => {
@@ -8,7 +8,7 @@ describe('Subheading', () => {
   });
 
   test('renders with correct heading level', () => {
-    const {rerender} = render(<Subheading level={1}>Subheading 1</Subheading>);
+    const { rerender } = render(<Subheading level={1}>Subheading 1</Subheading>);
     expect(screen.getByText('Subheading 1').tagName).toBe('H1');
 
     rerender(<Subheading level={2}>Subheading 2</Subheading>);

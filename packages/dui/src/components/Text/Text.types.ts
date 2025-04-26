@@ -1,5 +1,5 @@
-import type {VariantProps} from 'tailwind-variants';
-import {textVariants} from './Text.styles';
+import type { VariantProps } from 'tailwind-variants';
+import { textVariants } from './Text.styles';
 
 export interface TextProps
   extends Omit<React.HTMLAttributes<HTMLParagraphElement>, 'color'>,

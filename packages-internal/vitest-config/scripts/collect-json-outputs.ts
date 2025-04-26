@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import {glob} from 'glob';
+import { glob } from 'glob';
 
 async function collectCoverageFiles() {
   try {
@@ -11,7 +11,7 @@ async function collectCoverageFiles() {
     const destinationDir = path.join(process.cwd(), 'coverage/raw');
 
     // Create the destination directory if it doesn't exist
-    await fs.mkdir(destinationDir, {recursive: true});
+    await fs.mkdir(destinationDir, { recursive: true });
 
     // Arrays to collect all directories and directories with coverage.json
     const allDirectories = [];

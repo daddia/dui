@@ -1,5 +1,5 @@
-import {render, screen} from '@testing-library/react';
-import {Text} from './Text';
+import { render, screen } from '@testing-library/react';
+import { Text } from './Text';
 
 describe('Text', () => {
   test('renders children correctly', () => {
@@ -8,7 +8,7 @@ describe('Text', () => {
   });
 
   test('renders with correct element when as prop is provided', () => {
-    const {rerender} = render(<Text as="span">Span text</Text>);
+    const { rerender } = render(<Text as="span">Span text</Text>);
     expect(screen.getByText('Span text').tagName).toBe('SPAN');
 
     rerender(<Text as="div">Div text</Text>);
@@ -19,7 +19,7 @@ describe('Text', () => {
   });
 
   test('applies size classes correctly', () => {
-    const {rerender} = render(<Text size="xs">Extra Small</Text>);
+    const { rerender } = render(<Text size="xs">Extra Small</Text>);
     expect(screen.getByText('Extra Small')).toHaveClass('text-xs/6');
 
     rerender(<Text size="sm">Small</Text>);
@@ -33,7 +33,7 @@ describe('Text', () => {
   });
 
   test('applies weight classes correctly', () => {
-    const {rerender} = render(<Text weight="normal">Normal</Text>);
+    const { rerender } = render(<Text weight="normal">Normal</Text>);
     expect(screen.getByText('Normal')).toHaveClass('font-normal');
 
     rerender(<Text weight="medium">Medium</Text>);
@@ -47,7 +47,7 @@ describe('Text', () => {
   });
 
   test('applies color classes correctly', () => {
-    const {rerender} = render(<Text color="default">Default</Text>);
+    const { rerender } = render(<Text color="default">Default</Text>);
     expect(screen.getByText('Default')).toHaveClass('text-zinc-900');
 
     rerender(<Text color="muted">Muted</Text>);
@@ -67,7 +67,7 @@ describe('Text', () => {
   });
 
   test('applies alignment classes correctly', () => {
-    const {rerender} = render(<Text align="left">Left</Text>);
+    const { rerender } = render(<Text align="left">Left</Text>);
     expect(screen.getByText('Left')).toHaveClass('text-left');
 
     rerender(<Text align="center">Center</Text>);

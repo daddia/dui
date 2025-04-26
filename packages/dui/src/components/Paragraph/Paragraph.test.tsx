@@ -1,5 +1,5 @@
-import {render, screen} from '@testing-library/react';
-import {Paragraph} from './Paragraph';
+import { render, screen } from '@testing-library/react';
+import { Paragraph } from './Paragraph';
 
 describe('Paragraph', () => {
   test('renders children correctly', () => {
@@ -8,7 +8,7 @@ describe('Paragraph', () => {
   });
 
   test('applies size classes correctly', () => {
-    const {rerender} = render(<Paragraph size="xs">Extra Small</Paragraph>);
+    const { rerender } = render(<Paragraph size="xs">Extra Small</Paragraph>);
     expect(screen.getByText('Extra Small')).toHaveClass('text-xs/6');
 
     rerender(<Paragraph size="sm">Small</Paragraph>);
@@ -22,7 +22,7 @@ describe('Paragraph', () => {
   });
 
   test('applies weight classes correctly', () => {
-    const {rerender} = render(<Paragraph weight="normal">Normal</Paragraph>);
+    const { rerender } = render(<Paragraph weight="normal">Normal</Paragraph>);
     expect(screen.getByText('Normal')).toHaveClass('font-normal');
 
     rerender(<Paragraph weight="medium">Medium</Paragraph>);
@@ -36,7 +36,7 @@ describe('Paragraph', () => {
   });
 
   test('applies alignment classes correctly', () => {
-    const {rerender} = render(<Paragraph align="left">Left</Paragraph>);
+    const { rerender } = render(<Paragraph align="left">Left</Paragraph>);
     expect(screen.getByText('Left')).toHaveClass('text-left');
 
     rerender(<Paragraph align="center">Center</Paragraph>);

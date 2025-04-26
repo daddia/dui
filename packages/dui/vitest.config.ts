@@ -1,5 +1,5 @@
-import {defineConfig} from 'vitest/config';
-import {uiConfig} from '@repo/vitest-config/ui';
+import { defineConfig } from 'vitest/config';
+import { uiConfig } from '@repo/vitest-config/ui';
 
 export default defineConfig({
   ...uiConfig,

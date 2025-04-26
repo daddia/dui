@@ -1,5 +1,5 @@
-import {render, screen} from '@testing-library/react';
-import {Grid} from './Grid';
+import { render, screen } from '@testing-library/react';
+import { Grid } from './Grid';
 
 describe('Grid', () => {
   it('renders with default props', () => {

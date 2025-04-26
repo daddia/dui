@@ -1,13 +1,13 @@
 import * as React from 'react';
-import {buttonVariants} from './Button.styles';
-import type {ButtonLinkProps, ButtonProps} from './Button.types';
-import {cn} from '../../utils/cn';
-import {Text} from '../Text/Text';
+import { buttonVariants } from './Button.styles';
+import type { ButtonLinkProps, ButtonProps } from './Button.types';
+import { cn } from '../../utils/cn';
+import { Text } from '../Text/Text';
 
 /**
  * Expand the hit area to at least 44×44px on touch devices
  */
-const TouchTarget = ({children}: {children: React.ReactNode}) => {
+const TouchTarget = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <span

@@ -1,5 +1,5 @@
-import type {Meta, StoryObj} from '@storybook/react';
-import {Grid} from './Grid';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Grid } from './Grid';
 
 const meta: Meta<typeof Grid> = {
   title: 'Layout/Grid',
@@ -28,7 +28,7 @@ const meta: Meta<typeof Grid> = {
 export default meta;
 type Story = StoryObj<typeof Grid>;
 
-const GridItem = ({children}: {children: React.ReactNode}) => (
+const GridItem = ({ children }: { children: React.ReactNode }) => (
   <div className="flex h-20 items-center justify-center rounded-lg bg-gray-100 p-4">{children}</div>
 );
 

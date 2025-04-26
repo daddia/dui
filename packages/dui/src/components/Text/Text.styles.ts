@@ -1,4 +1,4 @@
-import {tv} from 'tailwind-variants';
+import { tv } from 'tailwind-variants';
 
 export const textVariants = tv({
   base: ['text-base/6', 'text-zinc-900 dark:text-zinc-100'],

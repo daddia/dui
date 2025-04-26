@@ -1,5 +1,5 @@
-import {render, screen} from '@testing-library/react';
-import {Stack} from './Stack';
+import { render, screen } from '@testing-library/react';
+import { Stack } from './Stack';
 
 describe('Stack', () => {
   it('renders with default props', () => {

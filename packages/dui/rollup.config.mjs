@@ -3,7 +3,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import dts from 'rollup-plugin-dts';
-import {createRequire} from 'module';
+import { createRequire } from 'module';
 
 // Get package.json data
 const require = createRequire(import.meta.url);

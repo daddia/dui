@@ -1,5 +1,5 @@
-import type {VariantProps} from 'tailwind-variants';
-import {linkVariants} from './Link.styles';
+import type { VariantProps } from 'tailwind-variants';
+import { linkVariants } from './Link.styles';
 
 export interface LinkProps
   extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'color'>,

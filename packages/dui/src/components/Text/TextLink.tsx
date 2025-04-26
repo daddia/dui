@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {cn} from '../../utils/cn';
+import { cn } from '../../utils/cn';
 
 export interface TextLinkProps extends React.ComponentPropsWithoutRef<'a'> {
   /**
@@ -9,7 +9,7 @@ export interface TextLinkProps extends React.ComponentPropsWithoutRef<'a'> {
 }
 
 export const TextLink = React.forwardRef<HTMLAnchorElement, TextLinkProps>(
-  ({className, children, ...props}, ref) => {
+  ({ className, children, ...props }, ref) => {
     return (
       <a
         ref={ref}

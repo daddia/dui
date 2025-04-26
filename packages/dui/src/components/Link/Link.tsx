@@ -1,11 +1,11 @@
 import * as React from 'react';
-import {linkVariants} from './Link.styles';
-import type {LinkProps} from './Link.types';
-import {cn} from '../../utils/cn';
+import { linkVariants } from './Link.styles';
+import type { LinkProps } from './Link.types';
+import { cn } from '../../utils/cn';
 
 export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
   (
-    {className, children, href, external = false, size, weight, color, underline, ...props},
+    { className, children, href, external = false, size, weight, color, underline, ...props },
     ref,
   ) => {
     return (

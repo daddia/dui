@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "lint": "eslint .",
-    "clean": "rm -rf .turbo node_modules",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
     "start": "serve -s ./storybook-static -l 6006",
     "storybook": "storybook dev -p 6006 --quiet",
     "storybook:build": "storybook build -o ./storybook-static",
-    "storybook:test": "storybook test"
+    "storybook:test": "storybook test",
+    "clean": "rm -rf .turbo node_modules"
   },
   "dependencies": {
     "@daddia/dui": "workspace:*",
@@ -18,10 +20,10 @@
     "styled-jsx": "^5.1.2"
   },
   "devDependencies": {
-    "@repo/vitest-config": "workspace:*",
     "@chromatic-com/storybook": "^3.2.6",
     "@eslint/eslintrc": "^3",
     "@mdx-js/react": "^3.1.0",
+    "@repo/vitest-config": "workspace:*",
     "@storybook/addon-essentials": "^8.6.12",
     "@storybook/addon-onboarding": "^8.6.12",
     "@storybook/blocks": "^8.6.12",

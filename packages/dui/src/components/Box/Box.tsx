@@ -1,11 +1,21 @@
 import * as React from 'react';
-import {boxVariants} from './Box.styles';
-import type {BoxProps} from './Box.types';
-import {cn} from '../../utils/cn';
+import { boxVariants } from './Box.styles';
+import type { BoxProps } from './Box.types';
+import { cn } from '../../utils/cn';
 
 export const Box = React.forwardRef<HTMLDivElement, BoxProps>(
   (
-    {className, as: Component = 'div', padding, shadow, radius, border, color, children, ...props},
+    {
+      className,
+      as: Component = 'div',
+      padding,
+      shadow,
+      radius,
+      border,
+      color,
+      children,
+      ...props
+    },
     ref,
   ) => {
     return (

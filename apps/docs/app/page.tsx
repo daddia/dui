@@ -1,4 +1,4 @@
-import Image, {type ImageProps} from 'next/image';
+import Image, { type ImageProps } from 'next/image';
 import styles from './page.module.css';
 
 type Props = Omit<ImageProps, 'src'> & {
@@ -7,7 +7,7 @@ type Props = Omit<ImageProps, 'src'> & {
 };
 
 const ThemeImage = (props: Props) => {
-  const {srcLight, srcDark, ...rest} = props;
+  const { srcLight, srcDark, ...rest } = props;
 
   return (
     <>

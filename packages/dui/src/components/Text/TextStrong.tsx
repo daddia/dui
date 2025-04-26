@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {cn} from '../../utils/cn';
+import { cn } from '../../utils/cn';
 
 export interface TextStrongProps extends React.ComponentPropsWithoutRef<'strong'> {
   /**
@@ -9,7 +9,7 @@ export interface TextStrongProps extends React.ComponentPropsWithoutRef<'strong'
 }
 
 export const TextStrong = React.forwardRef<HTMLElement, TextStrongProps>(
-  ({className, children, ...props}, ref) => {
+  ({ className, children, ...props }, ref) => {
     return (
       <strong
         ref={ref}

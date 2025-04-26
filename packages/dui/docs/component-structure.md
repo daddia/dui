@@ -76,8 +76,8 @@ export const buttonVariants = tv({
 ### 2.2 `Component.types.ts`
 
 ```ts
-import type {VariantProps} from 'tailwind-variants';
-import {componentVariants} from './Component.styles';
+import type { VariantProps } from 'tailwind-variants';
+import { componentVariants } from './Component.styles';
 
 export interface ComponentProps
   extends React.HTMLAttributes<HTMLElement>,
@@ -120,12 +120,12 @@ export interface ComponentProps
 
 ```tsx
 import * as React from 'react';
-import {componentVariants} from './Component.styles';
-import type {ComponentProps} from './Component.types';
-import {cn} from '../../utils/cn';
+import { componentVariants } from './Component.styles';
+import type { ComponentProps } from './Component.types';
+import { cn } from '../../utils/cn';
 
 // Sub-components for better organization
-const ComponentInner = ({leftIcon, rightIcon, isLoading, children}) => {
+const ComponentInner = ({ leftIcon, rightIcon, isLoading, children }) => {
   return (
     <>
       {isLoading && <LoadingSpinner />}
@@ -136,7 +136,7 @@ const ComponentInner = ({leftIcon, rightIcon, isLoading, children}) => {
   );
 };
 
-const TouchTarget = ({children}) => {
+const TouchTarget = ({ children }) => {
   return (
     <>
       <span
@@ -202,8 +202,8 @@ export const Component = React.forwardRef<HTMLElement, ComponentProps>(
 ### 2.4 `Component.stories.tsx`
 
 ```tsx
-import type {Meta, StoryObj} from '@storybook/react';
-import {Component} from './Component';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Component } from './Component';
 
 const meta: Meta<typeof Component> = {
   title: 'Components/Component',
@@ -255,9 +255,9 @@ export const Primary: Story = {
 ### 2.5 `Component.test.tsx`
 
 ```tsx
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import {Component} from './Component';
+import { Component } from './Component';
 
 describe('Component', () => {
   test('renders children correctly', () => {
@@ -266,7 +266,7 @@ describe('Component', () => {
   });
 
   test('applies variant classes correctly', () => {
-    const {rerender} = render(<Component variant="primary">Primary</Component>);
+    const { rerender } = render(<Component variant="primary">Primary</Component>);
     expect(screen.getByRole('button')).toHaveClass('bg-blue-600');
     // ... test other variants
   });
@@ -290,8 +290,8 @@ describe('Component', () => {
 ### 2.6 `index.ts`
 
 ```ts
-export {Component} from './Component';
-export type {ComponentProps} from './Component.types';
+export { Component } from './Component';
+export type { ComponentProps } from './Component.types';
 ```
 
 - Defines the public API for the component.
