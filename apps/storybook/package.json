@@ -10,7 +10,8 @@
     "storybook": "storybook dev -p 6006 --quiet",
     "storybook:build": "storybook build -o ./storybook-static",
     "storybook:test": "storybook test",
-    "clean": "rm -rf .turbo node_modules"
+    "clean": "rm -rf .turbo node_modules coverage.json",
+    "reset": "pnpm clean && rm -rf storybook-static .next"
   },
   "dependencies": {
     "@daddia/dui": "workspace:*",
