@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '@daddia/dui/css/index.css';
 
 :root {
   --background: #ffffff;

@@ -93,21 +93,15 @@ importers:
       next:
         specifier: 15.3.1
         version: 15.3.1(@babel/core@7.26.10)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      postcss:
-        specifier: ^8.5.3
-        version: 8.5.3
       react:
-        specifier: ^19.1.0
+        specifier: ^19.0.0
         version: 19.1.0
       react-dom:
-        specifier: ^19.1.0
+        specifier: ^19.0.0
         version: 19.1.0(react@19.1.0)
       styled-jsx:
         specifier: ^5.1.2
         version: 5.1.6(@babel/core@7.26.10)(react@19.1.0)
-      tailwindcss:
-        specifier: ^4.1.4
-        version: 4.1.4
     devDependencies:
       '@chromatic-com/storybook':
         specifier: ^3.2.6
@@ -142,6 +136,9 @@ importers:
       '@storybook/test':
         specifier: ^8.6.12
         version: 8.6.12(storybook@8.6.12(prettier@3.5.3))
+      '@tailwindcss/postcss':
+        specifier: ^4
+        version: 4.1.4
       '@types/node':
         specifier: ^20
         version: 20.17.30
@@ -172,9 +169,15 @@ importers:
       playwright:
         specifier: ^1.52.0
         version: 1.52.0
+      postcss:
+        specifier: ^8.5.3
+        version: 8.5.3
       storybook:
         specifier: ^8.6.12
         version: 8.6.12(prettier@3.5.3)
+      tailwindcss:
+        specifier: ^4.1.4
+        version: 4.1.4
       typescript:
         specifier: ^5
         version: 5.8.2
