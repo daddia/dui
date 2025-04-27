@@ -88,6 +88,11 @@ const RadioItem = React.forwardRef<React.ElementRef<typeof RadioGroupPrimitive.I
     const context = React.useContext(RadioGroupContext);
     const size = sizeProp || context.size;
     const color = colorProp || context.color;
+    const labelId = props.id
+      ? `${props.id}-label`
+      : props.value
+        ? `${props.value}-label`
+        : undefined;
 
     return (
       <div className={cn(radioVariants({ size }))}>
@@ -96,6 +101,7 @@ const RadioItem = React.forwardRef<React.ElementRef<typeof RadioGroupPrimitive.I
           className={cn(radioItemVariants({ size, color }), className)}
           disabled={disabled}
           asChild={asChild}
+          aria-labelledby={labelId}
           {...props}
         >
           <RadioIndicator size={size} />
@@ -104,7 +110,7 @@ const RadioItem = React.forwardRef<React.ElementRef<typeof RadioGroupPrimitive.I
         {(label || description) && (
           <div className="flex flex-col">
             {label && (
-              <label className={cn(radioLabelVariants({ size }))} htmlFor={props.id || props.value}>
+              <label id={labelId} className={cn(radioLabelVariants({ size }))}>
                 {label}
               </label>
             )}

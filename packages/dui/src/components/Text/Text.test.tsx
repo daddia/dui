@@ -48,13 +48,13 @@ describe('Text', () => {
 
   test('applies color classes correctly', () => {
     const { rerender } = render(<Text color="default">Default</Text>);
-    expect(screen.getByText('Default')).toHaveClass('text-zinc-900');
+    expect(screen.getByText('Default')).toHaveClass('text-foreground');
 
     rerender(<Text color="muted">Muted</Text>);
-    expect(screen.getByText('Muted')).toHaveClass('text-zinc-500');
+    expect(screen.getByText('Muted')).toHaveClass('text-muted-foreground');
 
     rerender(<Text color="primary">Primary</Text>);
-    expect(screen.getByText('Primary')).toHaveClass('text-blue-600');
+    expect(screen.getByText('Primary')).toHaveClass('text-primary');
 
     rerender(<Text color="success">Success</Text>);
     expect(screen.getByText('Success')).toHaveClass('text-green-600');
@@ -63,7 +63,7 @@ describe('Text', () => {
     expect(screen.getByText('Warning')).toHaveClass('text-yellow-600');
 
     rerender(<Text color="danger">Danger</Text>);
-    expect(screen.getByText('Danger')).toHaveClass('text-red-600');
+    expect(screen.getByText('Danger')).toHaveClass('text-destructive');
   });
 
   test('applies alignment classes correctly', () => {

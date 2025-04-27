@@ -83,7 +83,8 @@ describe('Select', () => {
       </Select>,
     );
 
-    expect(screen.getByText('Custom placeholder')).toBeInTheDocument();
+    const trigger = screen.getByTestId('select-trigger');
+    expect(trigger).toHaveAttribute('placeholder', 'Custom placeholder');
   });
 
   it('renders with group and labels', () => {

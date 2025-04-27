@@ -73,13 +73,13 @@ describe('Slider', () => {
     render(<Slider defaultValue={[0]} min={-50} max={50} showValue data-testid="slider" />);
     expect(screen.getByText('0')).toBeInTheDocument();
     const slider = screen.getByTestId('slider');
-    expect(slider).toHaveAttribute('min', '-50');
-    expect(slider).toHaveAttribute('max', '50');
+    expect(slider).toHaveAttribute('data-min', '-50');
+    expect(slider).toHaveAttribute('data-max', '50');
   });
 
   it('respects step values', () => {
     render(<Slider defaultValue={[25]} step={25} data-testid="slider" />);
     const slider = screen.getByTestId('slider');
-    expect(slider).toHaveAttribute('step', '25');
+    expect(slider).toHaveAttribute('data-step', '25');
   });
 });

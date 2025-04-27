@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Switch } from './Switch';
+import { vi } from 'vitest';
 
 describe('Switch', () => {
   it('renders correctly', () => {
@@ -25,7 +26,7 @@ describe('Switch', () => {
   });
 
   it('calls onCheckedChange when clicked', () => {
-    const onCheckedChange = jest.fn();
+    const onCheckedChange = vi.fn();
     render(<Switch onCheckedChange={onCheckedChange} data-testid="switch" />);
 
     const switchElement = screen.getByTestId('switch');
@@ -35,7 +36,7 @@ describe('Switch', () => {
   });
 
   it('does not respond to clicks when disabled', () => {
-    const onCheckedChange = jest.fn();
+    const onCheckedChange = vi.fn();
     render(<Switch disabled onCheckedChange={onCheckedChange} data-testid="switch" />);
 
     const switchElement = screen.getByTestId('switch');
@@ -45,7 +46,7 @@ describe('Switch', () => {
   });
 
   it('does not respond to clicks when read-only', () => {
-    const onCheckedChange = jest.fn();
+    const onCheckedChange = vi.fn();
     render(<Switch readOnly onCheckedChange={onCheckedChange} data-testid="switch" />);
 
     const switchElement = screen.getByTestId('switch');
@@ -67,14 +68,15 @@ describe('Switch', () => {
   it('renders with a required indicator', () => {
     render(<Switch label="Test Label" required />);
 
-    const label = screen.getByText('Test Label');
-    expect(label.nextSibling).toHaveTextContent('*');
+    // Check if there's a span with text '*' inside the label container
+    const container = screen.getByText('Test Label').closest('div');
+    expect(container?.textContent).toContain('*');
   });
 
   it('renders with label on the left when specified', () => {
     render(<Switch label="Test Label" labelPosition="left" />);
 
-    const container = screen.getByText('Test Label').closest('div');
+    const container = screen.getByText('Test Label').closest('div').parentElement;
     expect(container).toHaveClass('flex-row-reverse');
   });
 

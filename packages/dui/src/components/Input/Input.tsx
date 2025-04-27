@@ -26,6 +26,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     // Determine variant based on error/success props
     const inputVariant = error ? 'error' : success ? 'success' : variant;
 
+    // Use size prop as sizeVariant if sizeVariant is not provided
+    const actualSize = sizeVariant || size;
+
     return (
       <div className={cn('w-full space-y-1', wrapperClassName)}>
         <div className="relative">
@@ -39,7 +42,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             className={cn(
               inputVariants({
                 variant: inputVariant,
-                size: sizeVariant,
+                size: actualSize as 'sm' | 'md' | 'lg' | undefined,
                 fullWidth,
               }),
               leftIcon && 'pl-10',
@@ -48,7 +51,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             )}
             ref={ref}
             aria-invalid={!!error}
-            size={size}
             {...props}
           />
           {rightIcon && (

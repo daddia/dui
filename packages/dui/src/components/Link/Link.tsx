@@ -13,6 +13,7 @@ export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
         ref={ref}
         href={href}
         className={cn(
+          'text-foreground underline',
           linkVariants({
             size,
             weight,

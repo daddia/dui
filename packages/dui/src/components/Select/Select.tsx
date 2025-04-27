@@ -161,6 +161,8 @@ const SelectTrigger = React.forwardRef<
     <SelectPrimitive.Trigger
       ref={ref}
       className={cn(selectTriggerVariants({ size, variant, disabled }), className)}
+      aria-disabled={disabled ? 'true' : undefined}
+      data-testid="select-trigger"
       asChild={asChild}
       {...props}
     >

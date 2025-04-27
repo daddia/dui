@@ -7,6 +7,16 @@ import * as React from 'react';
 // Make React available globally for tests
 global.React = React;
 
+// Mock ResizeObserver
+class ResizeObserverMock {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+
+// Add to global
+global.ResizeObserver = ResizeObserverMock;
+
 // Extend Vitest's expect method with methods from react-testing-library
 expect.extend(matchers);
 

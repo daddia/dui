@@ -14,7 +14,9 @@ describe('Popover', () => {
       </Popover>,
     );
 
-    expect(screen.getByRole('button', { name: 'Open Popover' })).toBeInTheDocument();
+    // Use getAllByRole and get the first element since there are multiple matches
+    const buttons = screen.getAllByRole('button', { name: 'Open Popover' });
+    expect(buttons[0]).toBeInTheDocument();
   });
 
   it('should open popover when clicking the trigger', () => {
@@ -30,8 +32,8 @@ describe('Popover', () => {
     // Initially, content should not be in the document
     expect(screen.queryByText('Popover Content')).not.toBeInTheDocument();
 
-    // Click the trigger button
-    fireEvent.click(screen.getByRole('button', { name: 'Open Popover' }));
+    // Click the trigger button - use getAllByRole and get the first element
+    fireEvent.click(screen.getAllByRole('button', { name: 'Open Popover' })[0]);
 
     // Now content should be visible
     expect(screen.getByText('Popover Content')).toBeInTheDocument();
@@ -50,8 +52,8 @@ describe('Popover', () => {
       </div>,
     );
 
-    // Open the popover
-    fireEvent.click(screen.getByRole('button', { name: 'Open Popover' }));
+    // Open the popover - use getAllByRole and get the first element
+    fireEvent.click(screen.getAllByRole('button', { name: 'Open Popover' })[0]);
 
     // Content should be visible
     expect(screen.getByText('Popover Content')).toBeInTheDocument();
@@ -76,8 +78,8 @@ describe('Popover', () => {
       </Popover>,
     );
 
-    // Open the popover
-    fireEvent.click(screen.getByRole('button', { name: 'Open Popover' }));
+    // Open the popover - use getAllByRole and get the first element
+    fireEvent.click(screen.getAllByRole('button', { name: 'Open Popover' })[0]);
 
     // Arrow should be rendered
     expect(screen.getByText('Popover Content').parentElement).toContainElement(
@@ -95,8 +97,8 @@ describe('Popover', () => {
       </Popover>,
     );
 
-    // Open the popover
-    fireEvent.click(screen.getByRole('button', { name: 'Open Popover' }));
+    // Open the popover - use getAllByRole and get the first element
+    fireEvent.click(screen.getAllByRole('button', { name: 'Open Popover' })[0]);
 
     // Content should have the small size class
     expect(screen.getByText('Small Popover').parentElement).toHaveClass('p-2');
@@ -112,8 +114,8 @@ describe('Popover', () => {
       </Popover>,
     );
 
-    // Open the popover
-    fireEvent.click(screen.getByRole('button', { name: 'Open Popover' }));
+    // Open the popover - use getAllByRole and get the first element
+    fireEvent.click(screen.getAllByRole('button', { name: 'Open Popover' })[0]);
 
     // Content should be visible
     expect(screen.getByText('Popover Content')).toBeInTheDocument();

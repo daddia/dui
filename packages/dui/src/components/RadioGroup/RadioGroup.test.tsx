@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { RadioGroup } from './RadioGroup';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 
 describe('RadioGroup', () => {
   it('renders a radio group with items', () => {
@@ -99,7 +100,7 @@ describe('RadioGroup', () => {
   });
 
   it('works as a controlled component', () => {
-    const handleChange = jest.fn();
+    const handleChange = vi.fn();
 
     const { rerender } = render(
       <RadioGroup value="option-1" onValueChange={handleChange}>

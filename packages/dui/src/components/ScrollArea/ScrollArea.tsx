@@ -40,25 +40,26 @@ const ScrollAreaRoot = React.forwardRef<
     },
     ref,
   ) => {
-    // Create inline styles for dimensions
-    const style: React.CSSProperties = {
-      ...(maxHeight ? { maxHeight } : {}),
-      ...(maxWidth ? { maxWidth } : {}),
-      ...(height ? { height } : {}),
-      ...(width ? { width } : {}),
-    };
-
     return (
       <ScrollAreaPrimitive.Root
         ref={ref}
         className={cn(scrollAreaVariants({ disabled }), className)}
-        style={style}
         type={scrollHideDelay === 0 ? 'always' : 'auto'}
         scrollHideDelay={scrollHideDelay}
         asChild={asChild}
         {...props}
       >
-        <ScrollAreaViewport disabled={disabled}>{children}</ScrollAreaViewport>
+        <ScrollAreaViewport
+          disabled={disabled}
+          style={{
+            maxHeight,
+            maxWidth,
+            height,
+            width,
+          }}
+        >
+          {children}
+        </ScrollAreaViewport>
 
         {/* Only render scrollbars if not disabled */}
         {!disabled && (
@@ -94,11 +95,15 @@ ScrollAreaRoot.displayName = ScrollAreaPrimitive.Root.displayName;
 
 const ScrollAreaViewport = React.forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.Viewport>,
-  ScrollAreaViewportProps & { disabled?: boolean }
->(({ className, asChild = false, disabled = false, ...props }, ref) => (
+  ScrollAreaViewportProps & {
+    disabled?: boolean;
+    style?: React.CSSProperties;
+  }
+>(({ className, asChild = false, disabled = false, style, ...props }, ref) => (
   <ScrollAreaPrimitive.Viewport
     ref={ref}
     className={cn(scrollAreaViewportVariants({ disabled }), className)}
+    style={style}
     asChild={asChild}
     {...props}
   />

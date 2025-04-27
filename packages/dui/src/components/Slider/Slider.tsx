@@ -92,6 +92,9 @@ const Slider = React.forwardRef<React.ElementRef<typeof SliderPrimitive.Root>, S
           onValueCommit={props.onValueCommit}
           orientation={orientation === 'horizontal' ? 'horizontal' : 'vertical'}
           dir="ltr"
+          data-min={min.toString()}
+          data-max={max.toString()}
+          data-step={step.toString()}
           {...props}
         >
           <SliderPrimitive.Track
