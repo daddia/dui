@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as RadixToggle from '@radix-ui/react-toggle';
 import { toggleVariants } from './Toggle.styles';
 import { ToggleProps } from './Toggle.types';
-import { cn } from '@/lib/utils';
+import { cn } from '../../utils/cn';
 
 export const Toggle = React.forwardRef<React.ElementRef<typeof RadixToggle.Root>, ToggleProps>(
   (
