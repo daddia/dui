@@ -112,41 +112,42 @@ const MultipleAccordion = React.forwardRef<
 ));
 
 // Main accordion component that renders the right variant based on type
-const Accordion = React.forwardRef<
-  React.ElementRef<typeof RadixAccordion.Root>,
-  AccordionProps
->(({ className, ...props }, ref) => {
-  // Explicitly typed accordion
-  if ('type' in props && props.type !== undefined) {
-    if (props.type === 'single') {
-      const { type, ...singleProps } = props as AccordionSingleProps;
-      return <SingleAccordion ref={ref} className={className} {...singleProps} />;
-    } else {
-      const { type, ...multipleProps } = props as AccordionMultipleProps;
-      return <MultipleAccordion ref={ref} className={className} {...multipleProps} />;
+const Accordion = React.forwardRef<React.ElementRef<typeof RadixAccordion.Root>, AccordionProps>(
+  ({ className, ...props }, ref) => {
+    // Explicitly typed accordion
+    if ('type' in props && props.type !== undefined) {
+      if (props.type === 'single') {
+        const { type, ...singleProps } = props as AccordionSingleProps;
+        return <SingleAccordion ref={ref} className={className} {...singleProps} />;
+      } else {
+        const { type, ...multipleProps } = props as AccordionMultipleProps;
+        return <MultipleAccordion ref={ref} className={className} {...multipleProps} />;
+      }
     }
-  }
 
-  // Default to multiple type when not specified
-  // Handle the mixed type case by converting values to the right format
-  const { value, defaultValue, onValueChange, ...restProps } = props;
+    // Default to multiple type when not specified
+    // Handle the mixed type case by converting values to the right format
+    const { value, defaultValue, onValueChange, ...restProps } = props;
 
-  // Convert value and defaultValue to arrays for multiple type
-  const multipleValue = Array.isArray(value) ? value : value ? [value] : undefined;
-  const multipleDefaultValue = Array.isArray(defaultValue)
-    ? defaultValue
-    : defaultValue ? [defaultValue] : undefined;
+    // Convert value and defaultValue to arrays for multiple type
+    const multipleValue = Array.isArray(value) ? value : value ? [value] : undefined;
+    const multipleDefaultValue = Array.isArray(defaultValue)
+      ? defaultValue
+      : defaultValue
+        ? [defaultValue]
+        : undefined;
 
-  // Use type assertion to safely pass properly formatted props
-  const multipleProps = {
-    value: multipleValue,
-    defaultValue: multipleDefaultValue,
-    onValueChange: onValueChange as ((value: string[]) => void) | undefined,
-    ...restProps,
-  } as Omit<AccordionMultipleProps, 'type'>;
+    // Use type assertion to safely pass properly formatted props
+    const multipleProps = {
+      value: multipleValue,
+      defaultValue: multipleDefaultValue,
+      onValueChange: onValueChange as ((value: string[]) => void) | undefined,
+      ...restProps,
+    } as Omit<AccordionMultipleProps, 'type'>;
 
-  return <MultipleAccordion ref={ref} className={className} {...multipleProps} />;
-});
+    return <MultipleAccordion ref={ref} className={className} {...multipleProps} />;
+  },
+);
 
 Accordion.displayName = 'Accordion';
 
