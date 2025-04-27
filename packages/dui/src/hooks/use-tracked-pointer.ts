@@ -7,18 +7,20 @@ function eventToPosition(evt: PointerEvent): PointerPosition {
 }
 
 export function useTrackedPointer() {
-  let lastPos = useRef<PointerPosition>([-1, -1]);
+  const lastPos = useRef<PointerPosition>([-1, -1]);
 
   return {
     wasMoved(evt: PointerEvent) {
       // FIXME: Remove this once we use browser testing in all the relevant places.
       // NOTE: This is replaced with a compile-time define during the build process
       // This hack exists to work around a few failing tests caused by our inability to "move" the virtual pointer in JSDOM pointer events.
-      if (process.env.TEST_BYPASS_TRACKED_POINTER) {
+      if (typeof process !== 'undefined' &&
+          process.env &&
+          process.env.TEST_BYPASS_TRACKED_POINTER) {
         return true;
       }
 
-      let newPos = eventToPosition(evt);
+      const newPos = eventToPosition(evt);
 
       if (lastPos.current[0] === newPos[0] && lastPos.current[1] === newPos[1]) {
         return false;

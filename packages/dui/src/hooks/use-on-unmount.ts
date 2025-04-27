@@ -3,9 +3,9 @@ import { microTask } from '../utils/micro-task';
 import { useEvent } from './use-event';
 
 export function useOnUnmount(cb: () => void) {
-  let stableCb = useEvent(cb);
+  const stableCb = useEvent(cb);
 
-  let trulyUnmounted = useRef(false);
+  const trulyUnmounted = useRef(false);
   useEffect(() => {
     trulyUnmounted.current = false;
 

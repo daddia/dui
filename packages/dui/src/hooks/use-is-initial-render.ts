@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 export function useIsInitialRender() {
-  let initial = useRef(true);
+  const initial = useRef(true);
 
   useEffect(() => {
     initial.current = false;

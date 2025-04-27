@@ -7,16 +7,16 @@ import { useStore } from './use-store';
 /**
  * Map of stable hierarchy stores based on a given scope.
  */
-let hierarchyStores = new DefaultMap(() =>
+const hierarchyStores = new DefaultMap(() =>
   createStore(() => [] as string[], {
     ADD(id: string) {
       if (this.includes(id)) return this;
       return [...this, id];
     },
     REMOVE(id: string) {
-      let idx = this.indexOf(id);
+      const idx = this.indexOf(id);
       if (idx === -1) return this;
-      let copy = this.slice();
+      const copy = this.slice();
       copy.splice(idx, 1);
       return copy;
     },
@@ -47,9 +47,9 @@ let hierarchyStores = new DefaultMap(() =>
  * ```
  */
 export function useIsTopLayer(enabled: boolean, scope: string) {
-  let hierarchyStore = hierarchyStores.get(scope);
-  let id = useId();
-  let hierarchy = useStore(hierarchyStore);
+  const hierarchyStore = hierarchyStores.get(scope);
+  const id = useId();
+  const hierarchy = useStore(hierarchyStore);
 
   useIsoMorphicEffect(() => {
     if (!enabled) return;

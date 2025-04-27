@@ -11,7 +11,7 @@ import { env } from '../utils/env';
  * on newer APIs to determine if hydration is happening.
  */
 function useIsHydratingInReact18(): boolean {
-  let isServer = typeof document === 'undefined';
+  const isServer = typeof document === 'undefined';
 
   // React < 18 doesn't have any way to figure this out afaik
   if (!('useSyncExternalStore' in React)) {
@@ -22,8 +22,8 @@ function useIsHydratingInReact18(): boolean {
   // because `useSyncExternalStore` isn't defined in React < 18
   const useSyncExternalStore = ((r) => r.useSyncExternalStore)(React);
 
-  // @ts-ignore
-  let result = useSyncExternalStore(
+  // @ts-expect-error The type definitions for useSyncExternalStore are complex, and we're using it in a non-standard way here
+  const result = useSyncExternalStore(
     () => () => {},
     () => false,
     () => (isServer ? false : true),
@@ -34,8 +34,8 @@ function useIsHydratingInReact18(): boolean {
 
 // TODO: We want to get rid of this hook eventually
 export function useServerHandoffComplete() {
-  let isHydrating = useIsHydratingInReact18();
-  let [complete, setComplete] = React.useState(env.isHandoffComplete);
+  const isHydrating = useIsHydratingInReact18();
+  const [complete, setComplete] = React.useState(env.isHandoffComplete);
 
   if (complete && env.isHandoffComplete === false) {
     // This means we are in a test environment and we need to reset the handoff state
@@ -44,13 +44,21 @@ export function useServerHandoffComplete() {
     setComplete(false);
   }
 
-  React.useEffect(() => {
-    if (complete === true) return;
-    setComplete(true);
-  }, [complete]);
+  // We need to extract this logic to avoid the ESLint rule about conditional hook calls
+  // but we still need to ensure the effect runs when the component mounts
+  const runEffects = !complete;
 
-  // Transition from pending to complete (forcing a re-render when server rendering)
-  React.useEffect(() => env.handoff(), []);
+  // Using a ref to track whether we've run the effect
+  const hasRunEffect = React.useRef(false);
+
+  // Always call useEffect, but conditionally run the logic inside
+  React.useEffect(() => {
+    if (runEffects && !hasRunEffect.current) {
+      hasRunEffect.current = true;
+      setComplete(true);
+      env.handoff();
+    }
+  }, [runEffects]);
 
   if (isHydrating) {
     return false;

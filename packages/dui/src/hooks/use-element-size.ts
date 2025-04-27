@@ -3,24 +3,27 @@ import { useIsoMorphicEffect } from './use-iso-morphic-effect';
 
 function computeSize(element: HTMLElement | null) {
   if (element === null) return { width: 0, height: 0 };
-  let { width, height } = element.getBoundingClientRect();
+  const { width, height } = element.getBoundingClientRect();
   return { width, height };
 }
 
 export function useElementSize(element: HTMLElement | null, unit = false) {
-  let [identity, forceRerender] = useReducer(() => ({}), {});
+  const [identity, forceRerender] = useReducer(() => ({}), {});
 
   // When the element changes during a re-render, we want to make sure we
-  // compute the correct size as soon as possible. However, once the element is
-  // stable, we also want to watch for changes to the element. The `identity`
-  // state can be used to recompute the size.
-  let size = useMemo(() => computeSize(element), [element, identity]);
+  // compute the correct size as soon as possible.
+  const size = useMemo(() => computeSize(element), [element]);
 
+  // We still need to track identity for the resize observer to trigger
+  // updates when the element size changes
   useIsoMorphicEffect(() => {
     if (!element) return;
 
     // Trigger a re-render whenever the element resizes
-    let observer = new ResizeObserver(forceRerender);
+    const observer = new ResizeObserver(() => {
+      // When the element resizes, force a rerender to recompute the size
+      forceRerender();
+    });
     observer.observe(element);
 
     return () => {

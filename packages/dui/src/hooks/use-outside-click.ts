@@ -27,10 +27,10 @@ export function useOutsideClick(
     target: HTMLOrSVGElement & Element,
   ) => void,
 ) {
-  let isTopLayer = useIsTopLayer(enabled, 'outside-click');
-  let cbRef = useLatestValue(cb);
+  const isTopLayer = useIsTopLayer(enabled, 'outside-click');
+  const cbRef = useLatestValue(cb);
 
-  let handleOutsideClick = useCallback(
+  const handleOutsideClick = useCallback(
     function handleOutsideClick<E extends MouseEvent | PointerEvent | FocusEvent | TouchEvent>(
       event: E,
       resolveTarget: (event: E) => (HTMLOrSVGElement & Element) | null,
@@ -41,7 +41,7 @@ export function useOutsideClick(
       // not the Dialog (yet)
       if (event.defaultPrevented) return;
 
-      let target = resolveTarget(event);
+      const target = resolveTarget(event);
 
       if (target === null) {
         return;
@@ -54,7 +54,7 @@ export function useOutsideClick(
       // was called
       if (!target.isConnected) return;
 
-      let _containers = (function resolve(containers): ContainerCollection {
+      const _containers = (function resolve(containers): ContainerCollection {
         if (typeof containers === 'function') {
           return resolve(containers());
         }
@@ -71,7 +71,7 @@ export function useOutsideClick(
       })(containers);
 
       // Ignore if the target exists in one of the containers
-      for (let container of _containers) {
+      for (const container of _containers) {
         if (container === null) continue;
         if (container.contains(target)) {
           return;
@@ -107,7 +107,7 @@ export function useOutsideClick(
     [cbRef, containers],
   );
 
-  let initialClickTarget = useRef<EventTarget | null>(null);
+  const initialClickTarget = useRef<EventTarget | null>(null);
 
   useDocumentEvent(
     isTopLayer,
@@ -153,13 +153,15 @@ export function useOutsideClick(
     true,
   );
 
-  let startPosition = useRef({ x: 0, y: 0 });
+  const startPosition = useRef({ x: 0, y: 0 });
   useDocumentEvent(
     isTopLayer,
     'touchstart',
     (event) => {
-      startPosition.current.x = event.touches[0].clientX;
-      startPosition.current.y = event.touches[0].clientY;
+      if (event.touches && event.touches.length > 0) {
+        startPosition.current.x = event.touches[0]?.clientX ?? 0;
+        startPosition.current.y = event.touches[0]?.clientY ?? 0;
+      }
     },
     true,
   );
@@ -168,9 +170,16 @@ export function useOutsideClick(
     isTopLayer,
     'touchend',
     (event) => {
-      // If the user moves their finger by ${MOVE_THRESHOLD_PX} pixels or more,
+      // If there are no touches or the user moves their finger by ${MOVE_THRESHOLD_PX} pixels or more,
       // we'll assume that they are scrolling and not clicking.
-      let endPosition = { x: event.changedTouches[0].clientX, y: event.changedTouches[0].clientY };
+      if (!event.changedTouches || event.changedTouches.length === 0) {
+        return;
+      }
+
+      const endPosition = {
+        x: event.changedTouches[0]?.clientX ?? 0,
+        y: event.changedTouches[0]?.clientY ?? 0,
+      };
       if (
         Math.abs(endPosition.x - startPosition.current.x) >= MOVE_THRESHOLD_PX ||
         Math.abs(endPosition.y - startPosition.current.y) >= MOVE_THRESHOLD_PX

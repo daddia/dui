@@ -7,7 +7,7 @@ export function useEscape(
   view = typeof document !== 'undefined' ? document.defaultView : null,
   cb: (event: KeyboardEvent) => void,
 ) {
-  let isTopLayer = useIsTopLayer(enabled, 'escape');
+  const isTopLayer = useIsTopLayer(enabled, 'escape');
 
   useEventListener(view, 'keydown', (event) => {
     if (!isTopLayer) return;

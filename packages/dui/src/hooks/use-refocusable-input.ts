@@ -11,14 +11,14 @@ import { useEventListener } from './use-event-listener';
  */
 export function useRefocusableInput(input: HTMLInputElement | null) {
   // Track the cursor position and the value of the input
-  let info = useRef({
+  const info = useRef({
     value: '',
     selectionStart: null as number | null,
     selectionEnd: null as number | null,
   });
 
   useEventListener(input, 'blur', (event) => {
-    let target = event.target;
+    const target = event.target;
     if (!DOM.isHTMLInputElement(target)) return;
 
     info.current = {
@@ -48,7 +48,7 @@ export function useRefocusableInput(input: HTMLInputElement | null) {
 
     // If the value is the same, we can restore to the previous cursor position.
     else {
-      let { selectionStart, selectionEnd } = info.current;
+      const { selectionStart, selectionEnd } = info.current;
       if (selectionStart !== null && selectionEnd !== null) {
         input.setSelectionRange(selectionStart, selectionEnd);
       }

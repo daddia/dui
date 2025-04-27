@@ -1,23 +1,23 @@
 import { useEffect, useRef } from 'react';
 import { useEvent } from './use-event';
 
-export function useWatch<T extends any[]>(
+export function useWatch<T extends unknown[]>(
   cb: (newValues: [...T], oldValues: [...T]) => void | (() => void),
   dependencies: [...T],
 ) {
-  let track = useRef([] as unknown as typeof dependencies);
-  let action = useEvent(cb);
+  const track = useRef([] as unknown as typeof dependencies);
+  const action = useEvent(cb);
 
   useEffect(() => {
-    let oldValues = [...track.current] as [...T];
+    const oldValues = [...track.current] as [...T];
 
-    for (let [idx, value] of dependencies.entries()) {
+    for (const [idx, value] of dependencies.entries()) {
       if (track.current[idx] !== value) {
         // At least 1 item changed
-        let returnValue = action(dependencies, oldValues);
+        const returnValue = action(dependencies, oldValues);
         track.current = dependencies;
         return returnValue;
       }
     }
-  }, [action, ...dependencies]);
+  }, [action, dependencies]);
 }

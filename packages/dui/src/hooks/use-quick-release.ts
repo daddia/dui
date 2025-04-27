@@ -53,7 +53,7 @@ export function useQuickRelease(
 ) {
   // Capture the timestamp of when the `pointerdown` event happened on the
   // trigger.
-  let triggeredAtRef = useRef<Date | null>(null);
+  const triggeredAtRef = useRef<Date | null>(null);
   useDocumentEvent(enabled && trigger !== null, 'pointerdown', (e) => {
     if (!DOM.isNode(e?.target)) return;
     if (!trigger?.contains(e.target)) return;
@@ -68,9 +68,9 @@ export function useQuickRelease(
       if (triggeredAtRef.current === null) return;
       if (!DOM.isHTMLorSVGElement(e.target)) return;
 
-      let result = action(e as PointerEventWithTarget);
+      const result = action(e as PointerEventWithTarget);
 
-      let diffInMs = new Date().getTime() - triggeredAtRef.current.getTime();
+      const diffInMs = new Date().getTime() - triggeredAtRef.current.getTime();
       triggeredAtRef.current = null;
 
       switch (result.kind) {

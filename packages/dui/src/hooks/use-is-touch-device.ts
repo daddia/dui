@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { useIsoMorphicEffect } from './use-iso-morphic-effect';
 
 export function useIsTouchDevice() {
-  let [mq] = useState(() =>
+  const [mq] = useState(() =>
     typeof window !== 'undefined' && typeof window.matchMedia === 'function'
       ? window.matchMedia('(pointer: coarse)')
       : null,
   );
-  let [isTouchDevice, setIsTouchDevice] = useState(mq?.matches ?? false);
+  const [isTouchDevice, setIsTouchDevice] = useState(mq?.matches ?? false);
 
   useIsoMorphicEffect(() => {
     if (!mq) return;

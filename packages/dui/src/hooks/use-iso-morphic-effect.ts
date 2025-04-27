@@ -1,10 +1,10 @@
 import { useEffect, useLayoutEffect, type DependencyList, type EffectCallback } from 'react';
 import { env } from '../utils/env';
 
-export let useIsoMorphicEffect = (effect: EffectCallback, deps?: DependencyList | undefined) => {
-  if (env.isServer) {
-    useEffect(effect, deps);
-  } else {
-    useLayoutEffect(effect, deps);
-  }
+// This approach avoids the conditional hook call by using a constant value
+// that's determined at module initialization time
+const useEffectFunction = env.isServer ? useEffect : useLayoutEffect;
+
+export const useIsoMorphicEffect = (effect: EffectCallback, deps?: DependencyList) => {
+  return useEffectFunction(effect, deps);
 };

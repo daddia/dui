@@ -16,13 +16,13 @@ export function useRootContainers({
   portals?: MutableRefObject<Element[]>;
   mainTreeNode?: Element | null;
 } = {}) {
-  let ownerDocument = useOwnerDocument(mainTreeNode);
+  const ownerDocument = useOwnerDocument(mainTreeNode);
 
-  let resolveContainers = useEvent(() => {
-    let containers: Element[] = [];
+  const resolveContainers = useEvent(() => {
+    const containers: Element[] = [];
 
     // Resolve default containers
-    for (let container of defaultContainers) {
+    for (const container of defaultContainers) {
       if (container === null) continue;
       if (DOM.isElement(container)) {
         containers.push(container);
@@ -33,13 +33,13 @@ export function useRootContainers({
 
     // Resolve portal containers
     if (portals?.current) {
-      for (let portal of portals.current) {
+      for (const portal of portals.current) {
         containers.push(portal);
       }
     }
 
     // Resolve third party (root) containers
-    for (let container of ownerDocument?.querySelectorAll('html > *, body > *') ?? []) {
+    for (const container of ownerDocument?.querySelectorAll('html > *, body > *') ?? []) {
       if (container === document.body) continue; // Skip `<body>`
       if (container === document.head) continue; // Skip `<head>`
       if (!DOM.isElement(container)) continue; // Skip non-HTMLElements
@@ -64,7 +64,7 @@ export function useRootContainers({
   };
 }
 
-let MainTreeContext = createContext<Element | null>(null);
+const MainTreeContext = createContext<Element | null>(null);
 
 /**
  * A provider for the main tree node.
@@ -96,12 +96,12 @@ export function MainTreeProvider({
   children: React.ReactNode;
   node?: Element | null;
 }) {
-  let [mainTreeNode, setMainTreeNode] = useState<Element | null>(null);
+  const [mainTreeNode, setMainTreeNode] = useState<Element | null>(null);
 
   // 1. Prefer the main tree node from context
   // 2. Prefer the provided node
   // 3. Create a new node at this point, and find the main tree node
-  let resolvedMainTreeNode = useMainTreeNode(node ?? mainTreeNode);
+  const resolvedMainTreeNode = useMainTreeNode(node ?? mainTreeNode);
 
   return (
     <MainTreeContext.Provider value={resolvedMainTreeNode}>
@@ -114,7 +114,7 @@ export function MainTreeProvider({
       {resolvedMainTreeNode === null && (
         <Hidden
           features={HiddenFeatures.Hidden}
-          ref={(el) => {
+          ref={(el: HTMLSpanElement | null) => {
             if (!el) return;
 
             // We will only render this when no `mainTreeNode` is found. This
@@ -123,7 +123,7 @@ export function MainTreeProvider({
             //
             // However, we can resolve the actual root container of the main
             // tree node and use that instead.
-            for (let container of getOwnerDocument(el)?.querySelectorAll('html > *, body > *') ??
+            for (const container of getOwnerDocument(el)?.querySelectorAll('html > *, body > *') ??
               []) {
               if (container === document.body) continue; // Skip `<body>`
               if (container === document.head) continue; // Skip `<head>`

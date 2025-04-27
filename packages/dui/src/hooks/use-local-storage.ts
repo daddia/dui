@@ -1,9 +1,20 @@
-function useLocalStorage<T>(key: string, initialValue: T) {
+import { useState } from 'react';
+
+/**
+ * Hook to persist state in localStorage
+ *
+ * @param key - The localStorage key
+ * @param initialValue - Initial value to use if no value is found in localStorage
+ * @returns A tuple with the current value and a setter function
+ */
+export function useLocalStorage<T>(key: string, initialValue: T) {
   const [storedValue, setStoredValue] = useState<T>(() => {
     try {
       const item = window.localStorage.getItem(key);
       return item ? JSON.parse(item) : initialValue;
-    } catch (error) {
+    } catch {
+      // If there's an error (e.g., localStorage is unavailable or JSON is invalid)
+      // just return the initial value
       return initialValue;
     }
   });

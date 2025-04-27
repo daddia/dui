@@ -4,10 +4,10 @@ import { useLatestValue } from './use-latest-value';
 export function useWindowEvent<TType extends keyof WindowEventMap>(
   enabled: boolean,
   type: TType,
-  listener: (ev: WindowEventMap[TType]) => any,
+  listener: (ev: WindowEventMap[TType]) => void,
   options?: boolean | AddEventListenerOptions,
 ) {
-  let listenerRef = useLatestValue(listener);
+  const listenerRef = useLatestValue(listener);
 
   useEffect(() => {
     if (!enabled) return;
@@ -18,5 +18,5 @@ export function useWindowEvent<TType extends keyof WindowEventMap>(
 
     window.addEventListener(type, handler, options);
     return () => window.removeEventListener(type, handler, options);
-  }, [enabled, type, options]);
+  }, [enabled, type, options, listenerRef]);
 }

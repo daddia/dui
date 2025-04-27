@@ -21,8 +21,8 @@ export function useTreeWalker(
     walk(node: HTMLElement): void;
   },
 ) {
-  let acceptRef = useRef(accept);
-  let walkRef = useRef(walk);
+  const acceptRef = useRef(accept);
+  const walkRef = useRef(walk);
 
   useEffect(() => {
     acceptRef.current = accept;
@@ -32,14 +32,14 @@ export function useTreeWalker(
   useIsoMorphicEffect(() => {
     if (!container) return;
     if (!enabled) return;
-    let ownerDocument = getOwnerDocument(container);
+    const ownerDocument = getOwnerDocument(container);
     if (!ownerDocument) return;
 
-    let accept = acceptRef.current;
-    let walk = walkRef.current;
+    const accept = acceptRef.current;
+    const walk = walkRef.current;
 
-    let acceptNode = Object.assign((node: HTMLElement) => accept(node), { acceptNode: accept });
-    let walker = ownerDocument.createTreeWalker(
+    const acceptNode = Object.assign((node: HTMLElement) => accept(node), { acceptNode: accept });
+    const walker = ownerDocument.createTreeWalker(
       container,
       NodeFilter.SHOW_ELEMENT,
       acceptNode,

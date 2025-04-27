@@ -1,16 +1,22 @@
-function useCopyToClipboard() {
-  const [copiedText, setCopiedText] = useState<string | null>(null);
+import { useState } from 'react';
 
-  const copy = useCallback(async (text: string) => {
+/**
+ * Hook to copy text to clipboard
+ *
+ * @returns An object with copy function and success status
+ */
+export function useCopyToClipboard() {
+  const [copied, setCopied] = useState(false);
+
+  const copy = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
-      setCopiedText(text);
-      return true;
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     } catch (error) {
-      setCopiedText(null);
-      return false;
+      console.error('Failed to copy text: ', error);
     }
-  }, []);
+  };
 
-  return [copiedText, copy] as const;
+  return { copied, copy };
 }

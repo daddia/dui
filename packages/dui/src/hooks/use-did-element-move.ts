@@ -2,12 +2,12 @@ import { useRef } from 'react';
 import { useIsoMorphicEffect } from './use-iso-morphic-effect';
 
 export function useDidElementMove(enabled: boolean, element: HTMLElement | null) {
-  let elementPosition = useRef({ left: 0, top: 0 });
+  const elementPosition = useRef({ left: 0, top: 0 });
 
   useIsoMorphicEffect(() => {
     if (!element) return;
 
-    let DOMRect = element.getBoundingClientRect();
+    const DOMRect = element.getBoundingClientRect();
     if (DOMRect) elementPosition.current = DOMRect;
   }, [enabled, element]);
 
@@ -15,9 +15,9 @@ export function useDidElementMove(enabled: boolean, element: HTMLElement | null)
   if (!enabled) return false;
   if (element === document.activeElement) return false;
 
-  let buttonRect = element.getBoundingClientRect();
+  const buttonRect = element.getBoundingClientRect();
 
-  let didElementMove =
+  const didElementMove =
     buttonRect.top !== elementPosition.current.top ||
     buttonRect.left !== elementPosition.current.left;
 

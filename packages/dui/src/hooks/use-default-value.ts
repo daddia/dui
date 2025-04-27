@@ -8,6 +8,6 @@ import { useState } from 'react';
  * returned `defaultValue` won't change).
  */
 export function useDefaultValue<T>(value: T) {
-  let [defaultValue] = useState(value);
+  const [defaultValue] = useState(value);
   return defaultValue;
 }

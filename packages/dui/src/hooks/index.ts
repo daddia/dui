@@ -1,50 +1,65 @@
-// Export all hooks
-export * from './use-active-press';
-export * from './use-by-comparator';
-export * from './use-computed';
-export * from './use-controllable';
-export * from './use-copy-to-clipboard';
-export * from './use-debounce';
-export * from './use-default-value';
-export * from './use-did-element-move';
-export * from './use-disposables';
-export * from './use-document-event';
-export * from './use-element-size';
-export * from './use-escape';
-export * from './use-event';
-export * from './use-event-listener';
-export * from './use-flags';
-export * from './use-id';
-export * from './use-inert-others';
-export * from './use-intersection-observer';
-export * from './use-is-initial-render';
-export * from './use-is-mounted';
-export * from './use-is-top-layer';
-export * from './use-is-touch-device';
-export * from './use-iso-morphic-effect';
-export * from './use-latest-value';
-export * from './use-local-storage';
-export * from './use-media-query';
-export * from './use-mobile';
-export * from './use-on-disappear';
-export * from './use-on-unmount';
-export * from './use-outside-click';
-export * from './use-owner';
-export * from './use-previous';
-export * from './use-quick-release';
-export * from './use-refocusable-input';
-export * from './use-resolve-button-type';
-export * from './use-resolved-tag';
-export * from './use-root-containers';
-export * from './use-scroll-lock';
-export * from './use-server-handoff-complete';
-export * from './use-store';
-export * from './use-sync-refs';
-export * from './use-tab-direction';
-export * from './use-text-value';
-export * from './use-throttle';
-export * from './use-tracked-pointer';
-export * from './use-transition';
-export * from './use-tree-walker';
-export * from './use-watch';
-export * from './use-window-event';
+/**
+ * DUI Hooks - Organized by category for better developer experience
+ *
+ * These hooks are organized into logical categories to make them easier to find and use.
+ * Each hook has been thoroughly documented with JSDoc comments.
+ *
+ * @module hooks
+ */
+
+// DOM and Element Hooks
+export { useActivePress } from './use-active-press';
+export { useDidElementMove } from './use-did-element-move';
+export { useDocumentEvent } from './use-document-event';
+export { useElementSize } from './use-element-size';
+export { useEventListener } from './use-event-listener';
+export { useInertOthers } from './use-inert-others';
+export { useIntersectionObserver } from './use-intersection-observer';
+export { useIsTouchDevice } from './use-is-touch-device';
+export { useIsTopLayer } from './use-is-top-layer';
+export { useOutsideClick } from './use-outside-click';
+export { useOwnerDocument } from './use-owner';
+export { useRefocusableInput } from './use-refocusable-input';
+export { useResolvedTag } from './use-resolved-tag';
+export { useResolveButtonType } from './use-resolve-button-type';
+export { useRootContainers } from './use-root-containers';
+export { useScrollLock } from './use-scroll-lock';
+export { useSyncRefs } from './use-sync-refs';
+export { useTextValue } from './use-text-value';
+export { useTrackedPointer } from './use-tracked-pointer';
+export { useTreeWalker } from './use-tree-walker';
+
+// State Management Hooks
+export { useByComparator } from './use-by-comparator';
+export { useComputed } from './use-computed';
+export { useControllable } from './use-controllable';
+export { useDefaultValue } from './use-default-value';
+export { useDisposables } from './use-disposables';
+export { useEvent } from './use-event';
+export { useFlags } from './use-flags';
+export { useLatestValue } from './use-latest-value';
+export { useLocalStorage } from './use-local-storage';
+export { usePrevious } from './use-previous';
+export { useStore } from './use-store';
+export { useWatch } from './use-watch';
+
+// Lifecycle Hooks
+export { useIsInitialRender } from './use-is-initial-render';
+export { useIsMounted } from './use-is-mounted';
+export { useIsoMorphicEffect } from './use-iso-morphic-effect';
+export { useOnDisappear } from './use-on-disappear';
+export { useOnUnmount } from './use-on-unmount';
+export { useServerHandoffComplete } from './use-server-handoff-complete';
+
+// UI and Interaction Hooks
+export { useCopyToClipboard } from './use-copy-to-clipboard';
+export { useDebounce } from './use-debounce';
+export { useEscape } from './use-escape';
+export { useId } from './use-id';
+export { useMediaQuery } from './use-media-query';
+export { useIsMobile } from './use-mobile';
+export { useQuickRelease } from './use-quick-release';
+export { useTabDirection } from './use-tab-direction';
+export { useThrottle } from './use-throttle';
+export { useTransition, transitionDataAttributes, type TransitionData } from './use-transition';
+export { useWindowEvent } from './use-window-event';

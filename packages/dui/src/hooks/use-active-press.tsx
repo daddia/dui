@@ -8,8 +8,8 @@ type Rect = { left: number; right: number; top: number; bottom: number };
 
 function pointerRectFromPointerEvent(event: PointerEvent): Rect {
   // Center of the pointer geometry
-  let offsetX = event.width / 2;
-  let offsetY = event.height / 2;
+  const offsetX = event.width / 2;
+  const offsetY = event.height / 2;
 
   return {
     top: event.clientY - offsetY,
@@ -36,18 +36,18 @@ function areRectsOverlapping(a: Rect | null, b: Rect | null) {
 }
 
 export function useActivePress({ disabled = false }: Partial<{ disabled: boolean }> = {}) {
-  let target = useRef<HTMLElement | null>(null);
-  let [pressed, setPressed] = useState(false);
+  const target = useRef<HTMLElement | null>(null);
+  const [pressed, setPressed] = useState(false);
 
-  let d = useDisposables();
+  const d = useDisposables();
 
-  let reset = useEvent(() => {
+  const reset = useEvent(() => {
     target.current = null;
     setPressed(false);
     d.dispose();
   });
 
-  let handlePointerDown = useEvent((event: PointerEvent) => {
+  const handlePointerDown = useEvent((event: PointerEvent) => {
     d.dispose(); // Cancel any scheduled tasks
 
     if (target.current !== null) return;
@@ -60,7 +60,7 @@ export function useActivePress({ disabled = false }: Partial<{ disabled: boolean
 
     // Setup global handlers to catch events on elements that are not the current element
     {
-      let owner = getOwnerDocument(event.currentTarget as Element)!;
+      const owner = getOwnerDocument(event.currentTarget as Element)!;
 
       // `pointerup` on any element means that we are no longer pressing the current element
       d.addEventListener(owner, 'pointerup', reset, false);
@@ -73,7 +73,7 @@ export function useActivePress({ disabled = false }: Partial<{ disabled: boolean
         'pointermove',
         (event: PointerEvent) => {
           if (target.current) {
-            let pointerRect = pointerRectFromPointerEvent(event);
+            const pointerRect = pointerRectFromPointerEvent(event);
             setPressed(areRectsOverlapping(pointerRect, target.current.getBoundingClientRect()));
           }
         },

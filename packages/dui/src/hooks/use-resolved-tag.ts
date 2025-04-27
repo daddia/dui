@@ -10,8 +10,8 @@ import * as DOM from '../utils/dom';
  * then we actually need to render the component to know what the tag name is.
  */
 export function useResolvedTag<T extends React.ElementType>(tag: T) {
-  let tagName = typeof tag === 'string' ? tag : undefined;
-  let [resolvedTag, setResolvedTag] = useState<string | undefined>(tagName);
+  const tagName = typeof tag === 'string' ? tag : undefined;
+  const [resolvedTag, setResolvedTag] = useState<string | undefined>(tagName);
 
   return [
     // The resolved tag name
@@ -19,7 +19,7 @@ export function useResolvedTag<T extends React.ElementType>(tag: T) {
 
     // This callback should be passed to the `ref` of a component
     useCallback(
-      (ref: any) => {
+      (ref: HTMLElement | null) => {
         // Tag name is already known and it's a string, no need to re-render
         if (tagName) return;
 

@@ -2,21 +2,21 @@ import { useEffect } from 'react';
 import { useLatestValue } from './use-latest-value';
 
 export function useEventListener<TType extends keyof WindowEventMap>(
-  element: HTMLElement | Document | Window | EventTarget | null | undefined,
+  elementInput: HTMLElement | Document | Window | EventTarget | null | undefined,
   type: TType,
-  listener: (event: WindowEventMap[TType]) => any,
+  listener: (event: WindowEventMap[TType]) => void,
   options?: boolean | AddEventListenerOptions,
 ) {
-  let listenerRef = useLatestValue(listener);
+  const listenerRef = useLatestValue(listener);
 
   useEffect(() => {
-    element = element ?? window;
+    const element = elementInput ?? window;
 
     function handler(event: WindowEventMap[TType]) {
       listenerRef.current(event);
     }
 
-    element.addEventListener(type, handler as any, options);
-    return () => element!.removeEventListener(type, handler as any, options);
-  }, [element, type, options]);
+    element.addEventListener(type, handler as EventListener, options);
+    return () => element.removeEventListener(type, handler as EventListener, options);
+  }, [elementInput, type, options, listenerRef]);
 }

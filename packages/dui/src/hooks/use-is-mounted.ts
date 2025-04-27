@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useIsoMorphicEffect } from './use-iso-morphic-effect';
 
 export function useIsMounted() {
-  let mounted = useRef(false);
+  const mounted = useRef(false);
 
   useIsoMorphicEffect(() => {
     mounted.current = true;

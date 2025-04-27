@@ -3,21 +3,21 @@ import { getTextValue } from '../utils/get-text-value';
 import { useEvent } from './use-event';
 
 export function useTextValue(element: MutableRefObject<HTMLElement | null>) {
-  let cacheKey = useRef<string>('');
-  let cacheValue = useRef<string>('');
+  const cacheKey = useRef<string>('');
+  const cacheValue = useRef<string>('');
 
   return useEvent(() => {
-    let el = element.current;
+    const el = element.current;
     if (!el) return '';
 
     // Check for a cached version
-    let currentKey = el.innerText;
+    const currentKey = el.innerText;
     if (cacheKey.current === currentKey) {
       return cacheValue.current;
     }
 
     // Calculate the value
-    let value = getTextValue(el).trim().toLowerCase();
+    const value = getTextValue(el).trim().toLowerCase();
     cacheKey.current = currentKey;
     cacheValue.current = value;
     return value;

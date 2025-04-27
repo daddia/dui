@@ -7,8 +7,8 @@ export enum Direction {
 }
 
 export function useTabDirection() {
-  let direction = useRef(Direction.Forwards);
-  let enabled = true;
+  const direction = useRef(Direction.Forwards);
+  const enabled = true;
 
   useWindowEvent(
     enabled,
