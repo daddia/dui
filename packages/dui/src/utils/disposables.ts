@@ -15,21 +15,21 @@ export type Disposables = ReturnType<typeof disposables>;
  * pending disposables in that collection.
  */
 export function disposables() {
-  let _disposables: Function[] = [];
+  const _disposables: (() => void)[] = [];
 
-  let api = {
+  const api = {
     addEventListener<TEventName extends keyof WindowEventMap>(
       element: HTMLElement | Window | Document,
       name: TEventName,
-      listener: (event: WindowEventMap[TEventName]) => any,
+      listener: (event: WindowEventMap[TEventName]) => unknown,
       options?: boolean | AddEventListenerOptions,
     ) {
-      element.addEventListener(name, listener as any, options);
-      return api.add(() => element.removeEventListener(name, listener as any, options));
+      element.addEventListener(name, listener as EventListener, options);
+      return api.add(() => element.removeEventListener(name, listener as EventListener, options));
     },
 
     requestAnimationFrame(...args: Parameters<typeof requestAnimationFrame>) {
-      let raf = requestAnimationFrame(...args);
+      const raf = requestAnimationFrame(...args);
       return api.add(() => cancelAnimationFrame(raf));
     },
 
@@ -40,12 +40,12 @@ export function disposables() {
     },
 
     setTimeout(...args: Parameters<typeof setTimeout>) {
-      let timer = setTimeout(...args);
+      const timer = setTimeout(...args);
       return api.add(() => clearTimeout(timer));
     },
 
     microTask(...args: Parameters<typeof microTask>) {
-      let task = { current: true };
+      const task = { current: true };
       microTask(() => {
         if (task.current) {
           args[0]();
@@ -57,7 +57,7 @@ export function disposables() {
     },
 
     style(node: ElementCSSInlineStyle, property: string, value: string) {
-      let previous = node.style.getPropertyValue(property);
+      const previous = node.style.getPropertyValue(property);
       Object.assign(node.style, { [property]: value });
       return this.add(() => {
         Object.assign(node.style, { [property]: previous });
@@ -65,7 +65,7 @@ export function disposables() {
     },
 
     group(cb: (d: typeof this) => void) {
-      let d = disposables();
+      const d = disposables();
       cb(d);
       return this.add(() => d.dispose());
     },
@@ -77,9 +77,9 @@ export function disposables() {
       }
 
       return () => {
-        let idx = _disposables.indexOf(cb);
+        const idx = _disposables.indexOf(cb);
         if (idx >= 0) {
-          for (let dispose of _disposables.splice(idx, 1)) {
+          for (const dispose of _disposables.splice(idx, 1)) {
             dispose();
           }
         }
@@ -87,7 +87,7 @@ export function disposables() {
     },
 
     dispose() {
-      for (let dispose of _disposables.splice(0)) {
+      for (const dispose of _disposables.splice(0)) {
         dispose();
       }
     },

@@ -1,4 +1,4 @@
-export class DefaultMap<T = string, V = any> extends Map<T, V> {
+export class DefaultMap<T = string, V = unknown> extends Map<T, V> {
   constructor(private factory: (key: T) => V) {
     super();
   }

@@ -49,4 +49,4 @@ class Env {
   }
 }
 
-export let env = new Env();
+export const env = new Env();

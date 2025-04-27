@@ -4,9 +4,12 @@ import * as DOM from './dom';
 import { match } from './match';
 import { getOwnerDocument } from './owner';
 
+// Check if we're in a test environment without triggering lint warnings
+const isTestEnv = typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'test';
+
 // Credit:
 //  - https://stackoverflow.com/a/30753870
-export let focusableSelector = [
+export const focusableSelector = [
   '[contentEditable=true]',
   '[tabindex]',
   'a[href]',
@@ -18,7 +21,7 @@ export let focusableSelector = [
   'textarea:not([disabled])',
 ]
   .map(
-    process.env.NODE_ENV === 'test'
+    isTestEnv
       ? // TODO: Remove this once JSDOM fixes the issue where an element that is
         // "hidden" can be the document.activeElement, because this is not possible
         // in real browsers.
@@ -27,12 +30,12 @@ export let focusableSelector = [
   )
   .join(',');
 
-let autoFocusableSelector = [
+const autoFocusableSelector = [
   // In a perfect world this was just `autofocus`, but React doesn't pass `autofocus` to the DOM...
   '[data-autofocus]',
 ]
   .map(
-    process.env.NODE_ENV === 'test'
+    isTestEnv
       ? // TODO: Remove this once JSDOM fixes the issue where an element that is
         // "hidden" can be the document.activeElement, because this is not possible
         // in real browsers.
@@ -133,7 +136,7 @@ export function isFocusableElement(
 }
 
 export function restoreFocusIfNecessary(element: HTMLElement | null) {
-  let ownerDocument = getOwnerDocument(element);
+  const ownerDocument = getOwnerDocument(element);
   disposables().nextFrame(() => {
     if (
       ownerDocument &&
@@ -191,7 +194,7 @@ export function focusElement(element: HTMLOrSVGElement | null) {
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select
-let selectableSelector = ['textarea', 'input'].join(',');
+const selectableSelector = ['textarea', 'input'].join(',');
 function isSelectableElement(
   element: Element | null,
 ): element is HTMLInputElement | HTMLTextAreaElement {
@@ -203,12 +206,12 @@ export function sortByDomNode<T>(
   resolveKey: (item: T) => HTMLElement | null = (i) => i as HTMLElement | null,
 ): T[] {
   return nodes.slice().sort((aItem, zItem) => {
-    let a = resolveKey(aItem);
-    let z = resolveKey(zItem);
+    const a = resolveKey(aItem);
+    const z = resolveKey(zItem);
 
     if (a === null || z === null) return 0;
 
-    let position = a.compareDocumentPosition(z);
+    const position = a.compareDocumentPosition(z);
 
     if (position & Node.DOCUMENT_POSITION_FOLLOWING) return -1;
     if (position & Node.DOCUMENT_POSITION_PRECEDING) return 1;
@@ -233,9 +236,9 @@ export function focusIn(
     skipElements: (HTMLElement | MutableRefObject<HTMLElement | null>)[];
   }> = {},
 ) {
-  let ownerDocument = Array.isArray(container)
+  const ownerDocument = Array.isArray(container)
     ? container.length > 0
-      ? container[0].ownerDocument
+      ? container[0]?.ownerDocument || document
       : document
     : container.ownerDocument;
 
@@ -261,14 +264,14 @@ export function focusIn(
 
   relativeTo = relativeTo ?? (ownerDocument.activeElement as HTMLElement);
 
-  let direction = (() => {
+  const direction = (() => {
     if (focus & (Focus.First | Focus.Next)) return Direction.Next;
     if (focus & (Focus.Previous | Focus.Last)) return Direction.Previous;
 
     throw new Error('Missing Focus.First, Focus.Previous, Focus.Next or Focus.Last');
   })();
 
-  let startIndex = (() => {
+  const startIndex = (() => {
     if (focus & Focus.First) return 0;
     if (focus & Focus.Previous) return Math.max(0, elements.indexOf(relativeTo)) - 1;
     if (focus & Focus.Next) return Math.max(0, elements.indexOf(relativeTo)) + 1;
@@ -277,10 +280,10 @@ export function focusIn(
     throw new Error('Missing Focus.First, Focus.Previous, Focus.Next or Focus.Last');
   })();
 
-  let focusOptions = focus & Focus.NoScroll ? { preventScroll: true } : {};
+  const focusOptions = focus & Focus.NoScroll ? { preventScroll: true } : {};
 
   let offset = 0;
-  let total = elements.length;
+  const total = elements.length;
   let next = undefined;
   do {
     // Guard against infinite loops

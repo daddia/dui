@@ -12,7 +12,7 @@ export function isDisabledReactIssue7711(element: Element): boolean {
     parent = parent.parentElement;
   }
 
-  let isParentDisabled = parent?.getAttribute('disabled') === '' ?? false;
+  const isParentDisabled = parent ? parent.getAttribute('disabled') === '' : false;
   if (isParentDisabled && isFirstLegend(legend)) return false;
 
   return isParentDisabled;

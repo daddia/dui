@@ -31,16 +31,17 @@ export function calculateActiveIndex<TItem>(
     resolveDisabled(item: TItem, index: number, items: TItem[]): boolean;
   },
 ) {
-  let items = resolvers.resolveItems();
+  const items = resolvers.resolveItems();
   if (items.length <= 0) return null;
 
-  let currentActiveIndex = resolvers.resolveActiveIndex();
+  const currentActiveIndex = resolvers.resolveActiveIndex();
   let activeIndex = currentActiveIndex ?? -1;
 
   switch (action.focus) {
     case Focus.First: {
       for (let i = 0; i < items.length; ++i) {
-        if (!resolvers.resolveDisabled(items[i], i, items)) {
+        const item = items[i];
+        if (item !== undefined && !resolvers.resolveDisabled(item, i, items)) {
           return i;
         }
       }
@@ -52,7 +53,8 @@ export function calculateActiveIndex<TItem>(
       if (activeIndex === -1) activeIndex = items.length;
 
       for (let i = activeIndex - 1; i >= 0; --i) {
-        if (!resolvers.resolveDisabled(items[i], i, items)) {
+        const item = items[i];
+        if (item !== undefined && !resolvers.resolveDisabled(item, i, items)) {
           return i;
         }
       }
@@ -61,7 +63,8 @@ export function calculateActiveIndex<TItem>(
 
     case Focus.Next: {
       for (let i = activeIndex + 1; i < items.length; ++i) {
-        if (!resolvers.resolveDisabled(items[i], i, items)) {
+        const item = items[i];
+        if (item !== undefined && !resolvers.resolveDisabled(item, i, items)) {
           return i;
         }
       }
@@ -70,7 +73,8 @@ export function calculateActiveIndex<TItem>(
 
     case Focus.Last: {
       for (let i = items.length - 1; i >= 0; --i) {
-        if (!resolvers.resolveDisabled(items[i], i, items)) {
+        const item = items[i];
+        if (item !== undefined && !resolvers.resolveDisabled(item, i, items)) {
           return i;
         }
       }
@@ -79,7 +83,8 @@ export function calculateActiveIndex<TItem>(
 
     case Focus.Specific: {
       for (let i = 0; i < items.length; ++i) {
-        if (resolvers.resolveId(items[i], i, items) === action.id) {
+        const item = items[i];
+        if (item !== undefined && resolvers.resolveId(item, i, items) === action.id) {
           return i;
         }
       }
