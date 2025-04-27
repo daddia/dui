@@ -59,9 +59,14 @@ export type ElementProps<T extends ElementType> = Props<T>;
 export function forwardRefWithAs<T extends { name: string; displayName?: string }>(
   component: T,
 ): T & { displayName: string } {
-  return Object.assign(forwardRef(component as unknown as React.ForwardRefRenderFunction<unknown, unknown>) as unknown as T, {
-    displayName: component.displayName ?? component.name,
-  });
+  return Object.assign(
+    forwardRef(
+      component as unknown as React.ForwardRefRenderFunction<unknown, unknown>,
+    ) as unknown as T,
+    {
+      displayName: component.displayName ?? component.name,
+    },
+  );
 }
 
 // Remove properties from an object
