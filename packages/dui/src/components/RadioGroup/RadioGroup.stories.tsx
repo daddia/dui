@@ -215,5 +215,5 @@ const ControlledRadioGroupExample = () => {
 };
 
 export const Controlled: Story = {
-  render: () => <ControlledRadioGroupExample />
+  render: () => <ControlledRadioGroupExample />,
 };

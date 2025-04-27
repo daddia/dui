@@ -122,5 +122,5 @@ const ControlledSwitchExample = () => {
 };
 
 export const ControlledExample: Story = {
-  render: () => <ControlledSwitchExample />
+  render: () => <ControlledSwitchExample />,
 };

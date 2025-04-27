@@ -6,49 +6,54 @@ import { Dialog } from './Dialog';
 jest.mock('@radix-ui/react-dialog', () => {
   const actual = jest.requireActual('@radix-ui/react-dialog');
 
-  const Overlay = React.forwardRef<HTMLDivElement, { children?: React.ReactNode; className?: string }>(
-    ({ children, className }, ref) => (
-      <div data-testid="dialog-overlay" className={className} ref={ref}>
-        {children}
-      </div>
-    )
-  );
+  const Overlay = React.forwardRef<
+    HTMLDivElement,
+    { children?: React.ReactNode; className?: string }
+  >(({ children, className }, ref) => (
+    <div data-testid="dialog-overlay" className={className} ref={ref}>
+      {children}
+    </div>
+  ));
   Overlay.displayName = 'MockOverlay';
 
-  const Content = React.forwardRef<HTMLDivElement, { children?: React.ReactNode; className?: string }>(
-    ({ children, className }, ref) => (
-      <div data-testid="dialog-content" className={className} ref={ref}>
-        {children}
-      </div>
-    )
-  );
+  const Content = React.forwardRef<
+    HTMLDivElement,
+    { children?: React.ReactNode; className?: string }
+  >(({ children, className }, ref) => (
+    <div data-testid="dialog-content" className={className} ref={ref}>
+      {children}
+    </div>
+  ));
   Content.displayName = 'MockContent';
 
-  const Title = React.forwardRef<HTMLHeadingElement, { children?: React.ReactNode; className?: string }>(
-    ({ children, className }, ref) => (
-      <h2 data-testid="dialog-title" className={className} ref={ref}>
-        {children}
-      </h2>
-    )
-  );
+  const Title = React.forwardRef<
+    HTMLHeadingElement,
+    { children?: React.ReactNode; className?: string }
+  >(({ children, className }, ref) => (
+    <h2 data-testid="dialog-title" className={className} ref={ref}>
+      {children}
+    </h2>
+  ));
   Title.displayName = 'MockTitle';
 
-  const Description = React.forwardRef<HTMLParagraphElement, { children?: React.ReactNode; className?: string }>(
-    ({ children, className }, ref) => (
-      <p data-testid="dialog-description" className={className} ref={ref}>
-        {children}
-      </p>
-    )
-  );
+  const Description = React.forwardRef<
+    HTMLParagraphElement,
+    { children?: React.ReactNode; className?: string }
+  >(({ children, className }, ref) => (
+    <p data-testid="dialog-description" className={className} ref={ref}>
+      {children}
+    </p>
+  ));
   Description.displayName = 'MockDescription';
 
-  const Close = React.forwardRef<HTMLButtonElement, { children?: React.ReactNode; className?: string }>(
-    ({ children, className }, ref) => (
-      <button data-testid="dialog-close" className={className} ref={ref}>
-        {children}
-      </button>
-    )
-  );
+  const Close = React.forwardRef<
+    HTMLButtonElement,
+    { children?: React.ReactNode; className?: string }
+  >(({ children, className }, ref) => (
+    <button data-testid="dialog-close" className={className} ref={ref}>
+      {children}
+    </button>
+  ));
   Close.displayName = 'MockClose';
 
   return {
@@ -58,8 +63,12 @@ jest.mock('@radix-ui/react-dialog', () => {
         {children}
       </div>
     ),
-    Trigger: ({ children }: { children: React.ReactNode }) => <div data-testid="dialog-trigger">{children}</div>,
-    Portal: ({ children }: { children: React.ReactNode }) => <div data-testid="dialog-portal">{children}</div>,
+    Trigger: ({ children }: { children: React.ReactNode }) => (
+      <div data-testid="dialog-trigger">{children}</div>
+    ),
+    Portal: ({ children }: { children: React.ReactNode }) => (
+      <div data-testid="dialog-portal">{children}</div>
+    ),
     Overlay,
     Content,
     Title,

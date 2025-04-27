@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "build": "pnpm storybook:build",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "start": "serve -s ./storybook-static -l 6006",

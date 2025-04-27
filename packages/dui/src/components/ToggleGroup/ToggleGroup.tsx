@@ -50,16 +50,7 @@ const SingleToggleGroup = React.forwardRef<
   }
 >(
   (
-    {
-      className,
-      variant,
-      orientation,
-      children,
-      value,
-      defaultValue,
-      onValueChange,
-      ...rest
-    },
+    { className, variant, orientation, children, value, defaultValue, onValueChange, ...rest },
     ref,
   ) => {
     return (
@@ -90,16 +81,7 @@ const MultipleToggleGroup = React.forwardRef<
   }
 >(
   (
-    {
-      className,
-      variant,
-      orientation,
-      children,
-      value,
-      defaultValue,
-      onValueChange,
-      ...rest
-    },
+    { className, variant, orientation, children, value, defaultValue, onValueChange, ...rest },
     ref,
   ) => {
     return (
