@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ContextMenu } from './ContextMenu';
 
 const meta: Meta<typeof ContextMenu> = {
-  title: 'Components/ContextMenu',
+  title: 'Navigation/ContextMenu',
   component: ContextMenu,
   tags: ['autodocs'],
   parameters: {

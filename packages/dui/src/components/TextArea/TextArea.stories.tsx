@@ -3,7 +3,7 @@ import { TextArea } from './TextArea';
 import { Label } from '../Label';
 
 const meta: Meta<typeof TextArea> = {
-  title: 'Components/TextArea',
+  title: 'Inputs/TextArea',
   component: TextArea,
   argTypes: {
     variant: {

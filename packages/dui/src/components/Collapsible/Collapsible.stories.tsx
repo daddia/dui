@@ -4,7 +4,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './Collapsib
 import { Button } from '../Button';
 
 const meta: Meta<typeof Collapsible> = {
-  title: 'Components/Collapsible',
+  title: 'Surfaces/Collapsible',
   component: Collapsible,
   tags: ['autodocs'],
   argTypes: {
