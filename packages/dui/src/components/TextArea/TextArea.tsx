@@ -1,7 +1,7 @@
 import React, { useId } from 'react';
 import { textAreaVariants, textAreaWrapperVariants } from './TextArea.styles';
 import { TextAreaProps } from './TextArea.types';
-import { cn } from '@/lib/utils';
+import { cn } from '../../utils/cn';
 import { Slot } from '@radix-ui/react-slot';
 
 export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
@@ -34,6 +34,18 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
     const hasHelperText = !!helperText;
     const showFooter = hasError || hasSuccess || hasHelperText || showCount;
 
+    // Convert rows to the expected type if it's a number
+    const rowsValue =
+      typeof rows === 'number'
+        ? rows <= 3
+          ? 'sm'
+          : rows <= 5
+            ? 'md'
+            : rows <= 8
+              ? 'lg'
+              : 'xl'
+        : rows;
+
     const Comp = asChild ? Slot : 'textarea';
 
     return (
@@ -41,7 +53,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         <Comp
           ref={ref}
           id={textareaId}
-          className={textAreaVariants({ variant, resize, rows, className })}
+          className={textAreaVariants({ variant, resize, rows: rowsValue, className })}
           aria-invalid={hasError}
           value={value}
           maxLength={maxLength}

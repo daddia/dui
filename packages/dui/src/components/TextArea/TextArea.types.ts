@@ -1,9 +1,12 @@
-import { VariantProps } from 'class-variance-authority';
+import { VariantProps } from 'tailwind-variants';
 import { textAreaVariants } from './TextArea.styles';
 
+// Define the rows types explicitly
+type TextAreaRowsType = 'default' | 'sm' | 'md' | 'lg' | 'xl';
+
 export interface TextAreaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement>,
-    VariantProps<typeof textAreaVariants> {
+  extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'rows'>,
+    Omit<VariantProps<typeof textAreaVariants>, 'rows'> {
   /**
    * Error message to display below the textarea
    */
@@ -36,4 +39,8 @@ export interface TextAreaProps
    * If `true`, the component will merge its props onto its child
    */
   asChild?: boolean;
+  /**
+   * Number of rows or predefined size
+   */
+  rows?: number | TextAreaRowsType;
 }
