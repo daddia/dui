@@ -17,7 +17,7 @@ const external = [
 ];
 
 // Create a multi-entry configuration for JS/TS files
-const createRollupConfig = (input, output) => ({
+const createRollupConfig = (input) => ({
   input,
   output: {
     dir: 'dist',

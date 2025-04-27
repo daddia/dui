@@ -8,7 +8,6 @@ import {
   alertDialogTitleVariants,
 } from './AlertDialog.styles';
 import {
-  AlertDialogProps,
   AlertDialogTriggerProps,
   AlertDialogContentProps,
   AlertDialogOverlayProps,
@@ -24,7 +23,6 @@ import { cn } from '../../utils/cn';
 import { Button } from '../Button';
 
 const AlertDialogRoot = RadixAlertDialog.Root;
-const AlertDialogPortal = RadixAlertDialog.Portal;
 
 const AlertDialogTrigger = React.forwardRef<
   React.ElementRef<typeof RadixAlertDialog.Trigger>,
@@ -51,7 +49,7 @@ AlertDialogOverlay.displayName = 'AlertDialogOverlay';
 const AlertDialogContent = React.forwardRef<
   React.ElementRef<typeof RadixAlertDialog.Content>,
   AlertDialogContentProps
->(({ className, size, focusable = false, children, ...props }, ref) => (
+>(({ className, size, children, ...props }, ref) => (
   <RadixAlertDialog.Portal>
     <AlertDialogOverlay />
     <RadixAlertDialog.Content

@@ -40,7 +40,7 @@ const DialogTrigger = React.forwardRef<
 DialogTrigger.displayName = 'DialogTrigger';
 
 // Dialog Portal Component
-const DialogPortal = ({ asChild = false, container, ...props }: DialogPortalProps) => {
+const DialogPortal = ({ container, ...props }: DialogPortalProps) => {
   return <DialogPrimitive.Portal container={container} {...props} />;
 };
 DialogPortal.displayName = 'DialogPortal';
@@ -88,7 +88,6 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
       closeOnClickOutside = true,
       closeOnEscape = true,
       asChild = false,
-      forceMount,
       ...props
     },
     ref,

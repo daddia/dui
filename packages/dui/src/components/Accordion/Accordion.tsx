@@ -94,6 +94,7 @@ const SingleAccordion = React.forwardRef<
     {...restProps}
   />
 ));
+SingleAccordion.displayName = 'SingleAccordion';
 
 // Multiple accordion implementation
 const MultipleAccordion = React.forwardRef<
@@ -110,6 +111,7 @@ const MultipleAccordion = React.forwardRef<
     {...restProps}
   />
 ));
+MultipleAccordion.displayName = 'MultipleAccordion';
 
 // Main accordion component that renders the right variant based on type
 const Accordion = React.forwardRef<React.ElementRef<typeof RadixAccordion.Root>, AccordionProps>(
@@ -117,10 +119,10 @@ const Accordion = React.forwardRef<React.ElementRef<typeof RadixAccordion.Root>,
     // Explicitly typed accordion
     if ('type' in props && props.type !== undefined) {
       if (props.type === 'single') {
-        const { type, ...singleProps } = props as AccordionSingleProps;
+        const { ...singleProps } = props as AccordionSingleProps;
         return <SingleAccordion ref={ref} className={className} {...singleProps} />;
       } else {
-        const { type, ...multipleProps } = props as AccordionMultipleProps;
+        const { ...multipleProps } = props as AccordionMultipleProps;
         return <MultipleAccordion ref={ref} className={className} {...multipleProps} />;
       }
     }

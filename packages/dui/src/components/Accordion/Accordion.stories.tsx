@@ -97,7 +97,7 @@ export const WithoutIcon: Story = {
       <AccordionItem value="item-1">
         <AccordionTrigger icon={false}>Without icon</AccordionTrigger>
         <AccordionContent>
-          This trigger doesn't have an icon, but you can add your own.
+          This trigger doesn&apos;t have an icon, but you can add your own.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2">
@@ -118,7 +118,7 @@ export const DisabledItem: Story = {
       <AccordionItem value="item-2" disabled>
         <AccordionTrigger>Disabled item</AccordionTrigger>
         <AccordionContent>
-          This content won't be visible because the item is disabled.
+          This content won&apos;t be visible because the item is disabled.
         </AccordionContent>
       </AccordionItem>
     </Accordion>

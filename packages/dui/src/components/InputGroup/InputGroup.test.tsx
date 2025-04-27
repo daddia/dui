@@ -25,7 +25,7 @@ describe('InputGroup', () => {
   });
 
   it('works with data-slot icon elements', () => {
-    const { container } = render(
+    render(
       <InputGroup>
         <span data-slot="icon" data-testid="icon">
           🔍

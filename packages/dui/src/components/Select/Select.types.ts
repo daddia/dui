@@ -1,7 +1,7 @@
-import { ComponentPropsWithoutRef, ElementRef, ReactNode } from 'react';
+import { ComponentPropsWithoutRef, ReactNode } from 'react';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import type { VariantProps } from 'tailwind-variants';
-import { selectVariants, selectTriggerVariants, selectLabelVariants } from './Select.styles';
+import { selectTriggerVariants, selectLabelVariants } from './Select.styles';
 
 export type SelectSize = 'sm' | 'md' | 'lg';
 export type SelectVariant = 'default' | 'outline' | 'ghost';

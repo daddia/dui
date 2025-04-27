@@ -14,7 +14,7 @@ export interface ContextMenuBaseProps {
 }
 
 // Props for the root ContextMenu component
-export interface ContextMenuRootProps extends ContextMenuPrimitive.ContextMenuProps {}
+export type ContextMenuRootProps = ContextMenuPrimitive.ContextMenuProps;
 
 // Props for the ContextMenuTrigger component
 export interface ContextMenuTriggerProps

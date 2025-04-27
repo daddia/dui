@@ -32,7 +32,7 @@ export const Basic: Story = {
         <Dialog.Header>
           <Dialog.Title>Edit Profile</Dialog.Title>
           <Dialog.Description>
-            Make changes to your profile here. Click save when you're done.
+            Make changes to your profile here. Click save when you&apos;re done.
           </Dialog.Description>
         </Dialog.Header>
         <div className="grid gap-4 py-4">
@@ -85,7 +85,7 @@ export const Sizes: Story = {
             <div className="py-4">
               <p>
                 The content of the dialog changes its max-width based on the selected size. This one
-                is set to "{size}".
+                is set to &quot;{size}&quot;.
               </p>
             </div>
             <Dialog.Footer>
@@ -111,7 +111,7 @@ export const WithoutCloseButton: Story = {
         <Dialog.Header>
           <Dialog.Title>No Close Button</Dialog.Title>
           <Dialog.Description>
-            This dialog doesn't have a close button in the corner.
+            This dialog doesn&apos;t have a close button in the corner.
           </Dialog.Description>
         </Dialog.Header>
         <div className="py-4">

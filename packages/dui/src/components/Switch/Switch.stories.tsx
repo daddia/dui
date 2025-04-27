@@ -100,24 +100,27 @@ export const Variants: Story = {
   ),
 };
 
-export const ControlledExample: Story = {
-  render: () => {
-    const [checked, setChecked] = React.useState(true);
+// Create a proper React component for the controlled example
+const ControlledSwitchExample = () => {
+  const [checked, setChecked] = React.useState(true);
 
-    return (
-      <div className="flex flex-col gap-4">
-        <Switch
-          checked={checked}
-          onCheckedChange={setChecked}
-          label={`Checked: ${checked ? 'Yes' : 'No'}`}
-        />
-        <button
-          onClick={() => setChecked(!checked)}
-          className="bg-primary rounded px-4 py-2 text-white"
-        >
-          Toggle from outside
-        </button>
-      </div>
-    );
-  },
+  return (
+    <div className="flex flex-col gap-4">
+      <Switch
+        checked={checked}
+        onCheckedChange={setChecked}
+        label={`Checked: ${checked ? 'Yes' : 'No'}`}
+      />
+      <button
+        onClick={() => setChecked(!checked)}
+        className="bg-primary rounded px-4 py-2 text-white"
+      >
+        Toggle from outside
+      </button>
+    </div>
+  );
+};
+
+export const ControlledExample: Story = {
+  render: () => <ControlledSwitchExample />
 };

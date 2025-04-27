@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentPropsWithoutRef, ElementRef, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible';
 import { VariantProps } from 'tailwind-variants';
 import {

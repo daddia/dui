@@ -1,7 +1,5 @@
 import { ComponentPropsWithoutRef, ElementRef } from 'react';
 import * as SliderPrimitive from '@radix-ui/react-slider';
-import type { VariantProps } from 'tailwind-variants';
-import { sliderVariants } from './Slider.styles';
 
 export type SliderSize = 'sm' | 'md' | 'lg';
 export type SliderVariant = 'default' | 'gradient';

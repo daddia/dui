@@ -34,9 +34,6 @@ const {
   subTrigger: subTriggerStyles,
   subContent: subContentStyles,
   group: groupStyles,
-  groupLabel: groupLabelStyles,
-  itemIndicator: itemIndicatorStyles,
-  radioIndicator: radioIndicatorStyles,
 } = contextMenuVariants();
 
 // Root Context Menu Component

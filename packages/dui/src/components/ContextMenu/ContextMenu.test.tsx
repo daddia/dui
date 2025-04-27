@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
 import { ContextMenu } from './ContextMenu';
 
 // Mock the keyboard interactions since userEvent can't fully simulate right-click

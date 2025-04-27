@@ -12,7 +12,7 @@ export interface DialogBaseProps {
 }
 
 // Props for the root Dialog component
-export interface DialogRootProps extends DialogPrimitive.DialogProps {}
+export type DialogRootProps = DialogPrimitive.DialogProps;
 
 // Props for the DialogTrigger component
 export interface DialogTriggerProps extends DialogPrimitive.DialogTriggerProps, DialogBaseProps {}
@@ -56,11 +56,6 @@ export interface DialogContentProps
    * @default "lg"
    */
   size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
-
-  /**
-   * When true, will disable the close functionality from the Escape key and dismiss button
-   */
-  forceMount?: true;
 
   /**
    * When true, will close the dialog when clicking outside of it

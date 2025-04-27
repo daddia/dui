@@ -1,45 +1,70 @@
 import * as React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
 import { Dialog } from './Dialog';
 
 // Mock the Dialog component for testing since we can't easily test portals
 jest.mock('@radix-ui/react-dialog', () => {
   const actual = jest.requireActual('@radix-ui/react-dialog');
+
+  const Overlay = React.forwardRef<HTMLDivElement, { children?: React.ReactNode; className?: string }>(
+    ({ children, className }, ref) => (
+      <div data-testid="dialog-overlay" className={className} ref={ref}>
+        {children}
+      </div>
+    )
+  );
+  Overlay.displayName = 'MockOverlay';
+
+  const Content = React.forwardRef<HTMLDivElement, { children?: React.ReactNode; className?: string }>(
+    ({ children, className }, ref) => (
+      <div data-testid="dialog-content" className={className} ref={ref}>
+        {children}
+      </div>
+    )
+  );
+  Content.displayName = 'MockContent';
+
+  const Title = React.forwardRef<HTMLHeadingElement, { children?: React.ReactNode; className?: string }>(
+    ({ children, className }, ref) => (
+      <h2 data-testid="dialog-title" className={className} ref={ref}>
+        {children}
+      </h2>
+    )
+  );
+  Title.displayName = 'MockTitle';
+
+  const Description = React.forwardRef<HTMLParagraphElement, { children?: React.ReactNode; className?: string }>(
+    ({ children, className }, ref) => (
+      <p data-testid="dialog-description" className={className} ref={ref}>
+        {children}
+      </p>
+    )
+  );
+  Description.displayName = 'MockDescription';
+
+  const Close = React.forwardRef<HTMLButtonElement, { children?: React.ReactNode; className?: string }>(
+    ({ children, className }, ref) => (
+      <button data-testid="dialog-close" className={className} ref={ref}>
+        {children}
+      </button>
+    )
+  );
+  Close.displayName = 'MockClose';
+
   return {
     ...actual,
-    Root: ({ children, open, defaultOpen }: any) => (
+    Root: ({ children, open }: { children: React.ReactNode; open?: boolean }) => (
       <div data-testid="dialog-root" data-state={open ? 'open' : 'closed'}>
         {children}
       </div>
     ),
-    Trigger: ({ children }: any) => <div data-testid="dialog-trigger">{children}</div>,
-    Portal: ({ children }: any) => <div data-testid="dialog-portal">{children}</div>,
-    Overlay: React.forwardRef(({ children, className }: any, ref: any) => (
-      <div data-testid="dialog-overlay" className={className} ref={ref}>
-        {children}
-      </div>
-    )),
-    Content: React.forwardRef(({ children, className }: any, ref: any) => (
-      <div data-testid="dialog-content" className={className} ref={ref}>
-        {children}
-      </div>
-    )),
-    Title: React.forwardRef(({ children, className }: any, ref: any) => (
-      <h2 data-testid="dialog-title" className={className} ref={ref}>
-        {children}
-      </h2>
-    )),
-    Description: React.forwardRef(({ children, className }: any, ref: any) => (
-      <p data-testid="dialog-description" className={className} ref={ref}>
-        {children}
-      </p>
-    )),
-    Close: React.forwardRef(({ children, className }: any, ref: any) => (
-      <button data-testid="dialog-close" className={className} ref={ref}>
-        {children}
-      </button>
-    )),
+    Trigger: ({ children }: { children: React.ReactNode }) => <div data-testid="dialog-trigger">{children}</div>,
+    Portal: ({ children }: { children: React.ReactNode }) => <div data-testid="dialog-portal">{children}</div>,
+    Overlay,
+    Content,
+    Title,
+    Description,
+    Close,
   };
 });
 

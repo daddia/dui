@@ -1,7 +1,5 @@
 import { ComponentPropsWithoutRef, ElementRef } from 'react';
 import * as SwitchPrimitive from '@radix-ui/react-switch';
-import type { VariantProps } from 'tailwind-variants';
-import { switchVariants } from './Switch.styles';
 
 export type SwitchSize = 'sm' | 'md' | 'lg';
 export type SwitchVariant = 'default' | 'primary' | 'success' | 'danger' | 'warning';

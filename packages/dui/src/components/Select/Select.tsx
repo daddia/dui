@@ -27,8 +27,6 @@ import type {
   SelectGroupProps,
   SelectLabelProps,
   SelectSeparatorProps,
-  SelectSize,
-  SelectVariant,
 } from './Select.types';
 
 // Custom icons instead of using lucide-react
@@ -89,7 +87,7 @@ function typedCloneElement<P>(
   props?: Partial<P>,
   ...children: React.ReactNode[]
 ): React.ReactElement<P> {
-  return React.cloneElement(element, props as any, ...children);
+  return React.cloneElement(element, props as Partial<P>, ...children);
 }
 
 const SelectRoot = React.forwardRef<SelectRef, SelectProps>(
@@ -107,7 +105,7 @@ const SelectRoot = React.forwardRef<SelectRef, SelectProps>(
   ) => {
     return (
       <SelectPrimitive.Root {...props}>
-        <div className={cn(selectVariants({ disabled }), className)}>
+        <div ref={ref} className={cn(selectVariants({ disabled }), className)}>
           {React.Children.map(children, (child) => {
             if (!React.isValidElement(child)) {
               return child;

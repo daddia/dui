@@ -1,7 +1,5 @@
 import { ComponentPropsWithoutRef, ElementRef, ReactNode } from 'react';
 import * as RadixScrollArea from '@radix-ui/react-scroll-area';
-import type { VariantProps } from 'tailwind-variants';
-import { scrollAreaVariants } from './ScrollArea.styles';
 
 export type ScrollbarSize = 'sm' | 'md' | 'lg';
 export type ScrollOrientation = 'vertical' | 'horizontal' | 'both';

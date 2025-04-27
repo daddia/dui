@@ -54,8 +54,6 @@ const SingleToggleGroup = React.forwardRef<
       className,
       variant,
       orientation,
-      size,
-      shape,
       children,
       value,
       defaultValue,
@@ -64,9 +62,6 @@ const SingleToggleGroup = React.forwardRef<
     },
     ref,
   ) => {
-    // Remove type from rest to avoid duplication
-    const { type, ...otherProps } = rest as any;
-
     return (
       <RadixToggleGroup.Root
         ref={ref}
@@ -76,13 +71,14 @@ const SingleToggleGroup = React.forwardRef<
         value={value}
         defaultValue={defaultValue}
         onValueChange={onValueChange}
-        {...otherProps}
+        {...rest}
       >
         {children}
       </RadixToggleGroup.Root>
     );
   },
 );
+SingleToggleGroup.displayName = 'SingleToggleGroup';
 
 // Component for multiple type toggle group
 const MultipleToggleGroup = React.forwardRef<
@@ -98,8 +94,6 @@ const MultipleToggleGroup = React.forwardRef<
       className,
       variant,
       orientation,
-      size,
-      shape,
       children,
       value,
       defaultValue,
@@ -108,9 +102,6 @@ const MultipleToggleGroup = React.forwardRef<
     },
     ref,
   ) => {
-    // Remove type from rest to avoid duplication
-    const { type, ...otherProps } = rest as any;
-
     return (
       <RadixToggleGroup.Root
         ref={ref}
@@ -120,13 +111,14 @@ const MultipleToggleGroup = React.forwardRef<
         value={value}
         defaultValue={defaultValue}
         onValueChange={onValueChange}
-        {...otherProps}
+        {...rest}
       >
         {children}
       </RadixToggleGroup.Root>
     );
   },
 );
+MultipleToggleGroup.displayName = 'MultipleToggleGroup';
 
 // Main ToggleGroup component that delegates to the appropriate typed version
 const ToggleGroup = React.forwardRef<
@@ -157,8 +149,6 @@ const ToggleGroup = React.forwardRef<
             className={className}
             variant={variant}
             orientation={orientation}
-            size={size}
-            shape={shape}
             value={typeof value === 'string' ? value : undefined}
             defaultValue={typeof defaultValue === 'string' ? defaultValue : undefined}
             onValueChange={onValueChange as (value: string) => void}
@@ -172,8 +162,6 @@ const ToggleGroup = React.forwardRef<
             className={className}
             variant={variant}
             orientation={orientation}
-            size={size}
-            shape={shape}
             value={Array.isArray(value) ? value : undefined}
             defaultValue={Array.isArray(defaultValue) ? defaultValue : undefined}
             onValueChange={onValueChange as (value: string[]) => void}

@@ -1,7 +1,6 @@
 import React, { forwardRef } from 'react';
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible';
 import { ChevronDown } from 'lucide-react';
-import { cn } from '../../utils';
 import {
   CollapsibleContentProps,
   CollapsibleProps,

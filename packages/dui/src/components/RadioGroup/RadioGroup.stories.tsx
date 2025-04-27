@@ -174,43 +174,46 @@ export const Colors: Story = {
   ),
 };
 
-export const Controlled: Story = {
-  render: () => {
-    const [value, setValue] = React.useState('option-2');
+// Create a proper React component for the Controlled story
+const ControlledRadioGroupExample = () => {
+  const [value, setValue] = React.useState('option-2');
 
-    return (
-      <div className="space-y-4">
-        <RadioGroup value={value} onValueChange={setValue} label="Controlled radio group">
-          <RadioGroup.Item value="option-1" label="Option 1" />
-          <RadioGroup.Item value="option-2" label="Option 2" />
-          <RadioGroup.Item value="option-3" label="Option 3" />
-        </RadioGroup>
+  return (
+    <div className="space-y-4">
+      <RadioGroup value={value} onValueChange={setValue} label="Controlled radio group">
+        <RadioGroup.Item value="option-1" label="Option 1" />
+        <RadioGroup.Item value="option-2" label="Option 2" />
+        <RadioGroup.Item value="option-3" label="Option 3" />
+      </RadioGroup>
 
-        <div className="text-sm">
-          Selected value: <span className="font-bold">{value}</span>
-        </div>
-
-        <div className="flex gap-2">
-          <button
-            onClick={() => setValue('option-1')}
-            className="bg-primary text-primary-foreground rounded px-2 py-1 text-xs"
-          >
-            Select Option 1
-          </button>
-          <button
-            onClick={() => setValue('option-2')}
-            className="bg-primary text-primary-foreground rounded px-2 py-1 text-xs"
-          >
-            Select Option 2
-          </button>
-          <button
-            onClick={() => setValue('option-3')}
-            className="bg-primary text-primary-foreground rounded px-2 py-1 text-xs"
-          >
-            Select Option 3
-          </button>
-        </div>
+      <div className="text-sm">
+        Selected value: <span className="font-bold">{value}</span>
       </div>
-    );
-  },
+
+      <div className="flex gap-2">
+        <button
+          onClick={() => setValue('option-1')}
+          className="bg-primary text-primary-foreground rounded px-2 py-1 text-xs"
+        >
+          Select Option 1
+        </button>
+        <button
+          onClick={() => setValue('option-2')}
+          className="bg-primary text-primary-foreground rounded px-2 py-1 text-xs"
+        >
+          Select Option 2
+        </button>
+        <button
+          onClick={() => setValue('option-3')}
+          className="bg-primary text-primary-foreground rounded px-2 py-1 text-xs"
+        >
+          Select Option 3
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export const Controlled: Story = {
+  render: () => <ControlledRadioGroupExample />
 };

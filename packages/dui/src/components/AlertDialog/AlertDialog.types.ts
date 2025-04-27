@@ -8,9 +8,9 @@ import {
   alertDialogTitleVariants,
 } from './AlertDialog.styles';
 
-export interface AlertDialogProps extends RadixAlertDialog.AlertDialogProps {}
+export type AlertDialogProps = RadixAlertDialog.AlertDialogProps;
 
-export interface AlertDialogTriggerProps extends RadixAlertDialog.AlertDialogTriggerProps {}
+export type AlertDialogTriggerProps = RadixAlertDialog.AlertDialogTriggerProps;
 
 export interface AlertDialogContentProps
   extends RadixAlertDialog.AlertDialogContentProps,
@@ -28,27 +28,23 @@ export interface AlertDialogContentProps
   focusable?: boolean;
 }
 
-export interface AlertDialogOverlayProps
-  extends RadixAlertDialog.AlertDialogOverlayProps,
-    VariantProps<typeof alertDialogOverlayVariants> {}
+export type AlertDialogOverlayProps = RadixAlertDialog.AlertDialogOverlayProps &
+  VariantProps<typeof alertDialogOverlayVariants>;
 
-export interface AlertDialogHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type AlertDialogHeaderProps = React.HTMLAttributes<HTMLDivElement>;
 
-export interface AlertDialogFooterProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof alertDialogFooterVariants> {}
+export type AlertDialogFooterProps = React.HTMLAttributes<HTMLDivElement> &
+  VariantProps<typeof alertDialogFooterVariants>;
 
-export interface AlertDialogTitleProps
-  extends RadixAlertDialog.AlertDialogTitleProps,
-    VariantProps<typeof alertDialogTitleVariants> {}
+export type AlertDialogTitleProps = RadixAlertDialog.AlertDialogTitleProps &
+  VariantProps<typeof alertDialogTitleVariants>;
 
-export interface AlertDialogDescriptionProps
-  extends RadixAlertDialog.AlertDialogDescriptionProps,
-    VariantProps<typeof alertDialogDescriptionVariants> {}
+export type AlertDialogDescriptionProps = RadixAlertDialog.AlertDialogDescriptionProps &
+  VariantProps<typeof alertDialogDescriptionVariants>;
 
-export interface AlertDialogActionProps extends RadixAlertDialog.AlertDialogActionProps {}
+export type AlertDialogActionProps = RadixAlertDialog.AlertDialogActionProps;
 
-export interface AlertDialogCancelProps extends RadixAlertDialog.AlertDialogCancelProps {}
+export type AlertDialogCancelProps = RadixAlertDialog.AlertDialogCancelProps;
 
 export interface UseAlertDialogProps {
   /**
