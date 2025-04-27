@@ -29,7 +29,7 @@ export function useControllable<T>(
 
   return [
     (isControlled ? controlledValue : internalValue)!,
-    useEvent((value) => {
+    useEvent((value: T) => {
       if (isControlled) {
         return onChange?.(value);
       } else {

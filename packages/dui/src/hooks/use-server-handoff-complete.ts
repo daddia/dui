@@ -22,12 +22,12 @@ function useIsHydratingInReact18(): boolean {
   // because `useSyncExternalStore` isn't defined in React < 18
   const useSyncExternalStore = ((r) => r.useSyncExternalStore)(React);
 
-  // @ts-expect-error The type definitions for useSyncExternalStore are complex, and we're using it in a non-standard way here
+  // The type definitions for useSyncExternalStore are complex, and we're using it in a non-standard way here
   const result = useSyncExternalStore(
     () => () => {},
     () => false,
     () => (isServer ? false : true),
-  );
+  ) as boolean;
 
   return result;
 }
