@@ -13,8 +13,10 @@ import {
   AccordionTriggerProps,
   AccordionContentProps,
   AccordionChevronProps,
+  AccordionSingleProps,
+  AccordionMultipleProps,
 } from './Accordion.types';
-import { cn } from '@/lib/utils';
+import { cn } from '../../utils/cn';
 
 const AccordionChevron = React.forwardRef<SVGSVGElement, AccordionChevronProps>(
   ({ className, ...props }, ref) => (
@@ -77,20 +79,75 @@ const AccordionItem = React.forwardRef<
 ));
 AccordionItem.displayName = 'AccordionItem';
 
-const Accordion = React.forwardRef<React.ElementRef<typeof RadixAccordion.Root>, AccordionProps>(
-  ({ className, items, children, ...props }, ref) => (
-    <RadixAccordion.Root ref={ref} className={cn(accordionRootVariants(), className)} {...props}>
-      {items
-        ? items.map((item) => (
-            <AccordionItem key={item.value} value={item.value} disabled={item.disabled}>
-              <AccordionTrigger>{item.header}</AccordionTrigger>
-              <AccordionContent>{item.content}</AccordionContent>
-            </AccordionItem>
-          ))
-        : children}
-    </RadixAccordion.Root>
-  ),
-);
+// Single accordion implementation
+const SingleAccordion = React.forwardRef<
+  React.ElementRef<typeof RadixAccordion.Root>,
+  Omit<AccordionSingleProps, 'type'>
+>(({ className, value, defaultValue, onValueChange, ...restProps }, ref) => (
+  <RadixAccordion.Root
+    ref={ref}
+    type="single"
+    className={cn(accordionRootVariants(), className)}
+    value={value}
+    defaultValue={defaultValue}
+    onValueChange={onValueChange as (value: string) => void}
+    {...restProps}
+  />
+));
+
+// Multiple accordion implementation
+const MultipleAccordion = React.forwardRef<
+  React.ElementRef<typeof RadixAccordion.Root>,
+  Omit<AccordionMultipleProps, 'type'>
+>(({ className, value, defaultValue, onValueChange, ...restProps }, ref) => (
+  <RadixAccordion.Root
+    ref={ref}
+    type="multiple"
+    className={cn(accordionRootVariants(), className)}
+    value={value}
+    defaultValue={defaultValue}
+    onValueChange={onValueChange as (value: string[]) => void}
+    {...restProps}
+  />
+));
+
+// Main accordion component that renders the right variant based on type
+const Accordion = React.forwardRef<
+  React.ElementRef<typeof RadixAccordion.Root>,
+  AccordionProps
+>(({ className, ...props }, ref) => {
+  // Explicitly typed accordion
+  if ('type' in props && props.type !== undefined) {
+    if (props.type === 'single') {
+      const { type, ...singleProps } = props as AccordionSingleProps;
+      return <SingleAccordion ref={ref} className={className} {...singleProps} />;
+    } else {
+      const { type, ...multipleProps } = props as AccordionMultipleProps;
+      return <MultipleAccordion ref={ref} className={className} {...multipleProps} />;
+    }
+  }
+
+  // Default to multiple type when not specified
+  // Handle the mixed type case by converting values to the right format
+  const { value, defaultValue, onValueChange, ...restProps } = props;
+
+  // Convert value and defaultValue to arrays for multiple type
+  const multipleValue = Array.isArray(value) ? value : value ? [value] : undefined;
+  const multipleDefaultValue = Array.isArray(defaultValue)
+    ? defaultValue
+    : defaultValue ? [defaultValue] : undefined;
+
+  // Use type assertion to safely pass properly formatted props
+  const multipleProps = {
+    value: multipleValue,
+    defaultValue: multipleDefaultValue,
+    onValueChange: onValueChange as ((value: string[]) => void) | undefined,
+    ...restProps,
+  } as Omit<AccordionMultipleProps, 'type'>;
+
+  return <MultipleAccordion ref={ref} className={className} {...multipleProps} />;
+});
+
 Accordion.displayName = 'Accordion';
 
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent, AccordionChevron };

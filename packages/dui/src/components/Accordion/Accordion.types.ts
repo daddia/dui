@@ -8,8 +8,9 @@ import {
   accordionChevronVariants,
 } from './Accordion.styles';
 
-export interface AccordionProps
-  extends React.ComponentPropsWithoutRef<typeof RadixAccordion.Root>,
+// Base interface for shared props
+interface AccordionBaseProps
+  extends Omit<React.ComponentPropsWithoutRef<typeof RadixAccordion.Root>, 'type' | 'value' | 'defaultValue'>,
     VariantProps<typeof accordionRootVariants> {
   /**
    * The items to display in the accordion.
@@ -33,6 +34,56 @@ export interface AccordionProps
     disabled?: boolean;
   }[];
 }
+
+// Single type accordion
+export interface AccordionSingleProps extends AccordionBaseProps {
+  /**
+   * The type of accordion.
+   */
+  type: 'single';
+  /**
+   * The controlled value of the accordion item to expand.
+   */
+  value?: string;
+  /**
+   * The default value of the accordion item to expand.
+   */
+  defaultValue?: string;
+}
+
+// Multiple type accordion
+export interface AccordionMultipleProps extends AccordionBaseProps {
+  /**
+   * The type of accordion.
+   */
+  type: 'multiple';
+  /**
+   * The controlled values of the accordion items to expand.
+   */
+  value?: string[];
+  /**
+   * The default values of the accordion items to expand.
+   */
+  defaultValue?: string[];
+}
+
+// Union type for the component props
+export type AccordionProps = AccordionSingleProps | AccordionMultipleProps |
+  (Omit<AccordionBaseProps, 'type'> & {
+    /**
+     * The type of accordion.
+     * @default 'multiple'
+     */
+    type?: 'single' | 'multiple';
+    /**
+     * The controlled value(s) of the accordion item(s) to expand.
+     */
+    value?: string | string[];
+    /**
+     * The default value(s) of the accordion item(s) to expand.
+     */
+    defaultValue?: string | string[];
+  });
 
 export interface AccordionItemProps
   extends React.ComponentPropsWithoutRef<typeof RadixAccordion.Item>,
