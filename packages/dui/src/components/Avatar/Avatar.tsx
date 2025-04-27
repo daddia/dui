@@ -12,7 +12,7 @@ import {
   AvatarFallbackProps,
   AvatarGroupProps,
 } from './Avatar.types';
-import { cn } from '@/lib/utils';
+import { cn } from '../../utils/cn';
 
 /**
  * Get initials from a name
