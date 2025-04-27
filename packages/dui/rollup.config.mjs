@@ -34,8 +34,8 @@ const createRollupConfig = (input, output) => ({
       extensions: ['.ts', '.tsx', '.js', '.jsx'],
       preferBuiltins: true,
       alias: {
-        '@': './src'
-      }
+        '@': './src',
+      },
     }),
     commonjs(),
     typescript({
