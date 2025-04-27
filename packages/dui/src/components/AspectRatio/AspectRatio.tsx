@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as RadixAspectRatio from '@radix-ui/react-aspect-ratio';
 import { aspectRatioVariants } from './AspectRatio.styles';
 import { AspectRatioProps } from './AspectRatio.types';
-import { cn } from '@/lib/utils';
+import { cn } from '../../utils/cn';
 
 export const AspectRatio = React.forwardRef<
   React.ElementRef<typeof RadixAspectRatio.Root>,
