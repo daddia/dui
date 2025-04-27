@@ -1,4 +1,8 @@
-export function match<TValue extends string | number = string, TReturnValue = unknown, TArgs extends unknown[] = []>(
+export function match<
+  TValue extends string | number = string,
+  TReturnValue = unknown,
+  TArgs extends unknown[] = [],
+>(
   value: TValue,
   lookup: Record<TValue, TReturnValue | ((...args: TArgs) => TReturnValue)>,
   ...args: TArgs

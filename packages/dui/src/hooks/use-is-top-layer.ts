@@ -9,12 +9,14 @@ import { useStore } from './use-store';
  */
 const hierarchyStores = new DefaultMap(() =>
   createStore(() => [] as string[], {
-    ADD(id: string) {
-      if (this.includes(id)) return this;
-      return [...this, id];
+    ADD(id: unknown) {
+      const stringId = String(id);
+      if (this.includes(stringId)) return this;
+      return [...this, stringId];
     },
-    REMOVE(id: string) {
-      const idx = this.indexOf(id);
+    REMOVE(id: unknown) {
+      const stringId = String(id);
+      const idx = this.indexOf(stringId);
       if (idx === -1) return this;
       const copy = this.slice();
       copy.splice(idx, 1);

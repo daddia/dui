@@ -1,9 +1,4 @@
-import {
-  forwardRef,
-  type ElementType,
-  type MutableRefObject,
-  type ReactElement,
-} from 'react';
+import { forwardRef, type ElementType, type MutableRefObject, type ReactElement } from 'react';
 import type { Props } from '../types';
 
 // Basic utility for merging props

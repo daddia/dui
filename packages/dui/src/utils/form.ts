@@ -1,7 +1,7 @@
 type Entries = [string, string][];
 
 export function objectToFormEntries(
-  source: Record<string, any> = {},
+  source: Record<string, unknown> = {},
   parentKey: string | null = null,
   entries: Entries = [],
 ): Entries {
@@ -16,7 +16,7 @@ function composeKey(parent: string | null, key: string): string {
   return parent ? parent + '[' + key + ']' : key;
 }
 
-function append(entries: Entries, key: string, value: any): void {
+function append(entries: Entries, key: string, value: unknown): void {
   if (Array.isArray(value)) {
     for (const [subkey, subvalue] of value.entries()) {
       append(entries, composeKey(key, subkey.toString()), subvalue);
@@ -31,28 +31,31 @@ function append(entries: Entries, key: string, value: any): void {
     entries.push([key, `${value}`]);
   } else if (value === null || value === undefined) {
     entries.push([key, '']);
-  } else {
-    objectToFormEntries(value, key, entries);
+  } else if (typeof value === 'object') {
+    objectToFormEntries(value as Record<string, unknown>, key, entries);
   }
 }
 
 export function attemptSubmit(elementInForm: HTMLElement) {
-  const form = (elementInForm as any)?.form ?? elementInForm.closest('form');
+  // Safe cast to access form property which may exist on some element types
+  const formElement = (elementInForm as { form?: HTMLFormElement }).form;
+  const form = formElement ?? elementInForm.closest('form');
+
   if (!form) return;
 
-  for (const element of form.elements) {
+  for (const element of Array.from(form.elements)) {
     if (element === elementInForm) continue;
 
     if (
-      (element.tagName === 'INPUT' && element.type === 'submit') ||
-      (element.tagName === 'BUTTON' && element.type === 'submit') ||
-      (element.nodeName === 'INPUT' && element.type === 'image')
+      (element.tagName === 'INPUT' && (element as HTMLInputElement).type === 'submit') ||
+      (element.tagName === 'BUTTON' && (element as HTMLButtonElement).type === 'submit') ||
+      (element.nodeName === 'INPUT' && (element as HTMLInputElement).type === 'image')
     ) {
       // If you press `enter` in a normal input[type='text'] field, then the form will submit by
       // searching for the a submit element and "click" it. We could also use the
       // `form.requestSubmit()` function, but this has a downside where an `event.preventDefault()`
       // inside a `click` listener on the submit button won't stop the form from submitting.
-      element.click();
+      (element as HTMLElement).click();
       return;
     }
   }

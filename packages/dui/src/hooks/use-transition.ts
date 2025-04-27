@@ -100,7 +100,8 @@ function prepareTransition(
   prepare();
 
   // Trigger a reflow, flushing the CSS changes
-  node.offsetHeight;
+  // This is an intentional side effect - we need to access offsetHeight to force a reflow
+  const _ = node.offsetHeight;
 
   // Reset the transition to what it was before
   node.style.transition = previous;
