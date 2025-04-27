@@ -88,6 +88,7 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
       closeOnClickOutside = true,
       closeOnEscape = true,
       asChild = false,
+      forceMount,
       ...props
     },
     ref,

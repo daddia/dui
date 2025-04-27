@@ -60,7 +60,7 @@ export interface DialogContentProps
   /**
    * When true, will disable the close functionality from the Escape key and dismiss button
    */
-  forceMount?: boolean;
+  forceMount?: true;
 
   /**
    * When true, will close the dialog when clicking outside of it
