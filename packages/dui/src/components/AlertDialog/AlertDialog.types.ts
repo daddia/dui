@@ -77,7 +77,7 @@ export interface UseAlertDialogProps {
    * The variant of the action button.
    * @default 'destructive'
    */
-  actionVariant?: 'default' | 'destructive' | 'outline' | 'ghost' | 'secondary';
+  actionVariant?: 'primary' | 'destructive' | 'outline' | 'ghost' | 'secondary';
 
   /**
    * Callback fired when the action button is clicked.

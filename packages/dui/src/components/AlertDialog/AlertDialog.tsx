@@ -20,7 +20,7 @@ import {
   AlertDialogCancelProps,
   UseAlertDialogProps,
 } from './AlertDialog.types';
-import { cn } from '@/lib/utils';
+import { cn } from '../../utils/cn';
 import { Button } from '../Button';
 
 const AlertDialogRoot = RadixAlertDialog.Root;
