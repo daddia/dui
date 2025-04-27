@@ -16,6 +16,14 @@
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
+    },
+    "./hooks": {
+      "import": "./dist/hooks/index.js",
+      "types": "./dist/hooks/index.d.ts"
+    },
+    "./hooks/*": {
+      "import": "./dist/hooks/*.js",
+      "types": "./dist/hooks/*.d.ts"
     }
   },
   "files": [
@@ -32,7 +40,8 @@
     "generate:component": "turbo gen react-component",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist",
-    "reset": "pnpm clean && rm -rf node_modules .turbo"
+    "reset": "pnpm clean && rm -rf node_modules .turbo",
+    "analyze:hooks": "node scripts/analyze-hooks.js"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
