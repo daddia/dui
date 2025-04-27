@@ -1,9 +1,18 @@
 import type { VariantProps } from 'tailwind-variants';
 import { inputVariants } from './Input.styles';
 
+// Rename the size property from the Tailwind variants to avoid collision
+type InputVariantProps = Omit<VariantProps<typeof inputVariants>, 'size'> & {
+  /**
+   * Size variant for the input
+   * @default 'md'
+   */
+  sizeVariant?: VariantProps<typeof inputVariants>['size'];
+};
+
 export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement>,
-    VariantProps<typeof inputVariants> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>,
+    InputVariantProps {
   /**
    * Element to render before the input
    */
@@ -39,4 +48,9 @@ export interface InputProps
    * Custom wrapper className
    */
   wrapperClassName?: string;
+
+  /**
+   * Size attribute for the HTML input element
+   */
+  size?: number;
 }
