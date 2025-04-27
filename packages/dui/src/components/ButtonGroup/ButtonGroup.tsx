@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { buttonGroupVariants } from './ButtonGroup.styles';
 import { ButtonGroupProps } from './ButtonGroup.types';
-import { cn } from '@/lib/utils';
+import { cn } from '../../utils/cn';
 
 // Create a context to share the group props with child buttons
 export const ButtonGroupContext = React.createContext<{
