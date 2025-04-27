@@ -41,6 +41,15 @@ export interface PopoverTriggerProps
   asChild?: boolean;
 }
 
+// Event types
+export interface PointerDownOutsideEvent extends CustomEvent<{ originalEvent: PointerEvent }> {
+  preventDefault: () => void;
+}
+
+export interface FocusOutsideEvent extends CustomEvent<{ originalEvent: FocusEvent }> {
+  preventDefault: () => void;
+}
+
 // Content Props
 export interface PopoverContentProps
   extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>,
@@ -81,7 +90,7 @@ export interface PopoverContentProps
    * Specifically, when a pointer event happens outside of the popover, when the escape key is pressed,
    * or when focus moves outside of it. Can be prevented by calling event.preventDefault.
    */
-  onInteractOutside?: (event: React.SyntheticEvent) => void;
+  onInteractOutside?: (event: PointerDownOutsideEvent | FocusOutsideEvent) => void;
 
   /**
    * The preferred side of the trigger to render against when open.
@@ -155,15 +164,4 @@ export interface PopoverCloseProps
    * @default false
    */
   asChild?: boolean;
-}
-
-// Events
-export interface PointerDownOutsideEvent {
-  target: HTMLElement;
-  preventDefault: () => void;
-}
-
-export interface FocusOutsideEvent {
-  target: HTMLElement;
-  preventDefault: () => void;
 }
