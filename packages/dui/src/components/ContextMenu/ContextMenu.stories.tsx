@@ -22,7 +22,7 @@ type Story = StoryObj<typeof ContextMenu>;
  */
 export const Basic: Story = {
   render: () => (
-    <div className="flex h-[200px] w-full items-center justify-center rounded-md border border-dashed border-border">
+    <div className="border-border flex h-[200px] w-full items-center justify-center rounded-md border border-dashed">
       <ContextMenu>
         <ContextMenu.Trigger className="flex h-full w-full items-center justify-center">
           <span>Right click here</span>
@@ -44,7 +44,7 @@ export const Basic: Story = {
  */
 export const WithSections: Story = {
   render: () => (
-    <div className="flex h-[200px] w-full items-center justify-center rounded-md border border-dashed border-border">
+    <div className="border-border flex h-[200px] w-full items-center justify-center rounded-md border border-dashed">
       <ContextMenu>
         <ContextMenu.Trigger className="flex h-full w-full items-center justify-center">
           <span>Right click here</span>
@@ -71,7 +71,7 @@ export const WithSections: Story = {
  */
 export const WithShortcuts: Story = {
   render: () => (
-    <div className="flex h-[200px] w-full items-center justify-center rounded-md border border-dashed border-border">
+    <div className="border-border flex h-[200px] w-full items-center justify-center rounded-md border border-dashed">
       <ContextMenu>
         <ContextMenu.Trigger className="flex h-full w-full items-center justify-center">
           <span>Right click here</span>
@@ -110,7 +110,7 @@ export const WithShortcuts: Story = {
  */
 export const WithSubmenus: Story = {
   render: () => (
-    <div className="flex h-[200px] w-full items-center justify-center rounded-md border border-dashed border-border">
+    <div className="border-border flex h-[200px] w-full items-center justify-center rounded-md border border-dashed">
       <ContextMenu>
         <ContextMenu.Trigger className="flex h-full w-full items-center justify-center">
           <span>Right click here</span>
@@ -143,7 +143,7 @@ export const WithSubmenus: Story = {
  */
 export const WithCheckboxAndRadio: Story = {
   render: () => (
-    <div className="flex h-[200px] w-full items-center justify-center rounded-md border border-dashed border-border">
+    <div className="border-border flex h-[200px] w-full items-center justify-center rounded-md border border-dashed">
       <ContextMenu>
         <ContextMenu.Trigger className="flex h-full w-full items-center justify-center">
           <span>Right click here</span>
@@ -171,7 +171,7 @@ export const WithCheckboxAndRadio: Story = {
  */
 export const WithInsetItems: Story = {
   render: () => (
-    <div className="flex h-[200px] w-full items-center justify-center rounded-md border border-dashed border-border">
+    <div className="border-border flex h-[200px] w-full items-center justify-center rounded-md border border-dashed">
       <ContextMenu>
         <ContextMenu.Trigger className="flex h-full w-full items-center justify-center">
           <span>Right click here</span>
@@ -194,7 +194,7 @@ export const WithInsetItems: Story = {
  */
 export const WithDestructiveItems: Story = {
   render: () => (
-    <div className="flex h-[200px] w-full items-center justify-center rounded-md border border-dashed border-border">
+    <div className="border-border flex h-[200px] w-full items-center justify-center rounded-md border border-dashed">
       <ContextMenu>
         <ContextMenu.Trigger className="flex h-full w-full items-center justify-center">
           <span>Right click here</span>

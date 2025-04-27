@@ -17,7 +17,9 @@ export interface ContextMenuBaseProps {
 export interface ContextMenuRootProps extends ContextMenuPrimitive.ContextMenuProps {}
 
 // Props for the ContextMenuTrigger component
-export interface ContextMenuTriggerProps extends ContextMenuPrimitive.ContextMenuTriggerProps, ContextMenuBaseProps {}
+export interface ContextMenuTriggerProps
+  extends ContextMenuPrimitive.ContextMenuTriggerProps,
+    ContextMenuBaseProps {}
 
 // Props for the ContextMenuContent component
 export interface ContextMenuContentProps
@@ -97,10 +99,14 @@ export interface ContextMenuSeparatorProps
 }
 
 // Props for the ContextMenuShortcut component
-export interface ContextMenuShortcutProps extends React.HTMLAttributes<HTMLSpanElement>, ContextMenuBaseProps {}
+export interface ContextMenuShortcutProps
+  extends React.HTMLAttributes<HTMLSpanElement>,
+    ContextMenuBaseProps {}
 
 // Props for the ContextMenuGroup component
-export interface ContextMenuGroupProps extends ContextMenuPrimitive.ContextMenuGroupProps, ContextMenuBaseProps {
+export interface ContextMenuGroupProps
+  extends ContextMenuPrimitive.ContextMenuGroupProps,
+    ContextMenuBaseProps {
   /**
    * Custom className to be applied to the component
    */
@@ -108,7 +114,9 @@ export interface ContextMenuGroupProps extends ContextMenuPrimitive.ContextMenuG
 }
 
 // Props for the ContextMenuSub component
-export interface ContextMenuSubProps extends ContextMenuPrimitive.ContextMenuSubProps, ContextMenuBaseProps {}
+export interface ContextMenuSubProps
+  extends ContextMenuPrimitive.ContextMenuSubProps,
+    ContextMenuBaseProps {}
 
 // Props for the ContextMenuSubTrigger component
 export interface ContextMenuSubTriggerProps

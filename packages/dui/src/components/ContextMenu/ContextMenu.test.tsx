@@ -8,15 +8,21 @@ jest.mock('@radix-ui/react-context-menu', () => {
   const actual = jest.requireActual('@radix-ui/react-context-menu');
   return {
     ...actual,
-    Root: ({ children }: { children: React.ReactNode }) => <div data-testid="context-menu-root">{children}</div>,
+    Root: ({ children }: { children: React.ReactNode }) => (
+      <div data-testid="context-menu-root">{children}</div>
+    ),
     Trigger: ({ children }: { children: React.ReactNode }) => (
       <div data-testid="context-menu-trigger">{children}</div>
     ),
     Content: ({ children }: { children: React.ReactNode }) => (
       <div data-testid="context-menu-content">{children}</div>
     ),
-    Item: ({ children }: { children: React.ReactNode }) => <div data-testid="context-menu-item">{children}</div>,
-    Portal: ({ children }: { children: React.ReactNode }) => <div data-testid="context-menu-portal">{children}</div>,
+    Item: ({ children }: { children: React.ReactNode }) => (
+      <div data-testid="context-menu-item">{children}</div>
+    ),
+    Portal: ({ children }: { children: React.ReactNode }) => (
+      <div data-testid="context-menu-portal">{children}</div>
+    ),
   };
 });
 
@@ -35,7 +41,7 @@ describe('ContextMenu', () => {
         <ContextMenu.Content>
           <ContextMenu.Item>Item 1</ContextMenu.Item>
         </ContextMenu.Content>
-      </ContextMenu>
+      </ContextMenu>,
     );
 
     expect(screen.getByTestId('context-menu-trigger')).toBeInTheDocument();
@@ -69,7 +75,7 @@ describe('ContextMenu', () => {
             </ContextMenu.SubContent>
           </ContextMenu.Sub>
         </ContextMenu.Content>
-      </ContextMenu>
+      </ContextMenu>,
     );
 
     // While we're simulating components with the mocks, we can make sure certain content renders
@@ -98,7 +104,7 @@ describe('ContextMenu', () => {
             Inset Item
           </ContextMenu.Item>
         </ContextMenu.Content>
-      </ContextMenu>
+      </ContextMenu>,
     );
 
     expect(screen.getByTestId('inset-item')).toHaveClass('pl-8');
@@ -114,7 +120,7 @@ describe('ContextMenu', () => {
             Destructive Item
           </ContextMenu.Item>
         </ContextMenu.Content>
-      </ContextMenu>
+      </ContextMenu>,
     );
 
     expect(screen.getByTestId('destructive-item')).toHaveClass('text-destructive');
@@ -127,7 +133,7 @@ describe('ContextMenu', () => {
         <ContextMenu.Content className="custom-content">
           <ContextMenu.Item className="custom-item">Regular Item</ContextMenu.Item>
         </ContextMenu.Content>
-      </ContextMenu>
+      </ContextMenu>,
     );
 
     expect(screen.getByTestId('context-menu-trigger')).toHaveClass('custom-trigger');

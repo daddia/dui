@@ -253,7 +253,11 @@ const ContextMenuGroup = React.forwardRef<
 ContextMenuGroup.displayName = 'ContextMenuGroup';
 
 // Context Menu Shortcut Component (non-Radix, custom component)
-const ContextMenuShortcut = ({ className, asChild = false, ...props }: ContextMenuShortcutProps) => {
+const ContextMenuShortcut = ({
+  className,
+  asChild = false,
+  ...props
+}: ContextMenuShortcutProps) => {
   const Comp = asChild ? React.Fragment : 'span';
   return <Comp className={cn(shortcutStyles(), className)} {...props} />;
 };
