@@ -4,23 +4,24 @@ import {
   type MutableRefObject,
   type ReactElement,
   type Ref,
+  type ForwardRefRenderFunction,
 } from 'react';
 import type { Props } from '../types';
 
 // Basic utility for merging props
-export function mergeProps<T extends Record<string, any>[]>(...listOfProps: T) {
+export function mergeProps<T extends Record<string, unknown>[]>(...listOfProps: T) {
   if (listOfProps.length === 0) return {};
   if (listOfProps.length === 1) return listOfProps[0];
 
-  const target: Record<string, any> = {};
-  const eventHandlers: Record<string, ((...args: any[]) => void | undefined)[]> = {};
+  const target: Record<string, unknown> = {};
+  const eventHandlers: Record<string, ((...args: unknown[]) => void | undefined)[]> = {};
 
   for (const props of listOfProps) {
     for (const prop in props) {
       // Merge event listeners
       if (prop.startsWith('on') && typeof props[prop] === 'function') {
         eventHandlers[prop] ??= [];
-        eventHandlers[prop].push(props[prop]);
+        eventHandlers[prop].push(props[prop] as (...args: unknown[]) => void);
       } else {
         // Override incoming prop
         target[prop] = props[prop];
@@ -31,7 +32,7 @@ export function mergeProps<T extends Record<string, any>[]>(...listOfProps: T) {
   // Merge event handlers
   for (const eventName in eventHandlers) {
     Object.assign(target, {
-      [eventName](...args: any[]) {
+      [eventName](...args: unknown[]) {
         const handlers = eventHandlers[eventName] || [];
         for (const handler of handlers) {
           handler?.(...args);
@@ -44,7 +45,7 @@ export function mergeProps<T extends Record<string, any>[]>(...listOfProps: T) {
 }
 
 // Simple utility for combining refs
-export function mergeRefs<T = any>(
+export function mergeRefs<T = unknown>(
   ...refs: (MutableRefObject<T> | ((instance: T) => void) | null)[]
 ) {
   return (value: T): void => {
@@ -65,13 +66,13 @@ export type ElementProps<T extends ElementType> = Props<T>;
 export function forwardRefWithAs<T extends { name: string; displayName?: string }>(
   component: T,
 ): T & { displayName: string } {
-  return Object.assign(forwardRef(component as any) as any, {
+  return Object.assign(forwardRef(component as unknown as ForwardRefRenderFunction<unknown, unknown>) as unknown as T, {
     displayName: component.displayName ?? component.name,
   });
 }
 
 // Remove properties from an object
-export function omit<T extends Record<any, any>>(object: T, keysToOmit: string[] = []) {
+export function omit<T extends Record<string, unknown>>(object: T, keysToOmit: string[] = []) {
   const result = {} as T;
   const keys = Object.keys(object) as (keyof T)[];
 
@@ -85,12 +86,12 @@ export function omit<T extends Record<any, any>>(object: T, keysToOmit: string[]
 }
 
 // Get the element ref from a React element
-export function getElementRef(element: ReactElement | null): Ref<any> | null {
+export function getElementRef(element: ReactElement | null): Ref<unknown> | null {
   if (element == null) return null;
 
   // Typescript doesn't allow direct access to ref property as it's not part of the public API
   // Instead, use a safe cast to access it
-  const elementWithRef = element as unknown as { ref?: Ref<any> };
+  const elementWithRef = element as unknown as { ref?: Ref<unknown> };
   return elementWithRef.ref ?? null;
 }
 

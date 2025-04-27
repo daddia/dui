@@ -1,6 +1,10 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "stream",
+  "globalEnv": [
+    "NODE_ENV",
+    "TEST_BYPASS_TRACKED_POINTER"
+  ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],

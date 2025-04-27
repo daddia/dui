@@ -8,7 +8,7 @@ function computeSize(element: HTMLElement | null) {
 }
 
 export function useElementSize(element: HTMLElement | null, unit = false) {
-  const [identity, forceRerender] = useReducer(() => ({}), {});
+  const forceRerender = useReducer(() => ({}), {})[1];
 
   // When the element changes during a re-render, we want to make sure we
   // compute the correct size as soon as possible.

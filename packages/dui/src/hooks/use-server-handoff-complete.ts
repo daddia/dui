@@ -12,15 +12,13 @@ import { env } from '../utils/env';
  */
 function useIsHydratingInReact18(): boolean {
   const isServer = typeof document === 'undefined';
-
-  // React < 18 doesn't have any way to figure this out afaik
-  if (!('useSyncExternalStore' in React)) {
-    return false;
-  }
+  const hasUseSyncExternalStore = 'useSyncExternalStore' in React;
 
   // This weird pattern makes sure bundlers don't throw at build time
   // because `useSyncExternalStore` isn't defined in React < 18
-  const useSyncExternalStore = ((r) => r.useSyncExternalStore)(React);
+  const useSyncExternalStore = hasUseSyncExternalStore
+    ? ((r) => r.useSyncExternalStore)(React)
+    : () => false;
 
   // The type definitions for useSyncExternalStore are complex, and we're using it in a non-standard way here
   const result = useSyncExternalStore(
@@ -28,6 +26,11 @@ function useIsHydratingInReact18(): boolean {
     () => false,
     () => (isServer ? false : true),
   ) as boolean;
+
+  // React < 18 doesn't have any way to figure this out afaik
+  if (!hasUseSyncExternalStore) {
+    return false;
+  }
 
   return result;
 }
