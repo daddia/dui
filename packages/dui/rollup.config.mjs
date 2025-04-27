@@ -17,11 +17,11 @@ const external = [
 ];
 
 // Create a multi-entry configuration for JS/TS files
-const createRollupConfig = (input, outputFormat, outputDir) => ({
+const createRollupConfig = (input, output) => ({
   input,
   output: {
-    dir: outputDir,
-    format: outputFormat,
+    dir: 'dist',
+    format: 'esm',
     sourcemap: true,
     preserveModules: true,
     preserveModulesRoot: 'src',
@@ -33,6 +33,9 @@ const createRollupConfig = (input, outputFormat, outputDir) => ({
     resolve({
       extensions: ['.ts', '.tsx', '.js', '.jsx'],
       preferBuiltins: true,
+      alias: {
+        '@': './src'
+      }
     }),
     commonjs(),
     typescript({
@@ -53,18 +56,16 @@ const jsEntries = {
 const dtsConfig = {
   input: jsEntries,
   output: {
-    dir: 'dist/types',
-    format: 'es',
+    dir: 'dist',
+    format: 'esm',
   },
   external,
   plugins: [dts()],
 };
 
 export default [
-  // CJS build
-  createRollupConfig(jsEntries, 'cjs', 'dist/cjs'),
-  // ESM build
-  createRollupConfig(jsEntries, 'esm', 'dist/esm'),
+  // ESM build only
+  createRollupConfig(jsEntries),
   // Type definitions
   dtsConfig,
 ];
