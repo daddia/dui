@@ -35,7 +35,7 @@ export const Default: Story = {
     <Collapsible {...args} className="w-full max-w-md">
       <CollapsibleTrigger>Toggle content</CollapsibleTrigger>
       <CollapsibleContent>
-        <div className="rounded-md border p-4 mt-2">
+        <div className="mt-2 rounded-md border p-4">
           <p>This content can be expanded and collapsed.</p>
         </div>
       </CollapsibleContent>
@@ -51,7 +51,7 @@ export const Disabled: Story = {
     <Collapsible {...args} className="w-full max-w-md">
       <CollapsibleTrigger>Disabled trigger</CollapsibleTrigger>
       <CollapsibleContent>
-        <div className="rounded-md border p-4 mt-2">
+        <div className="mt-2 rounded-md border p-4">
           <p>This content cannot be accessed.</p>
         </div>
       </CollapsibleContent>
@@ -70,7 +70,7 @@ export const WithCustomTrigger: Story = {
         <Button>Click me to toggle</Button>
       </CollapsibleTrigger>
       <CollapsibleContent>
-        <div className="rounded-md border p-4 mt-2">
+        <div className="mt-2 rounded-md border p-4">
           <p>Using a custom button as the trigger.</p>
         </div>
       </CollapsibleContent>

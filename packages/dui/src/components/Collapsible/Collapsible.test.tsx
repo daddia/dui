@@ -8,7 +8,7 @@ describe('Collapsible', () => {
       <Collapsible>
         <CollapsibleTrigger>Toggle</CollapsibleTrigger>
         <CollapsibleContent>Content</CollapsibleContent>
-      </Collapsible>
+      </Collapsible>,
     );
 
     expect(screen.getByText('Toggle')).toBeInTheDocument();
@@ -20,7 +20,7 @@ describe('Collapsible', () => {
       <Collapsible>
         <CollapsibleTrigger>Toggle</CollapsibleTrigger>
         <CollapsibleContent>Content</CollapsibleContent>
-      </Collapsible>
+      </Collapsible>,
     );
 
     fireEvent.click(screen.getByText('Toggle'));
@@ -32,7 +32,7 @@ describe('Collapsible', () => {
       <Collapsible defaultOpen>
         <CollapsibleTrigger>Toggle</CollapsibleTrigger>
         <CollapsibleContent>Content</CollapsibleContent>
-      </Collapsible>
+      </Collapsible>,
     );
 
     expect(screen.getByText('Content')).toBeVisible();
@@ -43,7 +43,7 @@ describe('Collapsible', () => {
       <Collapsible defaultOpen>
         <CollapsibleTrigger>Toggle</CollapsibleTrigger>
         <CollapsibleContent>Content</CollapsibleContent>
-      </Collapsible>
+      </Collapsible>,
     );
 
     expect(screen.getByText('Content')).toBeVisible();
@@ -56,7 +56,7 @@ describe('Collapsible', () => {
       <Collapsible disabled>
         <CollapsibleTrigger>Toggle</CollapsibleTrigger>
         <CollapsibleContent>Content</CollapsibleContent>
-      </Collapsible>
+      </Collapsible>,
     );
 
     fireEvent.click(screen.getByText('Toggle'));
@@ -68,7 +68,7 @@ describe('Collapsible', () => {
       <Collapsible className="test-class">
         <CollapsibleTrigger>Toggle</CollapsibleTrigger>
         <CollapsibleContent>Content</CollapsibleContent>
-      </Collapsible>
+      </Collapsible>,
     );
 
     expect(container.firstChild).toHaveClass('test-class');

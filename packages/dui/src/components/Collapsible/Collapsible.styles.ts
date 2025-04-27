@@ -14,9 +14,9 @@ export const collapsibleTriggerVariants = cva(
     defaultVariants: {
       disabled: false,
     },
-  }
+  },
 );
 
 export const collapsibleContentVariants = cva(
-  'overflow-hidden text-sm transition-all data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down'
+  'overflow-hidden text-sm transition-all data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down',
 );

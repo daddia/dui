@@ -2,22 +2,22 @@ import React, { forwardRef } from 'react';
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '../../utils';
-import { CollapsibleContentProps, CollapsibleProps, CollapsibleTriggerProps } from './Collapsible.types';
+import {
+  CollapsibleContentProps,
+  CollapsibleProps,
+  CollapsibleTriggerProps,
+} from './Collapsible.types';
 import {
   collapsibleContentVariants,
   collapsibleTriggerVariants,
-  collapsibleVariants
+  collapsibleVariants,
 } from './Collapsible.styles';
 
 const Collapsible = forwardRef<
   React.ElementRef<typeof CollapsiblePrimitive.Root>,
   CollapsibleProps
 >(({ className, children, ...props }, ref) => (
-  <CollapsiblePrimitive.Root
-    ref={ref}
-    className={collapsibleVariants({ className })}
-    {...props}
-  >
+  <CollapsiblePrimitive.Root ref={ref} className={collapsibleVariants({ className })} {...props}>
     {children}
   </CollapsiblePrimitive.Root>
 ));
