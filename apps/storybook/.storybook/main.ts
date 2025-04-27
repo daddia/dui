@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/experimental-nextjs-vite";
+import path from 'path';
 
 const config: StorybookConfig = {
   "stories": [
@@ -20,6 +21,13 @@ const config: StorybookConfig = {
     "../public"
   ],
   "viteFinal": async (config) => {
+    if (config.resolve) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        '@': path.resolve(__dirname, '../../../packages/dui/src'),
+      };
+    }
+
     return {
       ...config,
       build: {
