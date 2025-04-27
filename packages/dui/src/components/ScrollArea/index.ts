@@ -1,10 +1,4 @@
-import {
-  ScrollArea,
-  ScrollAreaViewport,
-  ScrollAreaScrollbar,
-  ScrollAreaThumb,
-  ScrollAreaCorner,
-} from './ScrollArea';
+import { ScrollArea } from './ScrollArea';
 import type {
   ScrollAreaProps,
   ScrollAreaViewportProps,
@@ -13,7 +7,7 @@ import type {
   ScrollAreaCornerProps,
 } from './ScrollArea.types';
 
-export { ScrollArea, ScrollAreaViewport, ScrollAreaScrollbar, ScrollAreaThumb, ScrollAreaCorner };
+export { ScrollArea };
 export type {
   ScrollAreaProps,
   ScrollAreaViewportProps,
