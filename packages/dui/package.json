@@ -70,7 +70,7 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript2": "^0.36.0",
     "tailwindcss": "^4.1.4",
-    "typescript": "5.8.2"
+    "typescript": "5.8.3"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.8",
