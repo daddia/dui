@@ -44,12 +44,10 @@
       "dependsOn": ["^transit"]
     },
     "clean": {
-      "cache": false,
-      "persistent": true
+      "cache": false
     },
     "reset": {
-      "cache": false,
-      "persistent": true
+      "cache": false
     }
   }
 }
