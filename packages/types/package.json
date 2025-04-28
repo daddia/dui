@@ -1,0 +1,37 @@
+{
+  "name": "@dui/types",
+  "version": "0.0.1",
+  "description": "Utility types used by dUI",
+  "author": "daddia",
+  "license": "MIT",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "type": "module",
+  "repository": "github:daddia/dui",
+  "bugs": "github:daddia/dui/issues",
+  "homepage": "https://dui.daddia.com",
+  "scripts": {
+    "build": "rollup -c",
+    "prebuild": "rimraf dist",
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "release": "pnpm build && pnpm publish"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/react": "^19.1.2",
+    "rollup": "^4.9.6",
+    "rollup-plugin-dts": "^6.1.0",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "@types/react": "^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  }
+}
