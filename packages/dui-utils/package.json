@@ -14,10 +14,11 @@
     "build": "rollup -c",
     "prebuild": "rimraf dist",
     "lint": "eslint . --max-warnings 0",
-    "typecheck": "tsc --noEmit",
+    "types:check": "tsc --noEmit",
     "release": "pnpm build && pnpm publish"
   },
   "dependencies": {
+    "@dui/types": "workspace:*",
     "clsx": "^2.1.1",
     "tailwind-merge": "^3.2.0"
   },

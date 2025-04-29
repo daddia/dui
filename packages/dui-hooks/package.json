@@ -1,7 +1,7 @@
 {
-  "name": "@dui/types",
-  "version": "0.0.2",
-  "description": "Utility types used by dUI",
+  "name": "@dui/hooks",
+  "version": "0.0.1",
+  "description": "Hooks used by dUI",
   "author": "daddia",
   "license": "MIT",
   "types": "./dist/index.d.ts",
@@ -17,10 +17,17 @@
     "types:check": "tsc --noEmit",
     "release": "pnpm build && pnpm publish"
   },
+  "dependencies": {
+    "@dui/utils": "workspace:*",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.2.0"
+  },
   "devDependencies": {
+    "@dui/types": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@rollup/plugin-typescript": "^11.1.6",
+    "@types/node": "^22.15.3",
     "@types/react": "^19.1.2",
     "rollup": "^4.9.6",
     "rollup-plugin-dts": "^6.1.0",
