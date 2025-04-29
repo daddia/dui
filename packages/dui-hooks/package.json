@@ -15,7 +15,9 @@
     "prebuild": "rimraf dist",
     "lint": "eslint . --max-warnings 0",
     "types:check": "tsc --noEmit",
-    "release": "pnpm build && pnpm publish"
+    "release": "pnpm build && pnpm publish",
+    "clean": "rimraf dist",
+    "reset": "pnpm clean && rm -rf node_modules .turbo"
   },
   "dependencies": {
     "@dui/utils": "workspace:*",
