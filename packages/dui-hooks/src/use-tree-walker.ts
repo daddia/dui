@@ -28,9 +28,7 @@ export function useTreeWalker({
     const walk1 = walk.bind(null);
 
     const acceptNode = (node: Node) => {
-      return accept1(node as HTMLElement)
-        ? NodeFilter.FILTER_ACCEPT
-        : NodeFilter.FILTER_SKIP;
+      return accept1(node as HTMLElement) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
     };
 
     const walkTree: WalkTree = (root, cb, acceptNode = () => true) => {

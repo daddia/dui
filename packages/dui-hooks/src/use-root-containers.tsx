@@ -1,9 +1,13 @@
 import React, { createContext, useContext, useState, type MutableRefObject } from 'react';
-import { Hidden, HiddenFeatures } from '../internal/hidden';
-import * as DOM from '../utils/dom';
-import { getOwnerDocument } from '../utils/owner';
+import { Hidden, HiddenFeatures } from './hidden';
+import { getOwnerDocument } from '@dui/utils';
 import { useEvent } from './use-event';
 import { useOwnerDocument } from './use-owner';
+
+// Helper function to check if a value is an Element
+function isElement(value: unknown): value is Element {
+  return value instanceof Element;
+}
 
 export function useRootContainers({
   defaultContainers = [],
@@ -24,9 +28,9 @@ export function useRootContainers({
     // Resolve default containers
     for (const container of defaultContainers) {
       if (container === null) continue;
-      if (DOM.isElement(container)) {
+      if (isElement(container)) {
         containers.push(container);
-      } else if ('current' in container && DOM.isElement(container.current)) {
+      } else if (container.current && isElement(container.current)) {
         containers.push(container.current);
       }
     }
@@ -42,7 +46,7 @@ export function useRootContainers({
     for (const container of ownerDocument?.querySelectorAll('html > *, body > *') ?? []) {
       if (container === document.body) continue; // Skip `<body>`
       if (container === document.head) continue; // Skip `<head>`
-      if (!DOM.isElement(container)) continue; // Skip non-HTMLElements
+      if (!isElement(container)) continue; // Skip non-HTMLElements
       if (container.id === 'headlessui-portal-root') continue; // Skip the Headless UI portal root
       if (mainTreeNode) {
         if (container.contains(mainTreeNode)) continue; // Skip if it is the main app
@@ -127,7 +131,7 @@ export function MainTreeProvider({
               []) {
               if (container === document.body) continue; // Skip `<body>`
               if (container === document.head) continue; // Skip `<head>`
-              if (!DOM.isElement(container)) continue; // Skip non-HTMLElements
+              if (!isElement(container)) continue; // Skip non-HTMLElements
               if (container?.contains(el)) {
                 setMainTreeNode(container);
                 break;

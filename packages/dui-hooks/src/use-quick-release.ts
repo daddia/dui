@@ -65,7 +65,8 @@ export function useQuickRelease(
   const triggeredAtRef = useRef<Date | null>(null);
   useDocumentEvent(enabled && trigger !== null, 'pointerdown', (e) => {
     if (!isNode(e?.target)) return;
-    if (!trigger || !e.target || !(trigger instanceof Node) || !trigger.contains(e.target as Node)) return;
+    if (!trigger || !e.target || !(trigger instanceof Node) || !trigger.contains(e.target as Node))
+      return;
 
     triggeredAtRef.current = new Date();
   });

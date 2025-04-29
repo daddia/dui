@@ -33,7 +33,7 @@
       "outputs": []
     },
     "types:check": {
-      "dependsOn": ["^typecheck"],
+      "dependsOn": ["^types:check"],
       "outputs": []
     },
     "test": {

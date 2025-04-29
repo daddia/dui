@@ -17,7 +17,10 @@ export function useTextValue(
 
     return {
       onChange: (value: string) => setTextContent(value),
-      getTextValue: (element: Element | null) => getTextValue(element),
+      getTextValue: (element: HTMLElement | null) => {
+        if (!element) return '';
+        return getTextValue(element);
+      },
     };
   }, [textValue, textContent, forceTextValue]);
 

@@ -20,7 +20,7 @@
     "lint": "turbo run lint",
     "format:check": "prettier --cache --check --ignore-path .gitignore --ignore-path .prettierignore .",
     "format": "prettier --cache --write --list-different --ignore-path .gitignore --ignore-path .prettierignore .",
-    "types:check": "turbo run typecheck",
+    "types:check": "turbo run types:check",
     "test": "turbo run test",
     "storybook": "turbo run storybook --filter=dui-storybook",
     "storybook:build": "turbo run storybook:build --filter=dui-storybook",
