@@ -32,7 +32,7 @@
       "dependsOn": ["^storybook:build"],
       "outputs": []
     },
-    "typecheck": {
+    "types:check": {
       "dependsOn": ["^typecheck"],
       "outputs": []
     },
