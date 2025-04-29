@@ -1,6 +1,6 @@
 {
   "name": "@dui/types",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Utility types used by dUI",
   "author": "daddia",
   "license": "MIT",
@@ -27,7 +27,7 @@
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
-    "@types/react": "^17.0.0 || ^18.0.0 || ^19.0.0"
+    "@types/react": "^19.0.0"
   },
   "sideEffects": false,
   "publishConfig": {
