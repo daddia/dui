@@ -1,11 +1,7 @@
 import { useDocumentOverflowLockedEffect } from './use-document-overflow';
 import { useIsTopLayer } from './use-is-top-layer';
 
-export function useScrollLock(
-  enabled: boolean,
-  ownerDocument: Document | null = null,
-  resolveAllowedContainers: () => HTMLElement[] = () => [document.body],
-) {
+export function useScrollLock(enabled: boolean, ownerDocument: Document | null = null) {
   const isTopLayer = useIsTopLayer(enabled, 'scroll-lock');
 
   // Use the document from ownerDocument if provided

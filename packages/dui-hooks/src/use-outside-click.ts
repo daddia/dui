@@ -1,5 +1,4 @@
 import { useCallback, useRef } from 'react';
-import * as DOM from '@dui/utils';
 import { FocusableMode, isFocusableElement } from '@dui/utils';
 import { isMobile } from '@dui/utils';
 import { useDocumentEvent } from './use-document-event';

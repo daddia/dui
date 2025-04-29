@@ -3,10 +3,6 @@ import { env } from '@dui/utils';
 
 const state = { handoffComplete: false };
 
-function finished() {
-  state.handoffComplete = true;
-}
-
 export function useServerHandoffComplete() {
   const [complete, setComplete] = useState(state.handoffComplete);
 

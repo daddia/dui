@@ -16,7 +16,7 @@ type HiddenProps = {
 
 // The Hidden component used for accessibility and DOM manipulation
 export const Hidden = forwardRef<HTMLSpanElement, HiddenProps>(function Hidden(props, ref) {
-  const { features = HiddenFeatures.Hidden, children, ...rest } = props;
+  const { children, ...rest } = props;
 
   return (
     <span

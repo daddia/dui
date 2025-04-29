@@ -27,16 +27,12 @@ export function useTreeWalker({
     const accept1 = accept.bind(null);
     const walk1 = walk.bind(null);
 
-    const acceptNode = (node: Node) => {
-      return accept1(node as HTMLElement) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
-    };
-
-    const walkTree: WalkTree = (root, cb, acceptNode = () => true) => {
+    const walkTree: WalkTree = (root, cb, _acceptNode = () => true) => {
       if (!root) return;
 
       const walker = ownerDocument.createTreeWalker(root, NodeFilter.SHOW_ELEMENT, {
         acceptNode(node: Node) {
-          return acceptNode(node as HTMLElement)
+          return _acceptNode(node as HTMLElement)
             ? NodeFilter.FILTER_ACCEPT
             : NodeFilter.FILTER_SKIP;
         },
