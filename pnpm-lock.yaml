@@ -471,6 +471,13 @@ importers:
         version: 5.8.3
 
   packages/dui-utils:
+    dependencies:
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
+      tailwind-merge:
+        specifier: ^3.2.0
+        version: 3.2.0
     devDependencies:
       '@dui/types':
         specifier: workspace:*
@@ -487,18 +494,12 @@ importers:
       '@types/react':
         specifier: ^19.1.2
         version: 19.1.2
-      clsx:
-        specifier: ^2.1.1
-        version: 2.1.1
       rollup:
         specifier: ^4.9.6
         version: 4.40.0
       rollup-plugin-dts:
         specifier: ^6.1.0
         version: 6.2.1(rollup@4.40.0)(typescript@5.8.3)
-      tailwind-merge:
-        specifier: ^3.2.0
-        version: 3.2.0
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -8024,7 +8025,7 @@ snapshots:
       sirv: 3.0.1
       tinyglobby: 0.2.13
       tinyrainbow: 2.0.0
-      vitest: 3.1.2(@types/node@20.17.30)(@vitest/browser@3.1.2)(@vitest/ui@3.1.2)(jiti@2.4.2)(jsdom@26.1.0)(lightningcss@1.29.2)(terser@5.39.0)
+      vitest: 3.1.2(@types/node@22.15.0)(@vitest/browser@3.1.2)(@vitest/ui@3.1.2)(jiti@2.4.2)(jsdom@26.1.0)(lightningcss@1.29.2)(terser@5.39.0)
 
   '@vitest/utils@2.0.5':
     dependencies:
